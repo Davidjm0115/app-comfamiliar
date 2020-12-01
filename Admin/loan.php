@@ -79,7 +79,7 @@ include ('./logica/validacion.php');
                         </ul>
                     </li>
                     <li><a href="report.php"><i class="zmdi zmdi-trending-up zmdi-hc-fw"></i>&nbsp;&nbsp; Reportes y estadísticas</a></li>
-                    <li><a href="advancesettings.php"><i class="zmdi zmdi-wrench zmdi-hc-fw"></i>&nbsp;&nbsp; Configuraciones avanzadas</a></li>
+                    <li><a href="advancesettings.php"><i class="zmdi zmdi-wrench zmdi-hc-fw"></i>&nbsp;&nbsp; Acerca De...</a></li>
                 </ul>
             </div>
         </div>

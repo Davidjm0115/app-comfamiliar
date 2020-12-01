@@ -23,7 +23,7 @@ include ('./logica/validacion.php');
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
     <script src="js/main.js"></script>
-    <script type="text/javascript" src="js/maain.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
     <script type="text/javascript" src="//cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
 </head>
@@ -84,7 +84,7 @@ include ('./logica/validacion.php');
                         </ul>
                     </li>
                     <li><a href="report.php"><i class="zmdi zmdi-trending-up zmdi-hc-fw"></i>&nbsp;&nbsp; Reportes y estadísticas</a></li>
-                    <li><a href="advancesettings.php"><i class="zmdi zmdi-wrench zmdi-hc-fw"></i>&nbsp;&nbsp; Configuraciones avanzadas</a></li>
+                     <li><a href="advancesettings.php"><i class="zmdi zmdi-wrench zmdi-hc-fw"></i>&nbsp;&nbsp; Acerca De...</a></li>
                 </ul>
             </div>
         </div>
@@ -205,5 +205,6 @@ include ('./logica/validacion.php');
                     <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="zmdi zmdi-thumb-up"></i> &nbsp; De acuerdo</button>
 
 <script type="text/javascript" src="./js/confirmacion.js"></script>
+<script type="text/javascript" src="./js/init_datatable.js"></script>
 </body>
 </html>

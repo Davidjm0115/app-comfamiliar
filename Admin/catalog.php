@@ -23,6 +23,8 @@ include ('./logica/validacion.php');
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
     <script src="js/main.js"></script>
+    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
+    <script type="text/javascript" src="//cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
 </head>
 <body>
     <div class="navbar-lateral full-reset">
@@ -79,7 +81,7 @@ include ('./logica/validacion.php');
                         </ul>
                     </li>
                     <li><a href="report.php"><i class="zmdi zmdi-trending-up zmdi-hc-fw"></i>&nbsp;&nbsp; Reportes y estadísticas</a></li>
-                    <li><a href="advancesettings.php"><i class="zmdi zmdi-wrench zmdi-hc-fw"></i>&nbsp;&nbsp; Configuraciones avanzadas</a></li>
+                    <li><a href="advancesettings.php"><i class="zmdi zmdi-wrench zmdi-hc-fw"></i>&nbsp;&nbsp; Acerca De...</a></li>
                 </ul>
             </div>
         </div>
@@ -93,15 +95,7 @@ include ('./logica/validacion.php');
                 <li style="color:#fff; cursor:default;">
                     <span class="all-tittles"><?php $usuario = $_SESSION['usuario']; $nombre=$usuario['NOMBRE_USU']; echo $nombre;?></span>
                 </li>
-                <li  class="tooltips-general exit-system-button" data-href="index.html" data-placement="bottom" title="Salir del sistema">
-                    <i class="zmdi zmdi-power"></i>
-                </li>
-                <li  class="tooltips-general search-book-button" data-href="searchbook.html" data-placement="bottom" title="Buscar libro">
-                    <i class="zmdi zmdi-search"></i>
-                </li>
-                <li  class="tooltips-general btn-help" data-placement="bottom" title="Ayuda">
-                    <i class="zmdi zmdi-help-outline zmdi-hc-fw"></i>
-                </li>
+
                 <li class="mobile-menu-button visible-xs" style="float: left !important;">
                     <i class="zmdi zmdi-menu"></i>
                 </li>
@@ -126,65 +120,59 @@ include ('./logica/validacion.php');
                 </div>
             </div>
         </div>
-        <div class="container-fluid" style="margin: 0 0 50px 0;">
-            <h2 class="text-center" style="margin: 0 0 25px 0;">Categorías</h2>
-            <ul class="list-unstyled text-center list-catalog-container">
-                
-                         <?php
-                         include ("./logica/db.php");
 
-                          $consulta = "SELECT * FROM categorias ";
-                         $resultado = mysqli_query($conexion, $consulta);
+            <div>
 
-                         while ($row = mysqli_fetch_array($resultado))
-                             {
-                                        
-                                $codigo = $row["COD_CATEGORIA"];
-                                $nompro = $row["NOMB_CATEG"];
+                       <?php
+     
+      include("./logica/db.php");
+ 
+          $resultados = mysqli_query($conexion,"SELECT * FROM herramienta");?>
 
-                        ?>
-                              
-                               <li class="list-catalog" value="<?php echo $codigo;?>"><?php echo $nompro;?></li>
-                            
-                         <?php } ?>
+          <table width='100%' border="2" id="cate_tabla" >
+              <thead style="color: #fff;background-color: #188010;">
+              <tr>
+                  <td><b><center>Codigo categoria</center></b></td>
+                  <td><b><center>Nombre de categoria</center></b></td>
+                  <td><b><center>Nombre de categoria</center></b></td>
+                  <td><b><center>Nombre de categoria</center></b></td>
+                  <td><b><center>Nombre de categoria</center></b></td>
+                  <td><b><center>Nombre de categoria</center></b></td>
+                  <td><b><center>Nombre de categoria</center></b></td>
+                  <td><b><center>Nombre de categoria</center></b></td>
 
-            </ul>
-          </div>
-            <div >
-                                    <?php
-                                    include ("./logica/db.php");
+                  <td><b><center>Editar</center></b></td>
+                  <td><b><center>Eliminar</center></b></td>
 
-                                    $consulta = "SELECT * FROM herramienta";
-                                    $resultado = mysqli_query($conexion, $consulta);
-                                    $contador = '1';
 
-                                    while ($row = mysqli_fetch_array($resultado))
-                                    {
-                                        
-                                      $nomlib = $row["NOMBRE_LH"];
-                                      $autor = $row["AUTOR"];
-                                      $cantidad = $row["CANTIDAD"];
-                                    ?>
-                                <div class="container-fluid">
-                                    <div class="media media-hover">
-                                        <div class="media-left media-middle">
-                                            <a href="#!" class="tooltips-general" data-toggle="tooltip" data-placement="right" title="Más información del libro">
-                                              <img class="media-object" src="assets/img/book.png" alt="Libro" width="48" height="48">
-                                            </a>
-                                </div>
-                                <div class="media-body">
-                                <h4 class="media-heading"> <?php echo "".$contador++." - ";echo utf8_decode ($nomlib);?></h4>
-                                <div class="pull-left"><br>
-                                    <strong>Autor:  <?php echo $autor;?><br><br>
-                                    <strong>Cantidad: <?php echo $cantidad;?> <br>
-                                </div>
-                                <p class="text-center pull-right">
-                                    <a href="#!" class="btn btn-info btn-xs" style="margin-right: 10px;"><i class="zmdi zmdi-info-outline"></i> &nbsp;&nbsp; Más información</a>
-                                </p> 
-                                 </div> <br><br>
-                                    </div>
-                                    </strong></strong></div>
-                                    <?php } ?>
+
+
+            </tr></thead> <tbody>
+
+          <?php while($consulta = mysqli_fetch_array($resultados))
+          {
+
+        echo"
+                <tr style='color: #000;'>
+                  <td><b><center>".$consulta['COD_LH']."</center></b></td>
+                  <td><b><center>".$consulta['NOMBRE_LH']."</center></b></td>
+                  <td><b><center>".$consulta['CATEGORIA']."</center></b></td>
+                  <td><b><center>".$consulta['EDITORIAL']."</center></b></td>
+                  <td><b><center>".$consulta['CANTIDAD']."</center></b></td>
+                  <td><b><center>".$consulta['CANTIDAD_DISPONIBLE']."</center></b></td>
+                  <td><b><center>".$consulta['COD_PROVEEDOR']."</center></b></td>
+                  <td><b><center>".$consulta['AUTOR']."</center></b></td>
+                  
+                  <td><center><a href='actualizarcat.php?id=".$consulta['COD_LH']."'><button class='btn btn-primary'><i class='zmdi zmdi-refresh'> Editar</button></center></td>
+                  
+                  <td><center><a href='./logica/eliminarcat.php?id=".$consulta['COD_LH']."' class='eliminar'><button class='btn btn-danger'>Eliminar  <i class='zmdi zmdi-delete'></i></button><a></center></td>
+                </tr>
+            ";
+          }?>
+  
+        </tbody></table>
+
+        
             </div>
         <div class="modal fade" tabindex="-1" role="dialog" id="ModalHelp">
           <div class="modal-dialog modal-lg">
@@ -221,7 +209,7 @@ include ('./logica/validacion.php');
         </footer>
     </div>
 
-
+<script type="text/javascript" src="./js/init_datatable.js"></script>
 
 </body>
 </html>

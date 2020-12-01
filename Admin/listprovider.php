@@ -23,7 +23,6 @@ include ('./logica/validacion.php');
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
     <script src="js/main.js"></script>
-    <script type="text/javascript" src="js/maainprovedor.js"></script>
     <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
     <script type="text/javascript" src="//cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
 </head>
@@ -84,7 +83,7 @@ include ('./logica/validacion.php');
                         </ul>
                     </li>
                     <li><a href="report.php"><i class="zmdi zmdi-trending-up zmdi-hc-fw"></i>&nbsp;&nbsp; Reportes y estadísticas</a></li>
-                    <li><a href="advancesettings.php"><i class="zmdi zmdi-wrench zmdi-hc-fw"></i>&nbsp;&nbsp; Configuraciones avanzadas</a></li>
+                     <li><a href="advancesettings.php"><i class="zmdi zmdi-wrench zmdi-hc-fw"></i>&nbsp;&nbsp; Acerca De...</a></li>
                 </ul>
             </div>
         </div>
@@ -98,15 +97,7 @@ include ('./logica/validacion.php');
                 <li style="color:#fff; cursor:default;">
                     <span class="all-tittles"><?php $usuario = $_SESSION['usuario']; $nombre=$usuario['NOMBRE_USU']; echo $nombre;?></span>
                 </li>
-                <li  class="tooltips-general exit-system-button" data-href="index.html" data-placement="bottom" title="Salir del sistema">
-                    <i class="zmdi zmdi-power"></i>
-                </li>
-                <li  class="tooltips-general search-book-button" data-href="searchbook.html" data-placement="bottom" title="Buscar libro">
-                    <i class="zmdi zmdi-search"></i>
-                </li>
-                <li  class="tooltips-general btn-help" data-placement="bottom" title="Ayuda">
-                    <i class="zmdi zmdi-help-outline zmdi-hc-fw"></i>
-                </li>
+
                 <li class="mobile-menu-button visible-xs" style="float: left !important;">
                     <i class="zmdi zmdi-menu"></i>
                 </li>
@@ -212,5 +203,6 @@ include ('./logica/validacion.php');
         </div>
     </div>
 </div>
+<script type="text/javascript" src="./js/init_datatable.js"></script>
 </body>
 </html>

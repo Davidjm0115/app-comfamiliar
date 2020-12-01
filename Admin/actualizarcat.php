@@ -93,15 +93,7 @@ include ('./logica/validacion.php');
                 <li style="color:#fff; cursor:default;">
                     <span class="all-tittles"><?php $usuario = $_SESSION['usuario']; $nombre=$usuario['NOMBRE_USU']; echo $nombre;?></span>
                 </li>
-                <li  class="tooltips-general exit-system-button" data-href="index.html" data-placement="bottom" title="Salir del sistema">
-                    <i class="zmdi zmdi-power"></i>
-                </li>
-                <li  class="tooltips-general search-book-button" data-href="searchbook.html" data-placement="bottom" title="Buscar libro">
-                    <i class="zmdi zmdi-search"></i>
-                </li>
-                <li  class="tooltips-general btn-help" data-placement="bottom" title="Ayuda">
-                    <i class="zmdi zmdi-help-outline zmdi-hc-fw"></i>
-                </li>
+
                 <li class="mobile-menu-button visible-xs" style="float: left !important;">
                     <i class="zmdi zmdi-menu"></i>
                 </li>
@@ -163,7 +155,7 @@ include ('./logica/validacion.php');
                         </div>
                         <div class="col-xs-12 col-sm-6">
                             <div class="group-material">
-                                <input type="text"class="form-control" name="codcat" placeholder="Escribe aquí el código de categoría" value="<?php echo $consulta['COD_CATEGORIA']?>"  required="" pattern="[0-9]{1,20}" maxlength="2" data-toggle="tooltip" data-placement="top" title="Solo números, máximo 2 caracteres">
+                                <input type="text"class="form-control" disabled="" name="codcat" placeholder="Escribe aquí el código de categoría" value="<?php echo $consulta['COD_CATEGORIA']?>"  required="" pattern="[0-9]{1,20}" maxlength="2" data-toggle="tooltip" data-placement="top" title="Solo números, máximo 2 caracteres">
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
                                 

@@ -81,7 +81,7 @@ include ('./logica/validacion.php');
                         </ul>
                     </li>
                     <li><a href="report.php"><i class="zmdi zmdi-trending-up zmdi-hc-fw"></i>&nbsp;&nbsp; Reportes y estadísticas</a></li>
-                    <li><a href="advancesettings.php"><i class="zmdi zmdi-wrench zmdi-hc-fw"></i>&nbsp;&nbsp; Configuraciones avanzadas</a></li>
+                     <li><a href="advancesettings.php"><i class="zmdi zmdi-wrench zmdi-hc-fw"></i>&nbsp;&nbsp; Acerca De...</a></li>
                 </ul>
             </div>
         </div>
@@ -168,7 +168,7 @@ include ('./logica/validacion.php');
                         <div class='col-xs-12'>
                             <div class='group-material'>
                                 <p class='text-center' style='padding-top: 15px'>Usuario ID</p>
-                                <input type='text' class='form-control' name='numid'  value="<?php echo $consulta['ID']?>"required="" maxlength='20' data-toggle='tooltip' data-placement='top' title='ID de estudiante'>
+                                <input type='text' disabled="" class='form-control' name='numid'  value="<?php echo $consulta['ID']?>"required="" maxlength='20' data-toggle='tooltip' data-placement='top' title='ID de estudiante'>
                                 <span class='highlight'></span>
                                 <span class='bar'></span>
                                 

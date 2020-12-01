@@ -91,17 +91,9 @@ include ('./logica/validacion.php');
                    <img src="assets/img/user01.png" alt="user-picture" class="img-responsive img-circle center-box">
                 </figure>
                 <li style="color:#fff; cursor:default;">
-                    <span class="all-tittles">Admin Name</span>
+                    <span class="all-tittles"><?php $usuario = $_SESSION['usuario']; $nombre=$usuario['NOMBRE_USU']; echo $nombre;?></span>
                 </li>
-                <li  class="tooltips-general exit-system-button" data-href="index.html" data-placement="bottom" title="Salir del sistema">
-                    <i class="zmdi zmdi-power"></i>
-                </li>
-                <li  class="tooltips-general search-book-button" data-href="searchbook.html" data-placement="bottom" title="Buscar libro">
-                    <i class="zmdi zmdi-search"></i>
-                </li>
-                <li  class="tooltips-general btn-help" data-placement="bottom" title="Ayuda">
-                    <i class="zmdi zmdi-help-outline zmdi-hc-fw"></i>
-                </li>
+
                 <li class="mobile-menu-button visible-xs" style="float: left !important;">
                     <i class="zmdi zmdi-menu"></i>
                 </li>
@@ -206,7 +198,7 @@ include ('./logica/validacion.php');
                                     <option value="d">D</option>
                                 </select>
                             </div>
-</div>
+                            </div>
                         </div>
                         <div class="col-xs-12">
                              <div class="col-xs-12">
@@ -215,7 +207,7 @@ include ('./logica/validacion.php');
                                 <select class="form-control" name="curso"  data-toggle="tooltip" data-placement="top" title="Elige la sección a la que pertenece el alumno">
                                     <option value="" disabled="" selected="">Selecciona un Curso</option>
                                 <?php
-                                    include ("conexion.php");
+                                    include ("./logica/db.php");
 
                                     $consulta = "SELECT * FROM curso where curso != 'admin' ";
                                     $resultado = mysqli_query($conexion, $consulta);
