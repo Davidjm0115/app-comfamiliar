@@ -24,6 +24,8 @@ include ('./logica/validacion.php');
     <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
     <script src="js/main.js"></script>
     <script type="text/javascript" src="js/maainprovedor.js"></script>
+    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
+    <script type="text/javascript" src="//cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
 </head>
 <body>
     <div class="navbar-lateral full-reset">
@@ -148,20 +150,63 @@ include ('./logica/validacion.php');
             </div>
         </div>
                 <div class="container-fluid" style="margin: 0 0 50px 0;">
-            <form class="pull-right" style="width: 30% !important;" autocomplete="off" action="listprovider.php" method="POST">
-                <div class="group-material">
-                <div class="group-material">
-                    <input type="text" name="caja_busqueda" id="caja_busqueda" style="display: inline-block !important; width: 70%;" class="form-control" placeholder="Buscar proveedores"  maxlength="50" data-toggle="tooltip" data-placement="top" title="Escriba el codigo, nombre o producto del proveedor">
 
-                </div>
-                </div>
-            </form>
 
         </div>
             <h2 class="text-center all-tittles">listado de proveedores</h2>
-             <div class="container-fluid" id="datos">
+             <div class="container-fluid" >
             
+ <?php
+     
+      include("./logica/db.php");
+ 
+          $resultados = mysqli_query($conexion,"SELECT * FROM proveedores");?>
 
+          <table width='100%' border="1" id="prove_tabla" >
+              <thead style="color: #fff;background-color: #188010;">
+              <tr>
+                <td><b><center>ID Proveedor</center></b></td>
+                <td><b><center>Nombre Proveedor</center></b></td>
+                <td><b><center>Producto</center></b></td>
+                <td><b><center>Dirección proveedor</center></b></td>
+                <td><b><center>Telefono</center></b></td>
+                <td><b><center>Pais</center></b></td>
+                <td><b><center>Ciudad</center></b></td>
+
+                  <td><b><center>Editar</center></b></td>
+                  <td><b><center>Eliminar</center></b></td>
+
+
+
+
+            </tr></thead> <tbody>
+
+          <?php while($consulta = mysqli_fetch_array($resultados))
+          {
+
+        echo"
+                <tr style='color: #000;'>
+                <td><b><center>".$consulta['COD_PROVEEDOR']."</center></b></td>
+                <td><b><center>".$consulta['NOMBRE_PROVEEDOR']."</center></b></td>
+                <td><b><center>".$consulta['PRODUCTO']."</center></b></td>
+                <td><b><center>".$consulta['DIREC_PRO']."</center></b></td>
+                <td><b><center>".$consulta['TELEFONO_PROVEEDOR']."</center></b></td>
+                <td><b><center>".$consulta['PAIS']."</center></b></td>
+                <td><b><center>".$consulta['CIUDAD']."</center></b></td>
+
+
+                  
+                  <td><center><a href='actualizarcat.php?id=".$consulta['COD_PROVEEDOR']."'><button class='btn btn-primary'><i class='zmdi zmdi-refresh'> Editar</button></center></td>
+                  
+                  <td><center><a href='./logica/eliminarcat.php?id=".$consulta['COD_PROVEEDOR']."' class='eliminar'><button class='btn btn-danger'>Eliminar  <i class='zmdi zmdi-delete'></i></button><a></center></td>
+                </tr>
+            ";
+          }?>
+  
+        </tbody></table>
+
+                
+<br><br>
         
              </div>
         </div>

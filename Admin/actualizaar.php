@@ -151,7 +151,7 @@ include ('./logica/validacion.php');
         <div class="container-fluid">
           <?php
      
-      include("conexion.php");
+      include("./logica/db.php");
             $id= $_GET['id'];
           $resultados = mysqli_query($conexion,"SELECT * FROM personal WHERE ID='$id'");
 

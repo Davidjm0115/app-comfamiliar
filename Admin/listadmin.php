@@ -23,6 +23,8 @@ include ('./logica/validacion.php');
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
     <script src="js/main.js"></script>
+    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
+    <script type="text/javascript" src="//cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
 </head>
 <body>
     <div class="navbar-lateral full-reset">
@@ -146,28 +148,21 @@ include ('./logica/validacion.php');
                 </div>
             </div>
         </div>
-                    <form class="pull-right" style="width: 30% !important;" autocomplete="off">
-                <div class="group-material">
-                    <input type="search" style="display: inline-block !important; width: 70%;" class="material-control tooltips-general" placeholder="Buscar usuario o admin" required="" pattern="[a-zA-ZáéíóúÁÉÍÓÚ ]{1,50}" maxlength="50" data-toggle="tooltip" data-placement="top" title="Escribe los nombres">
-                    <button class="btn" style="margin: 0; height: 43px; background-color: transparent !important;">
-                        <i class="zmdi zmdi-search" style="font-size: 25px;"></i>
-                    </button>
-                </div>
-            </form><br><br><br><br><br>
+                  <br><br>
             
-
             <div>
             <br><br>  <center><div class="container-fluid">
             <h2 class="text-center all-tittles">listado de admin</h2></center>
             </div>
         <?php
      
-      include("conexion.php");
+      include("./logica/db.php");
  
           $resultados = mysqli_query($conexion,"SELECT * FROM usuario");?>
 
-          <table width='100%' border="2">
-              <thead>
+          <table width='100%' border="2" id="admin_tabla">
+             
+              <thead style="color: #fff;background-color: #188010;">
               <tr>
                   <td><b><center>Id usuario</center></b></td>
                   
@@ -182,9 +177,8 @@ include ('./logica/validacion.php');
           {
 
         echo"
-                <tr>
+                <tr style='color: #000;'>
                   <td><b><center>".$consulta['USUARIO_ID']."</center></b></td>
-                 
                   <td><b><center>".$consulta['NIVEL']."</center></b></td>
                   <td><b><center>".$consulta['NOMBRE_USU']."</center></b></td>
 
@@ -196,15 +190,8 @@ include ('./logica/validacion.php');
             ";
           }?>
 </tbody></table>
+<br><br>
 
- <center>        <nav aria-label='Page navigation example'>
-  <ul class='pagination'>
-    <li class='page-item'><a class='page-link' href='#'>Previous</a></li>
-    <li class='page-item'><a class='page-link' href='#'>1</a></li>
-
-    <li class='page-item'><a class='page-link' href='#'>Next</a></li>
-  </ul>
-</nav></center>
         <div class="modal fade" tabindex="-1" role="dialog" id="ModalHelp">
           <div class="modal-dialog modal-lg">
             <div class="modal-content">

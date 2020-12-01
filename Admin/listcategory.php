@@ -23,6 +23,9 @@ include ('./logica/validacion.php');
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
     <script src="js/main.js"></script>
+    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
+    <script type="text/javascript" src="//cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+    
 </head>
 <body>
     <div class="navbar-lateral full-reset">
@@ -150,12 +153,12 @@ include ('./logica/validacion.php');
            
        <?php
      
-      include("conexion.php");
+      include("./logica/db.php");
  
           $resultados = mysqli_query($conexion,"SELECT * FROM categorias");?>
 
-          <table width='100%' border="2" >
-              <thead>
+          <table width='100%' border="2" id="cate_tabla" >
+              <thead style="color: #fff;background-color: #188010;">
               <tr>
                   <td><b><center>Codigo categoria</center></b></td>
                   <td><b><center>Nombre de categoria</center></b></td>
@@ -171,7 +174,7 @@ include ('./logica/validacion.php');
           {
 
         echo"
-                <tr>
+                <tr style='color: #000;'>
                   <td><b><center>".$consulta['COD_CATEGORIA']."</center></b></td>
                   <td><b><center>".$consulta['NOMB_CATEG']."</center></b></td>
 
@@ -184,13 +187,7 @@ include ('./logica/validacion.php');
           }?>
   
         </tbody></table>
-        <center>        <nav aria-label='Page navigation example'>
-  <ul class='pagination'>
-    <li class='page-item'><a class='page-link' href='#'>Previous</a></li>
-    <li class='page-item'><a class='page-link' href='#'>1</a></li>
-    <li class='page-item'><a class='page-link' href='#'>Next</a></li>
-  </ul>
-</nav></center>
+
                 
           
             

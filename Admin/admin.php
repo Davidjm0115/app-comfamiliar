@@ -23,6 +23,7 @@ include ('./logica/validacion.php');
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
     <script src="js/main.js"></script>
+
 </head>
 <body>
     <div class="navbar-lateral full-reset">

@@ -83,7 +83,22 @@ $(document).ready(function(){
     });
     $('#estudiantes_tabla').DataTable({
         "language": {
-                "url": "js/Spanish.json"
+                "url": "Spanish.json"
+            }
+    });
+       $('#prove_tabla').DataTable({
+        "language": {
+                "url": "Spanish.json"
+            }
+    });
+       $('#cate_tabla').DataTable({
+        "language": {
+                "url": "Spanish.json"
+            }
+    });
+       $('#admin_tabla').DataTable({
+        "language": {
+                "url": "Spanish.json"
             }
     });
 });

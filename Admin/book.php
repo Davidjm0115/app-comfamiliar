@@ -178,7 +178,7 @@ include ('./logica/validacion.php');
                                 <select class="form-control" name="categoria"  data-toggle="tooltip" data-placement="top" title="Elige la categoría del libro">
                                     <option value="" disabled="" selected="">Selecciona una categoría</option>
                                     <?php
-                                    include ("conexion.php");
+                                    include ("./logica/db.php");
 
                                     $consulta = "SELECT * FROM categorias ";
                                     $resultado = mysqli_query($conexion, $consulta);
@@ -212,7 +212,7 @@ include ('./logica/validacion.php');
                                 <select class="form-control" name="proveedor" data-toggle="tooltip" data-placement="top" title="Elige el proveedor del libro">
                                     <option value="" disabled="" selected="">Selecciona un proveedor</option>
                                     <?php
-                                    include ("conexion.php");
+                                    include ("./logica/db.php");
 
                                     $consulta = "SELECT * FROM proveedores ";
                                     $resultado = mysqli_query($conexion, $consulta);

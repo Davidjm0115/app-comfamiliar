@@ -40,7 +40,7 @@
               <input type="text" class="material-login-control" name="usuario" required="" maxlength="70">
               <span class="highlight-login"></span>
               <span class="bar-login"></span>
-              <label><i class="zmdi zmdi-account"></i> &nbsp; Nombres</label>
+              <label><i class="zmdi zmdi-account"></i> &nbsp; Identificación</label>
             </div><br><br><br>
             <div class="group-material-login">
               <input type="password" class="material-login-control" name="clave" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9 ]{1,50}" required="" maxlength="70">

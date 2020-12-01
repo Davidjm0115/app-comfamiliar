@@ -147,7 +147,7 @@ include ('./logica/validacion.php');
             <div class="container-flat-form">
                           <?php
      
-      include("conexion.php");
+      include("./logica/db.php");
             $id= $_GET['id'];
           $resultados = mysqli_query($conexion,"SELECT * FROM Usuario WHERE USUARIO_ID='$id'");
 

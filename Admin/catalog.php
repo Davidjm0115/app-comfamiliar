@@ -131,7 +131,7 @@ include ('./logica/validacion.php');
             <ul class="list-unstyled text-center list-catalog-container">
                 
                          <?php
-                         include ("conexion.php");
+                         include ("./logica/db.php");
 
                           $consulta = "SELECT * FROM categorias ";
                          $resultado = mysqli_query($conexion, $consulta);
@@ -152,7 +152,7 @@ include ('./logica/validacion.php');
           </div>
             <div >
                                     <?php
-                                    include ("conexion.php");
+                                    include ("./logica/db.php");
 
                                     $consulta = "SELECT * FROM herramienta";
                                     $resultado = mysqli_query($conexion, $consulta);

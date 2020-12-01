@@ -702,3 +702,15 @@ input.material-control:focus ~ .highlight {
 /* col-lg */
 @media (min-width: 1200px) {
 }
+
+/*color de las letras de afuera de las tablas :vvv*/
+table.dataTable th.dt-center, table.dataTable td.dt-center, table.dataTable td.dataTables_empty {
+    text-align: center;
+    color: black;
+
+}
+.dataTables_wrapper .dataTables_length, .dataTables_wrapper .dataTables_filter, .dataTables_wrapper .dataTables_info, .dataTables_wrapper .dataTables_processing, .dataTables_wrapper .dataTables_paginate  {
+
+color: #fff !important;
+
+} 

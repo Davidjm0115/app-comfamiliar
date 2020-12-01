@@ -146,7 +146,7 @@ include ('./logica/validacion.php');
           $resultados = mysqli_query($conexion,"SELECT ID,CATEGORIA,CURSO,CORREO,TELEFONO, CONCAT(PRIMER_NOMBRE, ' ', PRIMER_APE,' ', SEGUNDO_APE) nombre_completo FROM personal where CURSO <> 1");?>
 
           <table width='100%' border="2" id="estudiantes_tabla" >
-              <thead style="color: #fff;">
+              <thead style="color: #fff;background-color: #188010;">
               <tr>
                   <td><b><center>ID</center></b></td>
                   <td><b><center>Nombre completo</center></b></td>
@@ -175,9 +175,9 @@ include ('./logica/validacion.php');
                   <td><b><center>".$consulta['TELEFONO']."</center></b></td>
 
                   
-                  <td><center><a href='actualizarcat.php?id=".$consulta['ID']."'><button class='btn btn-primary'><i class='zmdi zmdi-refresh'> Editar</button></center></td>
+                  <td><center><a href='actualizaar.php?id=".$consulta['ID']."'><button class='btn btn-primary'><i class='zmdi zmdi-refresh'> Editar</button></center></td>
                   
-                  <td><center><a href='./logica/eliminarcat.php?id=".$consulta['ID']."' class='eliminar'><button class='btn btn-danger'>Eliminar  <i class='zmdi zmdi-delete'></i></button><a></center></td>
+                  <td><center><a href='./logica/eliminar.php?id=".$consulta['ID']."' class='eliminar'><button class='btn btn-danger'>Eliminar  <i class='zmdi zmdi-delete'></i></button><a></center></td>
                 </tr>
             ";
           }?>
@@ -204,5 +204,6 @@ include ('./logica/validacion.php');
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="zmdi zmdi-thumb-up"></i> &nbsp; De acuerdo</button>
 
+<script type="text/javascript" src="./js/confirmacion.js"></script>
 </body>
 </html>
