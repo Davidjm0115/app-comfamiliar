@@ -6,7 +6,7 @@ include ('./logica/validacion.php');
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <title>Administradores</title>
+    <title>Registrar Libro</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="Shortcut Icon" type="image/x-icon" href="assets/icons/book.ico" />
@@ -49,7 +49,7 @@ include ('./logica/validacion.php');
                             <li><a href="institution.php"><i class="zmdi zmdi-balance zmdi-hc-fw"></i>&nbsp;&nbsp; Datos institución</a></li>
                             <li><a href="provider.php"><i class="zmdi zmdi-truck zmdi-hc-fw"></i>&nbsp;&nbsp; Nuevo proveedor</a></li>
                             <li><a href="category.php"><i class="zmdi zmdi-bookmark-outline zmdi-hc-fw"></i>&nbsp;&nbsp; Nueva categoría</a></li>
-                            
+
                         </ul>
                     </li>
                     <li>
@@ -76,7 +76,7 @@ include ('./logica/validacion.php');
                         </ul>
                     </li>
                     <li><a href="report.php"><i class="zmdi zmdi-trending-up zmdi-hc-fw"></i>&nbsp;&nbsp; Reportes</a></li>
-                     <li><a href="advancesettings.php"><i class="zmdi zmdi-wrench zmdi-hc-fw"></i>&nbsp;&nbsp; Acerca De...</a></li>
+                    <li><a href="advancesettings.php"><i class="zmdi zmdi-help-outline zmdi-hc-fw"></i>&nbsp;&nbsp; Acerca De...</a></li>
                 </ul>
             </div>
         </div>
@@ -100,25 +100,23 @@ include ('./logica/validacion.php');
             </ul>
         </nav>
         <div class="container">
-            <div class="jumbotron">
-            <div class="page-header">
-              <center><h1 class="all-tittles">Administración de Usuarios y administradores</h1></center>
-            
+        <div class="jumbotron">
+             <div class="page-header">
+                  <center><h1 class="all-tittles">Pestamos de libros y herramientas</small></h1></center>
         </div>
-        <div class="container-fluid">
+        <div class="conteiner-fluid">
             <ul class="nav nav-tabs nav-justified"  style="font-size: 17px;">
-                <li role="presentation"  class="active"><a href="admin.html">Administradores</a></li>
-                <li role="presentation"><a href="student.html">Estudiantes</a></li>
-
+                <li class="active"><a href="loan.php">Todos los préstamos</a></li>
+                <li><a href="loanpending.php">Devoluciones pendientes</a></li>
             </ul>
         </div>
         <div class="container-fluid"  style="margin: 50px 0;">
             <div class="row">
                 <div class="col-xs-12 col-sm-4 col-md-3">
-                    <img src="assets/img/user01.png" alt="user" class="img-responsive center-box" style="max-width: 110px;">
+                    <img src="assets/img/calendar_book.png" alt="calendar" class="img-responsive center-box" style="max-width: 110px;">
                 </div>
                 <div class="col-xs-12 col-sm-8 col-md-8 text-justify lead">
-                    Bienvenido a la sección para registrar nuevos administradores del sistema, debes de llenar todos los campos del siguiente formulario para registrar un administrador
+                    Bienvenido a esta sección, aquí se muestran todos los préstamos de libros realizados hasta la fecha y que ya se entregaron satisfactoriamente
                 </div>
             </div>
         </div>
@@ -126,79 +124,153 @@ include ('./logica/validacion.php');
             <div class="row">
                 <div class="col-xs-12 lead">
                     <ol class="breadcrumb">
-                      <li class="active">Nuevo administrador</li>
-                      <li><a href="listadmin.php">Listado de administradores</a></li>
+                          <li class="active">Prestamos</li>
+                        <li><a href="student.php">Crear nuevo prestamo</a></li>
                     </ol>
                 </div>
             </div>
         </div>
         <div class="container-fluid">
             <div class="container-flat-form">
-                          <?php
-     
-      include("./logica/db.php");
-            $id= $_GET['id'];
-          $resultados = mysqli_query($conexion,"SELECT * FROM Usuario WHERE USUARIO_ID='$id'");
-
-
-           while($consulta = mysqli_fetch_array($resultados))
-          {?>
-                <div class="title-flat-form title-flat-blue">Registrar un nuevo administrador</div>
-                <form class="form-padding" action="./logica/actualizar2admin.php" method="POST">
+                <div class="title-flat-form title-flat-blue">Nuevo Prestamo</div>
+                <form class="form-padding" action="./logica/insertaherra.php" method="POST">
                     <div class="row">
-
                         <div class="col-xs-12">
-                            <legend style="color:#fff; "><i class="zmdi zmdi-lock"></i> &nbsp; Datos de la cuenta</legend><br>
+                            <legend style="color: #fff"><i class="zmdi zmdi-account-box"></i> &nbsp; Información básica</legend><br>
                         </div>
-                        <div class="col-xs-12">
-                           <div class="group-material">
-                            <p style="padding-top: 15px">Usuario ID</p>
-                                <input type="text" class="form-control" readonly="" placeholder="ID de usuario" value="<?php echo $consulta['USUARIO_ID']?>"  name="usuid" required="" maxlength="20" pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ]{1,20}" data-toggle="tooltip" data-placement="top" title="Escribe un nombre de usuario sin espacios, que servira para iniciar sesión">
-                                <span class="highlight"></span>
-                                <span class="bar"></span>
-                                
-                           </div>
-                        </div>
-                        <div class="col-xs-12">
-                           <div class="group-material">
-                            <p style="padding-top: 15px">Nombre de Usuario</p>
-                                <input type="text" disabled="" class="form-control" placeholder="Nombre de usuario" value="<?php echo $consulta['NOMBRE_USU']?>"  name="nomusu" required="" maxlength="20" pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ]{1,20}" data-toggle="tooltip" data-placement="top" title="Escribe un nombre de usuario sin espacios, que servira para iniciar sesión">
-                                <span class="highlight"></span>
-                                <span class="bar"></span>
-                                
-                           </div>
-                        </div>                    
                         <div class="col-xs-12 col-sm-6">
                             <div class="group-material">
-                                <p style="padding-top: 15px">Contraseña</p>
-                                <input type="password" class="form-control" placeholder="Contraseña" name="pass" value="<?php echo $consulta['PASS']?>"  required="" maxlength="200" data-toggle="tooltip" data-placement="top" title="Escribe una contraseña">
+                               <center> <p  style="padding-top: 15px">Codigo libro</p></center>
+                                <input type="text" class="form-control" name="codlib" placeholder="Escribe aquí el código correlativo del libro" pattern="[0-9]{1,20}" required="" maxlength="5" data-toggle="tooltip" data-placement="top" title="Escribe el código correlativo del libro, solamente números">
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
                                 
                             </div>
                         </div>
                         <div class="col-xs-12 col-sm-6">
-                           <div class="group-material">
-                                <p class="text-center" style="padding-top: 15px">Nivel De Acceso</p>
-                                <select class="form-control" name="usunivel"  data-toggle="tooltip" value="<?php echo $consulta['NIVEL']?>" data-placement="top" title="Elige la sección a la que pertenece el alumno">
-                                    <option value="" disabled="" selected="">Selecciona un Curso</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
+                            <div class="group-material">
+                               <center> <p  style="padding-top: 15px">Nombre del libro</p> </center>
+                                <input type="text" class="form-control" name="nomblib" placeholder="Escribe aquí el título o nombre del libro" required="" maxlength="70" data-toggle="tooltip" data-placement="top" title="Escribe el título o nombre del libro">
+                                <span class="highlight"></span>
+                                <span class="bar"></span>
+                                
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6">
+                            <div class="group-material">
+                               <center>  <p  style="padding-top: 15px">Autor</p> </center>
+                                <input type="text"class="form-control" name="autor" placeholder="Escribe aquí el autor del libro" required="" maxlength="70" data-toggle="tooltip" data-placement="top" title="Escribe el nombre del autor del libro">
+                                <span class="highlight"></span>
+                                <span class="bar"></span>
+                                
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6">
+                            <div class="group-material">
+                              <center>  <p  style="padding-top: 15px">Ejemplares</p></center>
+                                <input type="text" class="form-control" name="cantidad" placeholder="Escribe aquí los Ejemplares del libro" required="" maxlength="50" data-toggle="tooltip" data-placement="top" title="Escribe el país del libro">
+                                <span class="highlight"></span>
+                                <span class="bar"></span>
+                            </div>
+                        </div>
+                        <div class="col-xs-12">
+                            <legend style="color: #fff "><i class="zmdi zmdi-bookmark-outline"></i> &nbsp; Categoría</legend><br>
+                        </div>
+                        <div class="col-xs-12">
+                            <div class="group-material">
+                               <center> <p  style="padding-top: 15px">Categoría</p> </center>
+                                <select class="form-control" name="categoria"  data-toggle="tooltip" data-placement="top" title="Elige la categoría del libro">
+                                    <option value="" disabled="" selected="">Selecciona una categoría</option>
+                                    <?php
+                                    include ("./logica/db.php");
 
+                                    $consulta = "SELECT * FROM categorias ";
+                                    $resultado = mysqli_query($conexion, $consulta);
+
+                                    while ($row = mysqli_fetch_array($resultado))
+                                    {
+                                        
+                                      $codigo = $row["COD_CATEGORIA"];
+                                      $nombcat = $row["NOMB_CATEG"];
+
+
+
+                                    ?>
+
+                                    <option value ="<?php echo $codigo;?>"><?php echo $nombcat;?> </option>
+                                     
+
+
+                                    <?php } ?>
+
+
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-xs-12">
+                            <legend style="color: #fff"><i class="zmdi zmdi-label"></i> &nbsp; Otros datos</legend><br>
+                        </div>
+                        <div class="col-xs-12">
+                            <div class="group-material">
+                                <center>  <p  style="padding-top: 15px">Proveedor</p> </center>
+                                <select class="form-control" name="proveedor" data-toggle="tooltip" data-placement="top" title="Elige el proveedor del libro">
+                                    <option value="" disabled="" selected="">Selecciona un proveedor</option>
+                                    <?php
+                                    include ("./logica/db.php");
+
+                                    $consulta = "SELECT * FROM proveedores ";
+                                    $resultado = mysqli_query($conexion, $consulta);
+
+                                    while ($row = mysqli_fetch_array($resultado))
+                                    {
+                                        
+                                      $codigo = $row["COD_PROVEEDOR"];
+                                      $nompro = $row["NOMBRE_PROVEEDOR"];
+
+
+
+                                    ?>
+
+                                    <option value ="<?php echo $codigo;?>"><?php echo $nompro;?> </option>
+                                     
+
+
+                                    <?php } ?>
+
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6">
+                           <div class="group-material">
+                                <p class="text-center" style="padding-top: 15px">Estado</p>
+                                <select class="form-control" name="estado"  data-toggle="tooltip" data-placement="top" title="Elige la sección a la que pertenece el alumno">
+                                    <option value="" disabled="" selected="">Selecciona un Curso</option>
+                                    <option value="Malo">Malo</option>
+                                    <option value="Regular">Regular</option>
+                                    <option value="Excelente">Excelente</option>   
                                 </select>
                            </div>
                         </div>
-                       <div class="col-xs-12">
+                        <div class="col-xs-12 col-sm-6">
+                            <div class="group-material">
+                               <center>  <p  style="padding-top: 15px">Editorial</p> </center>
+                                <input type="text" class="form-control" name="editlibro" placeholder="Escribe aquí la editorial del libro" required="" maxlength="70" data-toggle="tooltip" data-placement="top" title="Editorial del libro">
+                                <span class="highlight"></span>
+                                <span class="bar"></span>
+                                
+                            </div>
+                        </div>
+                        
+                      <div class="col-xs-12">
                             <p class="text-center">
                                 <button type="reset" class="btn btn-info" style="margin-right: 20px;"><i class="zmdi zmdi-roller"></i> &nbsp;&nbsp; Limpiar</button>
                                 <button type="submit" class="btn btn-primary"><i class="zmdi zmdi-floppy"></i> &nbsp;&nbsp; Guardar</button>
-                            </p> 
+                            </p>
                        </div>
-                   </div>
-                </form>
+                    </div>
+               </form>
             </div>
         </div>
-         <?php } ?>  
         <div class="modal fade" tabindex="-1" role="dialog" id="ModalHelp">
           <div class="modal-dialog modal-lg">
             <div class="modal-content">
@@ -215,7 +287,7 @@ include ('./logica/validacion.php');
             </div>
           </div>
         </div>
-    </div>
+        </div>
         <footer class="footer full-reset">
             <div class="container-fluid">
                 <div class="row">

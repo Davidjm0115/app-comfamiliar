@@ -6,7 +6,7 @@ include ('./logica/validacion.php');
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <title>Estudiantes</title>
+    <title>Proveedores</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="Shortcut Icon" type="image/x-icon" href="assets/icons/book.ico" />
@@ -30,7 +30,7 @@ include ('./logica/validacion.php');
         <div class="full-reset container-menu-movile nav-lateral-scroll">
             <div class="logo full-reset all-tittles">
                 <i class="visible-xs zmdi zmdi-close pull-left mobile-menu-button" style="line-height: 55px; cursor: pointer; padding: 0 10px; margin-left: 7px;"></i> 
-               COLEGIO COMFAMILIAR
+                COLEGIO COMFAMILIAR
             </div>
             <div class="nav-lateral-divider full-reset"></div>
             <div class="full-reset" style="padding: 10px 0; color:#fff;">
@@ -56,8 +56,8 @@ include ('./logica/validacion.php');
                         <div class="dropdown-menu-button"><i class="zmdi zmdi-account-add zmdi-hc-fw"></i>&nbsp;&nbsp; Registro de usuarios <i class="zmdi zmdi-chevron-down pull-right zmdi-hc-fw icon-sub-menu"></i></div>
                         <ul class="list-unstyled">
                             <li><a href="admin.php"><i class="zmdi zmdi-face zmdi-hc-fw"></i>&nbsp;&nbsp; Nuevo administrador</a></li>
-                           
-                            <li><a href="student.php"><i class="zmdi zmdi-accounts zmdi-hc-fw"></i>&nbsp;&nbsp; Nuevo estudiante</a></li>
+                            
+                            <li><a href="student.php"><i class="zmdi zmdi-accounts zmdi-hc-fw"></i>&nbsp;&nbsp; Nuevo personal</a></li>
                             
                         </ul>
                     </li>
@@ -69,7 +69,7 @@ include ('./logica/validacion.php');
                         </ul>
                     </li>
                     <li>
-                        <div class="dropdown-menu-button"><i class="zmdi zmdi-alarm zmdi-hc-fw"></i>&nbsp;&nbsp; Préstamos <i class="zmdi zmdi-chevron-down pull-right zmdi-hc-fw icon-sub-menu"></i></div>
+                        <div class="dropdown-menu-button"><i class="zmdi zmdi-alarm zmdi-hc-fw"></i>&nbsp;&nbsp; Préstamos y reservaciones <i class="zmdi zmdi-chevron-down pull-right zmdi-hc-fw icon-sub-menu"></i></div>
                         <ul class="list-unstyled">
                             <li><a href="loan.php"><i class="zmdi zmdi-calendar zmdi-hc-fw"></i>&nbsp;&nbsp; Todos los préstamos</a></li>
                             <li>
@@ -77,8 +77,8 @@ include ('./logica/validacion.php');
                             </li>
                         </ul>
                     </li>
-                    <li><a href="report.php"><i class="zmdi zmdi-trending-up zmdi-hc-fw"></i>&nbsp;&nbsp; Reportes y estadísticas</a></li>
-                     <li><a href="advancesettings.php"><i class="zmdi zmdi-wrench zmdi-hc-fw"></i>&nbsp;&nbsp; Acerca De...</a></li>
+                    <li><a href="report.php"><i class="zmdi zmdi-trending-up zmdi-hc-fw"></i>&nbsp;&nbsp; Reportes</a></li>
+                    <li><a href="advancesettings.php"><i class="zmdi zmdi-help-outline zmdi-hc-fw"></i>&nbsp;&nbsp; Acerca De...</a></li>
                 </ul>
             </div>
         </div>
@@ -92,15 +92,7 @@ include ('./logica/validacion.php');
                 <li style="color:#fff; cursor:default;">
                     <span class="all-tittles"><?php $usuario = $_SESSION['usuario']; $nombre=$usuario['NOMBRE_USU']; echo $nombre;?></span>
                 </li>
-                <li  class="tooltips-general exit-system-button" data-href="index.html" data-placement="bottom" title="Salir del sistema">
-                    <i class="zmdi zmdi-power"></i>
-                </li>
-                <li  class="tooltips-general search-book-button" data-href="searchbook.html" data-placement="bottom" title="Buscar libro">
-                    <i class="zmdi zmdi-search"></i>
-                </li>
-                <li  class="tooltips-general btn-help" data-placement="bottom" title="Ayuda">
-                    <i class="zmdi zmdi-help-outline zmdi-hc-fw"></i>
-                </li>
+
                 <li class="mobile-menu-button visible-xs" style="float: left !important;">
                     <i class="zmdi zmdi-menu"></i>
                 </li>
@@ -112,25 +104,24 @@ include ('./logica/validacion.php');
         <div class="container">
             <div class="jumbotron">
             <div class="page-header">
-              <center><h1 class="all-tittles">Administración de Personal</h1></center> 
+             <center><h1 class="all-tittles">Administración de Proveedores </h1></center>
             
         </div>
-        <div class="conteiner-fluid">
+        <div class="container-fluid">
             <ul class="nav nav-tabs nav-justified"  style="font-size: 17px;">
-                <li role="presentation"><a href="admin.php">Administradores</a></li>
-                
-                <li role="presentation" class="active"><a href="student.html">Estudiantes</a></li>
-                
+              <li role="presentation"><a href="institution.php">Institución</a></li>
+              <li role="presentation" class="active"><a href="provider.php">Proveedores</a></li>
+              <li role="presentation"><a href="category.php">Categorías</a></li>
+             
             </ul>
         </div>
         <div class="container-fluid"  style="margin: 50px 0;">
             <div class="row">
                 <div class="col-xs-12 col-sm-4 col-md-3">
-                    <img src="assets/img/user03.png" alt="user" class="img-responsive center-box" style="max-width: 110px;">
+                    <img src="assets/img/user04.png" alt="user" class="img-responsive center-box" style="max-width: 110px;">
                 </div>
                 <div class="col-xs-12 col-sm-8 col-md-8 text-justify lead">
-                    Bienvenido a la sección donde se encuentra el listado de estudiantes de la institución, podrás buscar los estudiantes por sección o nombre. Puedes actualizar o eliminar los datos del estudiante.<br>
-                    <strong class="text-danger"><i class="zmdi zmdi-alert-triangle"></i> &nbsp; ¡Importante! </strong>Si eliminas el estudiante del sistema se borrarán todos los datos relacionados con él, incluyendo préstamos y registros en la bitácora.
+                    Bienvenido a la sección para registrar un nuevo proveedor, debes de llenar todos los campos del siguiente formulario para poder registrar un proveedor
                 </div>
             </div>
         </div>
@@ -138,61 +129,53 @@ include ('./logica/validacion.php');
             <div class="row">
                 <div class="col-xs-12 lead">
                     <ol class="breadcrumb">
-                        <li><a href="student.html">Nuevo estudiante</a></li>
-                        <li class="active">Listado de estudiantes</li>
+                      <li class="active">Nuevo proveedor</li>
+                      <li><a href="listprovider.php">Listado de proveedores</a></li>
                     </ol>
                 </div>
             </div>
         </div>
-
         <div class="container-fluid">
-          <?php
+            <div class="container-flat-form">
+
+                <?php
      
       include("./logica/db.php");
             $id= $_GET['id'];
-          $resultados = mysqli_query($conexion,"SELECT * FROM personal WHERE ID='$id'");
+          $resultados = mysqli_query($conexion,"SELECT * FROM  proveedores  WHERE  COD_PROVEEDOR ='$id'");
 
 
            while($consulta = mysqli_fetch_array($resultados))
           {?>
+                <div class="title-flat-form title-flat-blue">Agregar un nuevo proveedor</div>
+                <form class="form-padding" method="POST" action="./logica/actualizar2prove.php">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <legend style="color: #fff;"><i class="zmdi zmdi-truck"></i> &nbsp; Datos del proveedor</legend><br>
+                        </div>
+                        <div class="col-xs-12 col-sm-6">
+                            <div class="group-material">
+                             <p style="padding-top: 15px">Nombre Proveedor</p>
+                                <input type="text" class="form-control" name="nompro" value="<?php echo $consulta['NOMBRE_PROVEEDOR']?>" placeholder="Nombre de proveedor" required="" maxlength="50" data-toggle="tooltip" data-placement="top" title="Escribe el nombre del proveedor">
+                                <span class="highlight"></span>
+                                <span class="bar"></span>
+                                
+                            </div>
+                        </div>
 
-  <div class='title-flat-form title-flat-blue'>Editar estudiante</div>
-                <form class='form-padding' method='POST' action='actualizar2.php'>
-                    <div class='row'>
-                        <div class='col-xs-12'>
-                            <legend style='color: #fff'><i class='zmdi zmdi-account-box'></i> &nbsp; Datos del Estudiante</legend><br>
-                        </div>
-                        <div class='col-xs-12'>
-                            <div class='group-material'>
-                                <p class='text-center' style='padding-top: 15px'>Usuario ID</p>
-                                <input type='text' disabled="" class='form-control' name='numid'  value="<?php echo $consulta['ID']?>"required="" maxlength='20' data-toggle='tooltip' data-placement='top' title='ID de estudiante'>
-                                <span class='highlight'></span>
-                                <span class='bar'></span>
-                                
-                            </div>
-                        </div>
-                        <div class='col-xs-12 col-sm-6'>
-                            <div class='group-material'>
-                                <p style='padding-top: 15px'>Primer Nombre Estudiante</p>
-                                <input type='text' class='form-control' name='pnombre'  value="<?php echo $consulta['PRIMER_NOMBRE']?>" required=""required="" pattern='[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{1,50}' maxlength='50' data-toggle='tooltip' data-placement='top' title='Nombre del estudiante'>
-                                <span class='highlight'></span>
-                                <span class='bar'></span>
-                               
-                            </div>
-                        </div>
-                        <div class='col-xs-12 col-sm-6'>
-                            <div class='group-material'>
-                                <p style='padding-top: 15px'>Segundo Nombre Estudiante</p>
-                                <input type='text' class='form-control' name='snombre' value="<?php echo $consulta['SEGUNDO_NOMBRE']?>" pattern='[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{1,50}' maxlength='50' data-toggle='tooltip' data-placement='top' title='Nombre del estudiante'>
-                                <span class='highlight'></span>
-                                <span class='bar'></span>
-                                
-                            </div>
-                        </div>
-                                                <div class="col-xs-12 col-sm-6">
+                        <div class="col-xs-12 col-sm-6">
                             <div class="group-material">
-                                <p style="padding-top: 15px">Primer Apellido Estudiante</p>
-                                <input type="text" class="form-control" name="papellido" value="<?php echo $consulta['PRIMER_APE']?>" required="" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{1,50}" maxlength="50" data-toggle="tooltip" data-placement="top" title="Apellido del estudiante">
+                                 <p style="padding-top: 15px">Dirección del proveedor</p>
+                                <input type="text"  class="form-control" name="direc" value="<?php echo $consulta['DIREC_PRO']?>" placeholder="Dirección de proveedor" required="" maxlength="70" data-toggle="tooltip" data-placement="top" title="Escribe la dirección del proveedor">
+                                <span class="highlight"></span>
+                                <span class="bar"></span>
+                                
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6">
+                            <div class="group-material">
+                                 <p style="padding-top: 15px">Telefono del proveedor</p>
+                                <input type="text"  class="form-control" name="telpro" value="<?php echo $consulta['TELEFONO_PROVEEDOR']?>" placeholder="Teléfono de proveedor" required="" pattern="[0-9]{10,10}" maxlength="10" data-toggle="tooltip" data-placement="top" title="Solo números, mínimo 8 dígitos">
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
                                
@@ -200,43 +183,17 @@ include ('./logica/validacion.php');
                         </div>
                         <div class="col-xs-12 col-sm-6">
                             <div class="group-material">
-                                <p style="padding-top: 15px">Segundo Apellido Estudiante</p>
-                                <input type="text" class="form-control" name="sapellido" value="<?php echo $consulta['SEGUNDO_APE']?>" required="" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{1,50}" maxlength="50" data-toggle="tooltip" data-placement="top" title="Apellido del estudiante">
+                                 <p style="padding-top: 15px">Producto</p>
+                                <input type="text"  class="form-control" name="producto" value="<?php echo $consulta['PRODUCTO']?>" placeholder="Producto" required="" pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ]{1," maxlength="20" data-toggle="tooltip" data-placement="top" title="Solo números, mínimo 8 dígitos">
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
-                                
-                            </div>
-                        </div>
-                        <div class="col-xs-12">
-                           <div class="group-material">
-                                <p class="text-center" style="padding-top: 15px">Categoría</p>
-                                <select class="form-control" name="categoria" value="<?php echo $consulta['CATEGORIA']?>" data-toggle="tooltip" data-placement="top" title="Elige la sección a la que pertenece el alumno">
-                                    <option value="" disabled="" selected="">Selecciona una categoría</option>
-                                    <option value="a">A</option>
-                                    <option value="b">B</option>
-                                    <option value="c">C</option>
-                                    <option value="d">D</option>
-                                </select>
-                            </div>
-</div>
-                        </div>
-                        <div class="col-xs-12">
-      <div class="col-xs-12">
-                           <div class="group-material">
-                                <p class="text-center" style="padding-top: 15px">Curso</p>
-                                <select class="form-control" name="curso" value="<?php echo $consulta['CURSO']?>" data-toggle="tooltip" data-placement="top" title="Elige la sección a la que pertenece el alumno">
-                                    <option value="" disabled="" selected="">Selecciona un Curso</option>
-                                    <option value="1">5-01</option>
-                                    <option value="2">5-02</option>
-                                    <option value="3">5-03</option>
-                                    <option value="4">6-01</option>
-                                </select>
+                               
                             </div>
                         </div>
                         <div class="col-xs-12 col-sm-6">
                             <div class="group-material">
-                                <p style="padding-top: 15px">Correo</p>
-                                <input type="email" class="form-control" name="correo" value="<?php echo $consulta['CORREO']?>"  required=""  maxlength="30" data-toggle="tooltip" data-placement="top" title="Parentesco">
+                                 <p style="padding-top: 15px">Pais</p>
+                                <input type="text"  class="form-control" name="pais" value="<?php echo $consulta['PAIS']?>"  placeholder="Pais" pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ]{1,20}" required="" maxlength="50" data-toggle="tooltip" data-placement="top" title="Escribe pais del proveedor">
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
                                 
@@ -244,36 +201,33 @@ include ('./logica/validacion.php');
                         </div>
                         <div class="col-xs-12 col-sm-6">
                             <div class="group-material">
-                                <p style="padding-top: 15px">Teléfono</p>
-                                <input type="text" class="form-control" name="tel" value="<?php echo $consulta['TELEFONO']?>"  pattern="[0-9]{8,8}" required="" maxlength="8" data-toggle="tooltip" data-placement="top" title="Solamente 8 números">
+                                 <p style="padding-top: 15px">Ciudad</p>
+                                <input type="text"  class="form-control" name="ciudad" value="<?php echo $consulta['CIUDAD']?>" placeholder="Ciudad" pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ]{1,20}"required="" maxlength="50" data-toggle="tooltip" data-placement="top" title="Escribe Ciudad del proveedor">
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
                                 
                             </div>
                         </div>
-                    
-                        
+                        <div class="col-xs-12 col-sm-6">
+                            <div class="group-material">
+                                 <p style="padding-top: 15px">ID del proveedor</p>
+                                <input type="text"  class="form-control" readonly="" name="provid"  value="<?php echo $consulta['COD_PROVEEDOR']?>" placeholder="Proveedor ID" required="" maxlength="50" data-toggle="tooltip" data-placement="top" title="Escribe el ID del proveedor">
+                                <span class="highlight"></span>
+                                <span class="bar"></span>
+                                
+                          </div>
+                        </div>
                        <div class="col-xs-12">
                             <p class="text-center">
-                                
+                                <button type="reset" class="btn btn-info" style="margin-right: 20px;"><i class="zmdi zmdi-roller"></i> &nbsp;&nbsp; Limpiar</button>
                                 <button type="submit" class="btn btn-primary"><i class="zmdi zmdi-floppy"></i> &nbsp;&nbsp; Guardar</button>
                             </p> 
                        </div>
-                    </div>
+                   </div>
                 </form>
             </div>
         </div>
-         <?php } ?>  
-          
-  
-        </tbody></table>
-
-       
-
-                    </div>
-                </div>
-            </div>
-        </div>
+         <?php } ?>
         <div class="modal fade" tabindex="-1" role="dialog" id="ModalHelp">
           <div class="modal-dialog modal-lg">
             <div class="modal-content">
@@ -286,13 +240,27 @@ include ('./logica/validacion.php');
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="zmdi zmdi-thumb-up"></i> &nbsp; De acuerdo</button>
-
-
-
-
-
-
-
-<script src="./js/confirmacion.js"></script>
+                </div>
+            </div>
+          </div>
+        </div>
+    </div>
+        <footer class="footer full-reset">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6">
+                        <h4 class="all-tittles">Acerca de</h4>
+                        <p>
+                            Software de gestion de inventario y prestamos hecho a la medida por la empresa Nova System S.A.S para la institucion educativa comfamiliar, el programa se encuentra en base beta hasta el 4 de diciembre donde se presenatara la version 1.0 del software.
+                        </p>
+                    </div>
+                         <div class="col-xs-12 col-sm-6">
+        
+                        <center> <h4 class="all-tittles">Desarrollador</h4><img src="assets/img/logo_png.png" alt="Biblioteca" class="img-responsive center-box" style="width:50%;  ">
+                    </div></center>
+            </div>
+            <div class="footer-copyright full-reset all-tittles">©NOVA SYSTEM 2020</div>
+        </footer>
+    </div>
 </body>
 </html>

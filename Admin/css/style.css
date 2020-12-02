@@ -646,7 +646,7 @@ input.material-control:focus ~ .highlight {
 .jumbotron{
   background-color:rgb(0,0,0);
   opacity: 0.8;
-  margin-right: 10%;
+  
   padding-bottom: 1%;
   padding-top: 1%;
   color: #fff;

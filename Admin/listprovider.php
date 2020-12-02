@@ -23,6 +23,7 @@ include ('./logica/validacion.php');
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
     <script src="js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
     <script type="text/javascript" src="//cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
 </head>
@@ -77,12 +78,9 @@ include ('./logica/validacion.php');
                             <li>
                                 <a href="loanpending.php"><i class="zmdi zmdi-time-restore zmdi-hc-fw"></i>&nbsp;&nbsp; Devoluciones pendientes <span class="label label-danger pull-right label-mhover">7</span></a>
                             </li>
-                            <li>
-                                <a href="loanreservation.php"><i class="zmdi zmdi-timer zmdi-hc-fw"></i>&nbsp;&nbsp; Reservaciones <span class="label label-danger pull-right label-mhover">7</span></a>
-                            </li>
                         </ul>
                     </li>
-                    <li><a href="report.php"><i class="zmdi zmdi-trending-up zmdi-hc-fw"></i>&nbsp;&nbsp; Reportes y estadísticas</a></li>
+                    <li><a href="report.php"><i class="zmdi zmdi-trending-up zmdi-hc-fw"></i>&nbsp;&nbsp; Reportes</a></li>
                      <li><a href="advancesettings.php"><i class="zmdi zmdi-wrench zmdi-hc-fw"></i>&nbsp;&nbsp; Acerca De...</a></li>
                 </ul>
             </div>
@@ -187,9 +185,9 @@ include ('./logica/validacion.php');
 
 
                   
-                  <td><center><a href='actualizarcat.php?id=".$consulta['COD_PROVEEDOR']."'><button class='btn btn-primary'><i class='zmdi zmdi-refresh'> Editar</button></center></td>
+                  <td><center><a href='actualizarprove.php?id=".$consulta['COD_PROVEEDOR']."'><button class='btn btn-primary'><i class='zmdi zmdi-refresh'> Editar</button></center></td>
                   
-                  <td><center><a href='./logica/eliminarcat.php?id=".$consulta['COD_PROVEEDOR']."' class='eliminar'><button class='btn btn-danger'>Eliminar  <i class='zmdi zmdi-delete'></i></button><a></center></td>
+                  <td><center><a href='./logica/eliminarpro.php?id=".$consulta['COD_PROVEEDOR']."' class='eliminar'><button class='btn btn-danger'>Eliminar  <i class='zmdi zmdi-delete'></i></button><a></center></td>
                 </tr>
             ";
           }?>
@@ -203,6 +201,7 @@ include ('./logica/validacion.php');
         </div>
     </div>
 </div>
+<script type="text/javascript" src="./js/confirmacion.js"></script>
 <script type="text/javascript" src="./js/init_datatable.js"></script>
 </body>
 </html>

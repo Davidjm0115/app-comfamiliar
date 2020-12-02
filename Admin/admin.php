@@ -74,12 +74,10 @@ include ('./logica/validacion.php');
                             <li>
                                 <a href="loanpending.php"><i class="zmdi zmdi-time-restore zmdi-hc-fw"></i>&nbsp;&nbsp; Devoluciones pendientes <span class="label label-danger pull-right label-mhover">7</span></a>
                             </li>
-                            <li>
-                                <a href="loanreservation.php"><i class="zmdi zmdi-timer zmdi-hc-fw"></i>&nbsp;&nbsp; Reservaciones <span class="label label-danger pull-right label-mhover">7</span></a>
-                            </li>
+
                         </ul>
                     </li>
-                    <li><a href="report.php"><i class="zmdi zmdi-trending-up zmdi-hc-fw"></i>&nbsp;&nbsp; Reportes y estadísticas</a></li>
+                    <li><a href="report.php"><i class="zmdi zmdi-trending-up zmdi-hc-fw"></i>&nbsp;&nbsp; Reportes</a></li>
                      <li><a href="advancesettings.php"><i class="zmdi zmdi-help-outline zmdi-hc-fw"></i>&nbsp;&nbsp; Acerca De...</a></li>
                 </ul>
             </div>
@@ -112,7 +110,7 @@ include ('./logica/validacion.php');
         <div class="container-fluid">
             <ul class="nav nav-tabs nav-justified"  style="font-size: 17px;">
                 <li role="presentation"  class="active"><a href="admin.html">Administradores</a></li>
-                <li role="presentation"><a href="student.html">Estudiantes</a></li>
+                <li role="presentation"><a href="student.php">Estudiantes</a></li>
 
             </ul>
         </div>

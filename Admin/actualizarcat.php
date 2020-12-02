@@ -73,12 +73,9 @@ include ('./logica/validacion.php');
                             <li>
                                 <a href="loanpending.php"><i class="zmdi zmdi-time-restore zmdi-hc-fw"></i>&nbsp;&nbsp; Devoluciones pendientes <span class="label label-danger pull-right label-mhover">7</span></a>
                             </li>
-                            <li>
-                                <a href="loanreservation.php"><i class="zmdi zmdi-timer zmdi-hc-fw"></i>&nbsp;&nbsp; Reservaciones <span class="label label-danger pull-right label-mhover">7</span></a>
-                            </li>
                         </ul>
                     </li>
-                    <li><a href="report.php"><i class="zmdi zmdi-trending-up zmdi-hc-fw"></i>&nbsp;&nbsp; Reportes y estadísticas</a></li>
+                    <li><a href="report.php"><i class="zmdi zmdi-trending-up zmdi-hc-fw"></i>&nbsp;&nbsp; Reportes</a></li>
                     <li><a href="advancesettings.php"><i class="zmdi zmdi-wrench zmdi-hc-fw"></i>&nbsp;&nbsp; Configuraciones avanzadas</a></li>
                 </ul>
             </div>
@@ -155,7 +152,7 @@ include ('./logica/validacion.php');
                         </div>
                         <div class="col-xs-12 col-sm-6">
                             <div class="group-material">
-                                <input type="text"class="form-control" disabled="" name="codcat" placeholder="Escribe aquí el código de categoría" value="<?php echo $consulta['COD_CATEGORIA']?>"  required="" pattern="[0-9]{1,20}" maxlength="2" data-toggle="tooltip" data-placement="top" title="Solo números, máximo 2 caracteres">
+                                <input type="text"class="form-control" readonly="" name="codcat" placeholder="Escribe aquí el código de categoría" value="<?php echo $consulta['COD_CATEGORIA']?>"  required="" pattern="[0-9]{1,20}" maxlength="2" data-toggle="tooltip" data-placement="top" title="Solo números, máximo 2 caracteres">
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
                                 

@@ -73,12 +73,9 @@ include ('./logica/validacion.php');
                             <li>
                                 <a href="loanpending.php"><i class="zmdi zmdi-time-restore zmdi-hc-fw"></i>&nbsp;&nbsp; Devoluciones pendientes <span class="label label-danger pull-right label-mhover">7</span></a>
                             </li>
-                            <li>
-                                <a href="loanreservation.php"><i class="zmdi zmdi-timer zmdi-hc-fw"></i>&nbsp;&nbsp; Reservaciones <span class="label label-danger pull-right label-mhover">7</span></a>
-                            </li>
                         </ul>
                     </li>
-                    <li><a href="report.php"><i class="zmdi zmdi-trending-up zmdi-hc-fw"></i>&nbsp;&nbsp; Reportes y estadísticas</a></li>
+                    <li><a href="report.php"><i class="zmdi zmdi-trending-up zmdi-hc-fw"></i>&nbsp;&nbsp; Reportes</a></li>
                      <li><a href="advancesettings.php"><i class="zmdi zmdi-help-outline zmdi-hc-fw"></i>&nbsp;&nbsp; Acerca De...</a></li>
                 </ul>
             </div>
@@ -133,7 +130,16 @@ include ('./logica/validacion.php');
         <div class="container-fluid">
             <div class="container-flat-form">
                 <div class="title-flat-form title-flat-blue">Guardar datos de la institución</div>
-                <form class="form-padding">
+                <?php 
+                 include("./logica/db.php");
+                 $resultados = mysqli_query($conexion,"SELECT * FROM configuracion");
+                 $consulta = mysqli_fetch_array($resultados);
+
+                 if (!$consulta) {
+
+
+                 ?>
+                <form class="form-padding" method="POST" action="./logica/insertarinsti.php" >
                     <div class="row">
                         <div class="col-xs-12">
                             <legend style="color:#fff"><i class="zmdi zmdi-balance"></i> &nbsp; Datos de la institución</legend><br>
@@ -141,7 +147,7 @@ include ('./logica/validacion.php');
                         <div class="col-xs-12 col-sm-6">
                             <div class="group-material">
                                 <p style="padding-top: 15px">NIT de la empresa</p>
-                                <input type="text" class="form-control" placeholder="NIT de la empresa" required="" pattern="[0-9]{1,10}" maxlength="10" data-toggle="tooltip" data-placement="top" title="Solo números, máximo 10 caracteres">
+                                <input type="text" class="form-control" name="nit" placeholder="NIT de la empresa" required="" pattern="[0-9]{1,10}" maxlength="10" data-toggle="tooltip" data-placement="top" title="Solo números, máximo 10 caracteres">
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
                                 
@@ -150,7 +156,7 @@ include ('./logica/validacion.php');
                         <div class="col-xs-12 col-sm-6">
                             <div class="group-material">
                                 <p style="padding-top: 15px">Nombre de la institución</p>
-                                <input type="text" class="form-control" placeholder="Nombre de la institución" required="" pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ]{1,50}" maxlength="50" data-toggle="tooltip" data-placement="top" title="Escribe el nombre de la institución">
+                                <input type="text" class="form-control"  name="nombin" placeholder="Nombre de la institución" required="" pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ]{1,50}" maxlength="50" data-toggle="tooltip" data-placement="top" title="Escribe el nombre de la institución">
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
                                 
@@ -159,7 +165,7 @@ include ('./logica/validacion.php');
                         <div class="col-xs-12 col-sm-6">
                             <div class="group-material">
                                 <p style="padding-top: 15px">Dirección de la institución</p>
-                                <input type="text" class="form-control" placeholder="Direccion de la institución" required="" pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ]{1,20}" maxlength="20" data-toggle="tooltip" data-placement="top" title="Solo números, máximo 20 caracteres" >
+                                <input type="text" class="form-control" name="direccion" placeholder="Direccion de la institución" required="" pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ]{1,20}" maxlength="20" data-toggle="tooltip" data-placement="top" title="Solo números, máximo 20 caracteres" >
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
                                 
@@ -168,7 +174,7 @@ include ('./logica/validacion.php');
                         <div class="col-xs-12 col-sm-6">
                             <div class="group-material">
                                 <p style="padding-top: 15px">Telefono</p>
-                                <input type="text" class="form-control" placeholder="Teléfono de la institución" required="" pattern="{10,10}" maxlength="10" data-toggle="tooltip" data-placement="top" title="Solo 10 números">
+                                <input type="text" class="form-control" name="telefono" placeholder="Teléfono de la institución" required="" pattern="{10,10}" maxlength="10" data-toggle="tooltip" data-placement="top" title="Solo 10 números">
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
                                 
@@ -177,7 +183,7 @@ include ('./logica/validacion.php');
                         <div class="col-xs-12 col-sm-6">
                             <div class="group-material">
                                 <p style="padding-top: 15px">Correo</p>
-                                <input type="email" class="form-control" placeholder="Correo de la institución" required=""  maxlength="50" data-toggle="tooltip" data-placement="top" title="Solo números, máximo 50 caracteres">
+                                <input type="email" class="form-control" name="correo" placeholder="Correo de la institución" required=""  maxlength="50" data-toggle="tooltip" data-placement="top" title="Solo números, máximo 50 caracteres">
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
                                 
@@ -186,7 +192,7 @@ include ('./logica/validacion.php');
                         <div class="col-xs-12 col-sm-6">
                             <div class="group-material">
                                 <p style="padding-top: 15px">Pais de la institución</p>
-                                <input type="text" class="form-control" placeholder="Pais de la institución" required="" pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ]{1,50}" maxlength="50" data-toggle="tooltip" data-placement="top" title="Escribe el pais de la institución">
+                                <input type="text" class="form-control" name="pais" placeholder="Pais de la institución" required="" pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ]{1,50}" maxlength="50" data-toggle="tooltip" data-placement="top" title="Escribe el pais de la institución">
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
                                 
@@ -195,7 +201,7 @@ include ('./logica/validacion.php');
                         <div class="col-xs-12 col-sm-6">
                             <div class="group-material">
                                 <p style="padding-top: 15px">Ciudad de la institución</p>
-                                <input type="text" class="form-control" placeholder="Ciudad de la institución" required="" pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ]{1,50}" maxlength="50" data-toggle="tooltip" data-placement="top" title="Escribe la ciudad de la institución">
+                                <input type="text" class="form-control" name="ciudad" placeholder="Ciudad de la institución" required="" pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ]{1,50}" maxlength="50" data-toggle="tooltip" data-placement="top" title="Escribe la ciudad de la institución">
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
                                 
@@ -204,7 +210,7 @@ include ('./logica/validacion.php');
                         <div class="col-xs-12 col-sm-6">
                             <div class="group-material">
                                 <p style="padding-top: 15px">Pagina Web</p>
-                                <input type="text" class="form-control" placeholder="Pagina web" required="" pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ]{1,50}" maxlength="50" data-toggle="tooltip" data-placement="top" title="Escribe la pagina web de la institución">
+                                <input type="text" class="form-control" name="pagina" placeholder="Pagina web" required="" pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ. ]{1,50}" maxlength="50" data-toggle="tooltip" data-placement="top" title="Escribe la pagina web de la institución">
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
                                 
@@ -218,25 +224,104 @@ include ('./logica/validacion.php');
                        </div>
                    </div>
                </form>
+            <?php } else{   ?> 
+
+
+                            <form class="form-padding">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <legend style="color:#fff"><i class="zmdi zmdi-balance"></i> &nbsp; Datos de la institución</legend><br>
+                        </div>
+                        <div class="col-xs-12 col-sm-6">
+                            <div class="group-material">
+                                <p style="padding-top: 15px">NIT de la empresa</p>
+                                <input type="text" class="form-control" readonly="" value="<?php echo $consulta['nit_empresa']?>"  placeholder="NIT de la empresa" required="" pattern="[0-9]{1,10}" maxlength="10" data-toggle="tooltip" data-placement="top" title="Solo números, máximo 10 caracteres">
+                                <span class="highlight"></span>
+                                <span class="bar"></span>
+                                
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6">
+                            <div class="group-material">
+                                <p style="padding-top: 15px">Nombre de la institución</p>
+                                <input type="text" class="form-control" readonly="" value="<?php echo $consulta['nombre_empresa']?>"  placeholder="Nombre de la institución" required="" pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ]{1,50}" maxlength="50" data-toggle="tooltip" data-placement="top" title="Escribe el nombre de la institución">
+                                <span class="highlight"></span>
+                                <span class="bar"></span>
+                                
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6">
+                            <div class="group-material">
+                                <p style="padding-top: 15px">Dirección de la institución</p>
+                                <input type="text" class="form-control" readonly="" value="<?php echo $consulta['direccion']?>" placeholder="Direccion de la institución" required="" pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ]{1,20}" maxlength="20" data-toggle="tooltip" data-placement="top" title="Solo números, máximo 20 caracteres" >
+                                <span class="highlight"></span>
+                                <span class="bar"></span>
+                                
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6">
+                            <div class="group-material">
+                                <p style="padding-top: 15px">Telefono</p>
+                                <input type="text" class="form-control" readonly="" value="<?php echo $consulta['telefono']?>" placeholder="Teléfono de la institución" required="" pattern="{10,10}" maxlength="10" data-toggle="tooltip" data-placement="top" title="Solo 10 números">
+                                <span class="highlight"></span>
+                                <span class="bar"></span>
+                                
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6">
+                            <div class="group-material">
+                                <p style="padding-top: 15px">Correo</p>
+                                <input type="email" class="form-control" readonly="" value="<?php echo $consulta['correo']?>" placeholder="Correo de la institución" required=""  maxlength="50" data-toggle="tooltip" data-placement="top" title="Solo números, máximo 50 caracteres">
+                                <span class="highlight"></span>
+                                <span class="bar"></span>
+                                
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6">
+                            <div class="group-material">
+                                <p style="padding-top: 15px">Pais de la institución</p>
+                                <input type="text" class="form-control" readonly="" value="<?php echo $consulta['pais']?>" placeholder="Pais de la institución" required="" pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ]{1,50}" maxlength="50" data-toggle="tooltip" data-placement="top" title="Escribe el pais de la institución">
+                                <span class="highlight"></span>
+                                <span class="bar"></span>
+                                
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6">
+                            <div class="group-material">
+                                <p style="padding-top: 15px">Ciudad de la institución</p>
+                                <input type="text" class="form-control" readonly="" value="<?php echo $consulta['ciudad']?>" placeholder="Ciudad de la institución" required="" pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ]{1,50}" maxlength="50" data-toggle="tooltip" data-placement="top" title="Escribe la ciudad de la institución">
+                                <span class="highlight"></span>
+                                <span class="bar"></span>
+                                
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6">
+                            <div class="group-material">
+                                <p style="padding-top: 15px">Pagina Web</p>
+                                <input type="text" class="form-control" readonly="" value="<?php echo $consulta['paginaweb']?>" placeholder="Pagina web" required="" pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ]{1,50}" maxlength="50" data-toggle="tooltip" data-placement="top" title="Escribe la pagina web de la institución">
+                                <span class="highlight"></span>
+                                <span class="bar"></span>
+                                
+                            </div>
+                        </div>
+                       <div class="col-xs-12">
+                            <p class="text-center">
+                                <button type="reset" class="btn btn-info" style="margin-right: 20px;"><i class="zmdi zmdi-roller"></i> &nbsp;&nbsp; Editar</button>
+                                <button type="submit" class="btn btn-primary"><i class="zmdi zmdi-floppy"></i> &nbsp;&nbsp; Guardar</button>
+                            </p> 
+                       </div>
+                   </div>
+               </form> 
+
+
+
+
+
+
+             <?php }  ?>
             </div>
         </div>
-        <div class="modal fade" tabindex="-1" role="dialog" id="ModalHelp">
-          <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title text-center all-tittles">ayuda del sistema</h4>
-                </div>
-                <div class="modal-body">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore dignissimos qui molestias ipsum officiis unde aliquid consequatur, accusamus delectus asperiores sunt. Quibusdam veniam ipsa accusamus error. Animi mollitia corporis iusto.
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="zmdi zmdi-thumb-up"></i> &nbsp; De acuerdo</button>
-                </div>
-            </div>
-          </div>
-        </div>
-    </div>
+       </div>
         <footer class="footer full-reset">
             <div class="container-fluid">
                 <div class="row">

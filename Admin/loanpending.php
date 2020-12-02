@@ -73,12 +73,9 @@ include ('./logica/validacion.php');
                             <li>
                                 <a href="loanpending.php"><i class="zmdi zmdi-time-restore zmdi-hc-fw"></i>&nbsp;&nbsp; Devoluciones pendientes <span class="label label-danger pull-right label-mhover">7</span></a>
                             </li>
-                            <li>
-                                <a href="loanreservation.php"><i class="zmdi zmdi-timer zmdi-hc-fw"></i>&nbsp;&nbsp; Reservaciones <span class="label label-danger pull-right label-mhover">7</span></a>
-                            </li>
                         </ul>
                     </li>
-                    <li><a href="report.php"><i class="zmdi zmdi-trending-up zmdi-hc-fw"></i>&nbsp;&nbsp; Reportes y estadísticas</a></li>
+                    <li><a href="report.php"><i class="zmdi zmdi-trending-up zmdi-hc-fw"></i>&nbsp;&nbsp; Reportes</a></li>
                     <li><a href="advancesettings.php"><i class="zmdi zmdi-help-outline zmdi-hc-fw"></i>&nbsp;&nbsp; Configuraciones avanzadas</a></li>
                 </ul>
             </div>
@@ -105,13 +102,12 @@ include ('./logica/validacion.php');
         <div class="container">
             <div class="jumbotron">
             <div class="page-header">
-              <h1 class="all-tittles">Sistema bibliotecario <small>préstamos y reservaciones</small></h1>
+              <center><h1 class="all-tittles">Pestamos de libros y herramientas</small></h1></center>
         </div>
         <div class="conteiner-fluid">
             <ul class="nav nav-tabs nav-justified"  style="font-size: 17px;">
                 <li><a href="loan.php">Todos los préstamos</a></li>
                 <li class="active"><a href="loanpending.php">Devoluciones pendientes</a></li>
-                <li><a href="loanreservation.php">Reservaciones</a></li>
             </ul>
         </div>
         <div class="container-fluid"  style="margin: 50px 0;">
