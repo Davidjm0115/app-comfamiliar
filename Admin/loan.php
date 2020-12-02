@@ -148,12 +148,14 @@ include ('./logica/validacion.php');
                  <?php
      
       include("conexion.php");
- 
+
+            $contador = 0 ;
           $resultados = mysqli_query($conexion,"SELECT * from prestamos");?>
 
           <table width='100%' border="2" id="estudiantes_tabla" >
               <thead style="color: #fff;background-color: #188010;">
               <tr>
+                  <td><b><center>#</center></b></td>
                   <td><b><center>Estudiante</center></b></td>
                   <td><b><center>Herramienta</center></b></td>
                   <td><b><center>Fecha salida</center></b></td>
@@ -162,8 +164,7 @@ include ('./logica/validacion.php');
                   <td><b><center>Hora entrega</center></b></td>
                   <td><b><center>Cantidad prestada</center></b></td>
                   <td><b><center>Estado</center></b></td>
-                  <td><b><center>Editar</center></b></td>
-                  <td><b><center>Eliminar</center></b></td>
+                  <td><b><center>Prestamo</center></b></td>
 
 
 
@@ -172,9 +173,10 @@ include ('./logica/validacion.php');
 
           <?php while($consulta = mysqli_fetch_array($resultados))
           {
-
+                $contador++;
         echo"
                 <tr style='color: #000;'>
+                <td><b><center>".$contador."</center></b></td>
                   <td><b><center>".$consulta['USUARIO_ID']."</center></b></td>
                   <td><b><center>".$consulta['COD_LH']."</center></b></td>
                   <td><b><center>".$consulta['FECHA_SALIDA']."</center></b></td>
@@ -182,14 +184,20 @@ include ('./logica/validacion.php');
                   <td><b><center>".$consulta['FECHA_ENTREGA']."</center></b></td>
                   <td><b><center>".$consulta['HORA_ENTREGA']."</center></b></td>
                   <td><b><center>".$consulta['CANTIDA_SA']."</center></b></td>
-                  <td><b><center>".$consulta['ESTADO']."</center></b></td>
+                  <td><b><center>".$consulta['ESTADO']."</center></b></td>";
 
-                  
-                  <td><center><a href='actualizaar.php?id=".$consulta['PRESTAMO_ID']."'><button class='btn btn-primary'><i class='zmdi zmdi-refresh'> Editar</button></center></td>
-                  
-                  <td><center><a href='./logica/eliminar.php?id=".$consulta['PRESTAMO_ID']."' class='eliminar'><button class='btn btn-danger'>Eliminar  <i class='zmdi zmdi-delete'></i></button><a></center></td>
-                </tr>
-            ";
+                  switch ($consulta['ESTADO']) {
+                             case 'Prestado':
+                                echo "<td><center><a href='./logica/devolucion.php?id=".$consulta['PRESTAMO_ID']."' class='eliminar'><button class='btn btn-danger'> <i class='zmdi zmdi-close'></i></button><a></center></td>";
+                                break;
+                             case 'Devuelto':
+                                echo "<td><center></center></td>";
+                                break;
+
+}
+
+
+           
           }?>
   
         </tbody></table>

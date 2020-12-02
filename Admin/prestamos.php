@@ -133,65 +133,27 @@ include ('./logica/validacion.php');
         <div class="container-fluid">
             <div class="container-flat-form">
                 <div class="title-flat-form title-flat-blue">Nuevo Prestamo</div>
-                <form class="form-padding" action="./logica/insertaherra.php" method="POST">
+                <form class="form-padding" action="./logica/insertaprestamo.php" method="POST">
                     <div class="row">
                         <div class="col-xs-12">
                             <legend style="color: #fff"><i class="zmdi zmdi-account-box"></i> &nbsp; Información básica</legend><br>
                         </div>
-                        <div class="col-xs-12 col-sm-6">
+                                                <div class="col-xs-12">
                             <div class="group-material">
-                               <center> <p  style="padding-top: 15px">Codigo libro</p></center>
-                                <input type="text" class="form-control" name="codlib" placeholder="Escribe aquí el código correlativo del libro" pattern="[0-9]{1,20}" required="" maxlength="5" data-toggle="tooltip" data-placement="top" title="Escribe el código correlativo del libro, solamente números">
-                                <span class="highlight"></span>
-                                <span class="bar"></span>
-                                
-                            </div>
-                        </div>
-                        <div class="col-xs-12 col-sm-6">
-                            <div class="group-material">
-                               <center> <p  style="padding-top: 15px">Nombre del libro</p> </center>
-                                <input type="text" class="form-control" name="nomblib" placeholder="Escribe aquí el título o nombre del libro" required="" maxlength="70" data-toggle="tooltip" data-placement="top" title="Escribe el título o nombre del libro">
-                                <span class="highlight"></span>
-                                <span class="bar"></span>
-                                
-                            </div>
-                        </div>
-                        <div class="col-xs-12 col-sm-6">
-                            <div class="group-material">
-                               <center>  <p  style="padding-top: 15px">Autor</p> </center>
-                                <input type="text"class="form-control" name="autor" placeholder="Escribe aquí el autor del libro" required="" maxlength="70" data-toggle="tooltip" data-placement="top" title="Escribe el nombre del autor del libro">
-                                <span class="highlight"></span>
-                                <span class="bar"></span>
-                                
-                            </div>
-                        </div>
-                        <div class="col-xs-12 col-sm-6">
-                            <div class="group-material">
-                              <center>  <p  style="padding-top: 15px">Ejemplares</p></center>
-                                <input type="text" class="form-control" name="cantidad" placeholder="Escribe aquí los Ejemplares del libro" required="" maxlength="50" data-toggle="tooltip" data-placement="top" title="Escribe el país del libro">
-                                <span class="highlight"></span>
-                                <span class="bar"></span>
-                            </div>
-                        </div>
-                        <div class="col-xs-12">
-                            <legend style="color: #fff "><i class="zmdi zmdi-bookmark-outline"></i> &nbsp; Categoría</legend><br>
-                        </div>
-                        <div class="col-xs-12">
-                            <div class="group-material">
-                               <center> <p  style="padding-top: 15px">Categoría</p> </center>
-                                <select class="form-control" name="categoria"  data-toggle="tooltip" data-placement="top" title="Elige la categoría del libro">
-                                    <option value="" disabled="" selected="">Selecciona una categoría</option>
+                               <center> <p  style="padding-top: 15px">ID Usuario</p> </center>
+                                <select class="form-control" name="idusu"  data-toggle="tooltip" data-placement="top" title="Elige la categoría del libro">
+                                    <option value="" disabled="" selected="">Seleccione el estudiante</option>
                                     <?php
                                     include ("./logica/db.php");
 
-                                    $consulta = "SELECT * FROM categorias ";
+                                    $consulta = "SELECT * FROM personal ";
                                     $resultado = mysqli_query($conexion, $consulta);
 
                                     while ($row = mysqli_fetch_array($resultado))
                                     {
                                         
-                                      $codigo = $row["COD_CATEGORIA"];
-                                      $nombcat = $row["NOMB_CATEG"];
+                                      $codigo = $row["ID"];
+                                      $nombcat = $row["PRIMER_NOMBRE"];
 
 
 
@@ -207,25 +169,23 @@ include ('./logica/validacion.php');
                                 </select>
                             </div>
                         </div>
-                        <div class="col-xs-12">
-                            <legend style="color: #fff"><i class="zmdi zmdi-label"></i> &nbsp; Otros datos</legend><br>
-                        </div>
+
                         <div class="col-xs-12">
                             <div class="group-material">
-                                <center>  <p  style="padding-top: 15px">Proveedor</p> </center>
-                                <select class="form-control" name="proveedor" data-toggle="tooltip" data-placement="top" title="Elige el proveedor del libro">
+                                <center>  <p  style="padding-top: 15px">Codigo herramientas</p> </center>
+                                <select class="form-control" name="codlh" data-toggle="tooltip" data-placement="top" title="Elige el proveedor del libro">
                                     <option value="" disabled="" selected="">Selecciona un proveedor</option>
                                     <?php
                                     include ("./logica/db.php");
 
-                                    $consulta = "SELECT * FROM proveedores ";
+                                    $consulta = "SELECT * FROM herramienta ";
                                     $resultado = mysqli_query($conexion, $consulta);
 
                                     while ($row = mysqli_fetch_array($resultado))
                                     {
                                         
-                                      $codigo = $row["COD_PROVEEDOR"];
-                                      $nompro = $row["NOMBRE_PROVEEDOR"];
+                                      $codigo = $row["COD_LH"];
+                                      $nompro = $row["NOMBRE_LH"];
 
 
 
@@ -241,20 +201,44 @@ include ('./logica/validacion.php');
                             </div>
                         </div>
                         <div class="col-xs-12 col-sm-6">
-                           <div class="group-material">
-                                <p class="text-center" style="padding-top: 15px">Estado</p>
-                                <select class="form-control" name="estado"  data-toggle="tooltip" data-placement="top" title="Elige la sección a la que pertenece el alumno">
-                                    <option value="" disabled="" selected="">Selecciona un Curso</option>
-                                    <option value="Malo">Malo</option>
-                                    <option value="Regular">Regular</option>
-                                    <option value="Excelente">Excelente</option>   
-                                </select>
-                           </div>
+                            <div class="group-material">
+                               <center> <p  style="padding-top: 15px">Fecha salida</p></center>
+                                <input type="date" class="form-control" name="fechasa" placeholder="Escribe aquí el código correlativo del libro"  required="" data-toggle="tooltip" data-placement="top" title="Escribe el código correlativo del libro, solamente números">
+                                <span class="highlight"></span>
+                                <span class="bar"></span>
+                                
+                            </div>
                         </div>
                         <div class="col-xs-12 col-sm-6">
                             <div class="group-material">
-                               <center>  <p  style="padding-top: 15px">Editorial</p> </center>
-                                <input type="text" class="form-control" name="editlibro" placeholder="Escribe aquí la editorial del libro" required="" maxlength="70" data-toggle="tooltip" data-placement="top" title="Editorial del libro">
+                               <center> <p  style="padding-top: 15px">Hora de salida</p> </center>
+                                <input type="time" class="form-control" name="horasa" placeholder="Escribe aquí el título o nombre del libro" required="" maxlength="70" data-toggle="tooltip" data-placement="top" title="Escribe el título o nombre del libro">
+                                <span class="highlight"></span>
+                                <span class="bar"></span>
+                                
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6">
+                            <div class="group-material">
+                               <center>  <p  style="padding-top: 15px">Fecha entrega</p> </center>
+                                <input type="date" class="form-control" name="fechaen" placeholder="Escribe aquí el autor del libro" required="" data-toggle="tooltip" data-placement="top" title="Escribe el nombre del autor del libro">
+                                <span class="highlight"></span>
+                                <span class="bar"></span>
+                                
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6">
+                            <div class="group-material">
+                              <center>  <p  style="padding-top: 15px">Hora de entrega</p></center>
+                                <input type="time" class="form-control" name="horaen" placeholder="Escribe aquí los Ejemplares del libro" required="" data-toggle="tooltip" data-placement="top" title="Escribe el país del libro">
+                                <span class="highlight"></span>
+                                <span class="bar"></span>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6">
+                            <div class="group-material">
+                               <center>  <p  style="padding-top: 15px">Cantidad prestada</p> </center>
+                                <input type="number" class="form-control" name="cantidad" placeholder="Escribe aquí la editorial del libro" required="" maxlength="70" data-toggle="tooltip" data-placement="top" title="Editorial del libro">
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
                                 
