@@ -166,7 +166,7 @@ include ('./logica/validacion.php');
                   
                   <td><center><a href='actualizarlibro.php?id=".$consulta['COD_LH']."'><button class='btn btn-primary'><i class='zmdi zmdi-refresh'> Editar</button></center></td>
                   
-                  <td><center><a href='./logica/eliminarcat.php?id=".$consulta['COD_LH']."' class='eliminar'><button class='btn btn-danger'>Eliminar  <i class='zmdi zmdi-delete'></i></button><a></center></td>
+                  <td><center><a href='./logica/eliminarherra.php?id=".$consulta['COD_LH']."' class='eliminar'><button class='btn btn-danger'>Eliminar  <i class='zmdi zmdi-delete'></i></button><a></center></td>
                 </tr>
             ";
           }?>
