@@ -105,7 +105,7 @@ include ('./logica/validacion.php');
         <div class="container">
         <div class="jumbotron">
             <div class="page-header">
-              <h1 class="all-tittles">Sistema bibliotecario <small>Catálogo de libros</small></h1>
+            <center> <h1 class="all-tittles">Catálogo de libros</h1></center> 
             
         </div>
          <div class="container-fluid"  style="margin: 40px 0;">
@@ -130,14 +130,17 @@ include ('./logica/validacion.php');
           <table width='100%' border="2" id="cate_tabla" >
               <thead style="color: #fff;background-color: #188010;">
               <tr>
-                  <td><b><center>Codigo categoria</center></b></td>
-                  <td><b><center>Nombre de categoria</center></b></td>
-                  <td><b><center>Nombre de categoria</center></b></td>
-                  <td><b><center>Nombre de categoria</center></b></td>
-                  <td><b><center>Nombre de categoria</center></b></td>
-                  <td><b><center>Nombre de categoria</center></b></td>
-                  <td><b><center>Nombre de categoria</center></b></td>
-                  <td><b><center>Nombre de categoria</center></b></td>
+                
+                  <td><b><center>Codigo Herramienta</center></b></t>  
+                  <td><b><center>Nombre Herramienta</center></b></td>
+                  <td><b><center>Codigo Categoria</center></b></td>
+                  <td><b><center>Editorial</center></b></td>
+                  <td><b><center>Cantidad</center></b></td>
+                  <td><b><center>Cantidad Disponible</center></b></td>
+                  <td><b><center>Codigo proveedor</center></b></td>
+                  <td><b><center>Autor</center></b></td>
+                  
+
 
                   <td><b><center>Editar</center></b></td>
                   <td><b><center>Eliminar</center></b></td>
@@ -161,7 +164,7 @@ include ('./logica/validacion.php');
                   <td><b><center>".$consulta['COD_PROVEEDOR']."</center></b></td>
                   <td><b><center>".$consulta['AUTOR']."</center></b></td>
                   
-                  <td><center><a href='actualizarcat.php?id=".$consulta['COD_LH']."'><button class='btn btn-primary'><i class='zmdi zmdi-refresh'> Editar</button></center></td>
+                  <td><center><a href='actualizarlibro.php?id=".$consulta['COD_LH']."'><button class='btn btn-primary'><i class='zmdi zmdi-refresh'> Editar</button></center></td>
                   
                   <td><center><a href='./logica/eliminarcat.php?id=".$consulta['COD_LH']."' class='eliminar'><button class='btn btn-danger'>Eliminar  <i class='zmdi zmdi-delete'></i></button><a></center></td>
                 </tr>

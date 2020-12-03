@@ -23,6 +23,8 @@ include ('./logica/validacion.php');
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
     <script src="js/main.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/select2.css">
+    <script src="js/select2.js"></script>
 </head>
 <body>
     <div class="navbar-lateral full-reset">
@@ -124,8 +126,8 @@ include ('./logica/validacion.php');
             <div class="row">
                 <div class="col-xs-12 lead">
                     <ol class="breadcrumb">
-                          <li class="active">Prestamos</li>
-                        <li><a href="student.php">Crear nuevo prestamo</a></li>
+                          <li><a href="loan.php">Prestamos</a></li>
+                        <li class="active">Crear nuevo prestamo</li>
                     </ol>
                 </div>
             </div>
@@ -141,19 +143,19 @@ include ('./logica/validacion.php');
                                                 <div class="col-xs-12">
                             <div class="group-material">
                                <center> <p  style="padding-top: 15px">ID Usuario</p> </center>
-                                <select class="form-control" name="idusu"  data-toggle="tooltip" data-placement="top" title="Elige la categoría del libro">
+                                <select class="form-control" name="idusu" id="perso" data-toggle="tooltip" data-placement="top" title="Elige la categoría del libro">
                                     <option value="" disabled="" selected="">Seleccione el estudiante</option>
                                     <?php
                                     include ("./logica/db.php");
 
-                                    $consulta = "SELECT * FROM personal ";
+                                    $consulta = "SELECT ID, CONCAT (ID,' - ',PRIMER_NOMBRE,' ' ,PRIMER_APE,' ',SEGUNDO_APE ) nombre FROM personal";
                                     $resultado = mysqli_query($conexion, $consulta);
 
                                     while ($row = mysqli_fetch_array($resultado))
                                     {
                                         
                                       $codigo = $row["ID"];
-                                      $nombcat = $row["PRIMER_NOMBRE"];
+                                      $nombcat = $row["nombre"];
 
 
 
@@ -173,7 +175,7 @@ include ('./logica/validacion.php');
                         <div class="col-xs-12">
                             <div class="group-material">
                                 <center>  <p  style="padding-top: 15px">Codigo herramientas</p> </center>
-                                <select class="form-control" name="codlh" data-toggle="tooltip" data-placement="top" title="Elige el proveedor del libro">
+                                <select class="form-control" name="codlh" id="herra" data-toggle="tooltip" data-placement="top" title="Elige el proveedor del libro">
                                     <option value="" disabled="" selected="">Selecciona un proveedor</option>
                                     <?php
                                     include ("./logica/db.php");
@@ -235,10 +237,10 @@ include ('./logica/validacion.php');
                                 <span class="bar"></span>
                             </div>
                         </div>
-                        <div class="col-xs-12 col-sm-6">
+                        <div class="col-xs-12 col-sm-6"  style="margin-left: 25%;">
                             <div class="group-material">
                                <center>  <p  style="padding-top: 15px">Cantidad prestada</p> </center>
-                                <input type="number" class="form-control" name="cantidad" placeholder="Escribe aquí la editorial del libro" required="" maxlength="70" data-toggle="tooltip" data-placement="top" title="Editorial del libro">
+                                <input type="number" class="form-control" name="cantidad" placeholder="Escribe aquí la editorial del libro" required="" minlength="1" maxlength="70" data-toggle="tooltip" data-placement="top" title="Editorial del libro">
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
                                 
@@ -291,3 +293,9 @@ include ('./logica/validacion.php');
     </div>
 </body>
 </html>
+<script type="text/javascript">
+    $(document).ready(function(){
+            $('#perso').select2();
+            $('#herra').select2();
+    });
+</script>

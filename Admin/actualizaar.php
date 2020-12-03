@@ -165,7 +165,7 @@ include ('./logica/validacion.php');
                         <div class='col-xs-12'>
                             <div class='group-material'>
                                 <p class='text-center' style='padding-top: 15px'>Usuario ID</p>
-                                <input type='text' disabled="" class='form-control' name='numid'  value="<?php echo $consulta['ID']?>"required="" maxlength='20' data-toggle='tooltip' data-placement='top' title='ID de estudiante'>
+                                <input type='text' readonly="" class='form-control' name='numid'  value="<?php echo $consulta['ID']?>"required="" maxlength='20' data-toggle='tooltip' data-placement='top' title='ID de estudiante'>
                                 <span class='highlight'></span>
                                 <span class='bar'></span>
                                 

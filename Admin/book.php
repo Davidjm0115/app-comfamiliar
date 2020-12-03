@@ -169,7 +169,7 @@ include ('./logica/validacion.php');
                                     <?php
                                     include ("./logica/db.php");
 
-                                    $consulta = "SELECT * FROM categorias ";
+                                    $consulta = "SELECT * FROM categorias WHERE ESTADO = 'Activa'";
                                     $resultado = mysqli_query($conexion, $consulta);
 
                                     while ($row = mysqli_fetch_array($resultado))
@@ -222,21 +222,11 @@ include ('./logica/validacion.php');
 
                                     <?php } ?>
 
-                                </select>
+                                  </select>
                             </div>
                         </div>
-                        <div class="col-xs-12 col-sm-6">
-                           <div class="group-material">
-                                <p class="text-center" style="padding-top: 15px">Estado</p>
-                                <select class="form-control" name="estado"  data-toggle="tooltip" data-placement="top" title="Elige la sección a la que pertenece el alumno">
-                                    <option value="" disabled="" selected="">Selecciona un Curso</option>
-                                    <option value="Malo">Malo</option>
-                                    <option value="Regular">Regular</option>
-                                    <option value="Excelente">Excelente</option>   
-                                </select>
-                           </div>
-                        </div>
-                        <div class="col-xs-12 col-sm-6">
+                      
+                        <div class="col-xs-12 col-sm-6" style="margin-left: 25%">
                             <div class="group-material">
                                <center>  <p  style="padding-top: 15px">Editorial</p> </center>
                                 <input type="text" class="form-control" name="editlibro" placeholder="Escribe aquí la editorial del libro" required="" maxlength="70" data-toggle="tooltip" data-placement="top" title="Editorial del libro">

@@ -7,7 +7,7 @@ include("db.php");
 
 
 
-$insertar = "INSERT INTO categorias (COD_CATEGORIA, NOMB_CATEG) VALUES ('$codcat','$nomcat')";
+$insertar = "INSERT INTO categorias (COD_CATEGORIA, NOMB_CATEG, ESTADO) VALUES ('$codcat','$nomcat','Activa')";
 $resultado= mysqli_query($conexion,$insertar);
 mysqli_close($conexion);
 if(!$resultado){

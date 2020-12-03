@@ -17,14 +17,22 @@ include("db.php");
 		$consulta = "SELECT CANTIDAD_DISPONIBLE From herramienta WHERE COD_LH='$codlh'";
 		$resultado= mysqli_query($conexion,$consulta);
 		$array = mysqli_fetch_array($resultado);
+		if ($cantidad > $array['CANTIDAD_DISPONIBLE'] or $cantidad<1) {
+			
+			echo "<script languaje='javascript'>alert('La cantidad prestada excede la cantdidad disponible'); location.href = '../prestamos.php';</script>";
+		} else{
 		$resta=($array['CANTIDAD_DISPONIBLE']-$cantidad);
 		$canres= "UPDATE herramienta SET CANTIDAD_DISPONIBLE='$resta' WHERE COD_LH='$codlh' ";
 
 		$canres2= mysqli_query($conexion,$canres);
 		$resultado2= mysqli_query($conexion,$insertar);
+		
+		if($resultado2){
+
+		header("Location: ../loan.php");
+		}
+
+
+		}
 		mysqli_close($conexion);
 
-	if($resultado2){
-
-	header("Location: ../loan.php");
-}

@@ -134,21 +134,27 @@ include ('./logica/validacion.php');
                                                 <br><br>
                                                  <center><button id="info" class=" btn btn-primary  btn-block"> LIBROS Y HERRAMIENTAS MAS PRESTADOS<i class="fa fa-line-chart"></i></button></center>
                                                 <br><br><br><br>                          
-                                </div>
-                            </div>
+           
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+
+
+            </div></center>
+           
+       
+        
         <footer class="footer full-reset">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-xs-12 col-sm-6">
                         <h4 class="all-tittles">Acerca de</h4>
                         <p>
-                            Software de gestion de inventario y prestamos hecho a la medida por la empresa Nova System S.A.S para la institucion educativa comfamiliar, el programa se encuentra en Fase beta hasta el 4 de diciembre donde se presenatara la version 1.0 del software.
+                            Software de gestion de inventario y prestamos hecho a la medida por la empresa Nova System S.A.S para la institucion educativa comfamiliar, el programa se encuentra en fase beta hasta el 4 de diciembre donde se presenatara la version 1.0 del software.
                         </p>
                     </div>
                          <div class="col-xs-12 col-sm-6">

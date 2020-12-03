@@ -152,6 +152,7 @@ include ('./logica/validacion.php');
               <tr>
                   <td><b><center>Codigo categoria</center></b></td>
                   <td><b><center>Nombre de categoria</center></b></td>
+                  <td><b><center>Estado</center></b></td>
                   <td><b><center>Editar</center></b></td>
                   <td><b><center>Eliminar</center></b></td>
 
@@ -167,13 +168,21 @@ include ('./logica/validacion.php');
                 <tr style='color: #000;'>
                   <td><b><center>".$consulta['COD_CATEGORIA']."</center></b></td>
                   <td><b><center>".$consulta['NOMB_CATEG']."</center></b></td>
-
-                  
-                  <td><center><a href='actualizarcat.php?id=".$consulta['COD_CATEGORIA']."'><button class='btn btn-primary'><i class='zmdi zmdi-refresh'> Editar</button></center></td>
+                  <td><b><center>".$consulta['ESTADO']."</center></b></td>";
+                
+                switch ($consulta['ESTADO']) {
+                             case 'Activa':
+                                echo " <td><center><a href='./logica/desactivarcategoria.php?id=".$consulta['COD_CATEGORIA']."'><button class='btn btn-primary'><i class='zmdi zmdi-refresh'> Desactivar</button></center></td>";
+                                break;
+                             case 'Desactivada':
+                                echo "<td><center><a href='./logica/activarcate.php?id=".$consulta['COD_CATEGORIA']."'><button class='btn btn-primary'><i class='zmdi zmdi-refresh'> Activar</button></center></td>";
+                                break;
+              }   
+              echo"   
                   
                   <td><center><a href='./logica/eliminarcat.php?id=".$consulta['COD_CATEGORIA']."' class='eliminar'><button class='btn btn-danger'>Eliminar  <i class='zmdi zmdi-delete'></i></button><a></center></td>
                 </tr>
-            ";
+            "; 
           }?>
   
         </tbody></table>
@@ -181,31 +190,17 @@ include ('./logica/validacion.php');
                 
           
             
-        </div>
-        <div class="modal fade" tabindex="-1" role="dialog" id="ModalHelp">
-          <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title text-center all-tittles">ayuda del sistema</h4>
-                </div>
-                <div class="modal-body">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore dignissimos qui molestias ipsum officiis unde aliquid consequatur, accusamus delectus asperiores sunt. Quibusdam veniam ipsa accusamus error. Animi mollitia corporis iusto.
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="zmdi zmdi-thumb-up"></i> &nbsp; De acuerdo</button>
-                </div>
-            </div>
-          </div>
-        </div>
-    </div>
+            </div></div>
+           
+       
+        
         <footer class="footer full-reset">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-xs-12 col-sm-6">
                         <h4 class="all-tittles">Acerca de</h4>
                         <p>
-                            Software de gestion de inventario y prestamos hecho a la medida por la empresa Nova System S.A.S para la institucion educativa comfamiliar, el programa se encuentra en base beta hasta el 4 de diciembre donde se presenatara la version 1.0 del software.
+                            Software de gestion de inventario y prestamos hecho a la medida por la empresa Nova System S.A.S para la institucion educativa comfamiliar, el programa se encuentra en fase beta hasta el 4 de diciembre donde se presenatara la version 1.0 del software.
                         </p>
                     </div>
                          <div class="col-xs-12 col-sm-6">

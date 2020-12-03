@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 02-12-2020 a las 02:48:00
+-- Tiempo de generación: 03-12-2020 a las 04:39:00
 -- Versión del servidor: 10.4.10-MariaDB
 -- Versión de PHP: 7.3.12
 
@@ -32,6 +32,7 @@ DROP TABLE IF EXISTS `categorias`;
 CREATE TABLE IF NOT EXISTS `categorias` (
   `COD_CATEGORIA` int(2) NOT NULL,
   `NOMB_CATEG` varchar(25) NOT NULL,
+  `ESTADO` varchar(20) NOT NULL,
   PRIMARY KEY (`COD_CATEGORIA`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -39,10 +40,12 @@ CREATE TABLE IF NOT EXISTS `categorias` (
 -- Volcado de datos para la tabla `categorias`
 --
 
-INSERT INTO `categorias` (`COD_CATEGORIA`, `NOMB_CATEG`) VALUES
-(2, 'Castellano'),
-(3, 'Sociales'),
-(4, 'Literatura');
+INSERT INTO `categorias` (`COD_CATEGORIA`, `NOMB_CATEG`, `ESTADO`) VALUES
+(2, 'Castellano', 'Activa'),
+(3, 'Sociales', 'Activa'),
+(4, 'Literatura', 'Activa'),
+(5, 'Matematicas', 'Activa'),
+(10, 'Ingles', 'Activa');
 
 -- --------------------------------------------------------
 
@@ -120,8 +123,10 @@ CREATE TABLE IF NOT EXISTS `herramienta` (
 
 INSERT INTO `herramienta` (`COD_LH`, `NOMBRE_LH`, `CATEGORIA`, `EDITORIAL`, `CANTIDAD`, `CANTIDAD_DISPONIBLE`, `COD_PROVEEDOR`, `AUTOR`) VALUES
 (1, 'Hipertexto 8', 2, 'santillana', 32, 32, 1, 'Santillana'),
-(2, 'Cien apos de soledad', 4, 'panamericana', 1, 1, 1, 'Gabriel Garcia marquez'),
-(3, 'Hipertexto 5', 3, 'Santillana', 21, 21, 19, 'Santillana');
+(2, 'Cien años de soledad', 4, 'panamericana', 1, 1, 1, 'Gabriel Garcia marquez'),
+(3, 'Hipertexto 5', 3, 'Santillana', 21, 21, 19, 'Santillana'),
+(4, 'Glifos', 5, 'santillana', 25, 25, 19, 'Santillana'),
+(5, 'Relato de un naufrago', 4, 'Panamericana', 3, 3, 1, 'Gabriel García Márquez');
 
 -- --------------------------------------------------------
 
@@ -204,7 +209,24 @@ CREATE TABLE IF NOT EXISTS `prestamos` (
   PRIMARY KEY (`PRESTAMO_ID`),
   KEY `USUARIO_ID` (`USUARIO_ID`,`COD_LH`),
   KEY `COD_LH` (`COD_LH`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `prestamos`
+--
+
+INSERT INTO `prestamos` (`PRESTAMO_ID`, `USUARIO_ID`, `COD_LH`, `FECHA_SALIDA`, `HORA_SALIDA`, `FECHA_ENTREGA`, `HORA_ENTREGA`, `CANTIDA_SA`, `ESTADO`) VALUES
+(4, 1002173562, 1, '2020-12-02', '00:18:00', '2020-12-02', '01:18:00', 10, 'Devuelto'),
+(5, 1002058291, 2, '2020-12-10', '00:30:00', '2020-12-24', '00:31:00', 1, 'Devuelto'),
+(6, 1002058291, 2, '2020-12-10', '00:30:00', '2020-12-24', '00:31:00', 1, 'Devuelto'),
+(7, 1002173562, 2, '2020-12-10', '00:30:00', '2020-12-24', '00:31:00', 1, 'Devuelto'),
+(8, 1002173562, 2, '2020-12-10', '00:30:00', '2020-12-24', '00:31:00', 1, 'Devuelto'),
+(9, 1002173562, 3, '2020-12-10', '00:30:00', '2020-12-24', '00:31:00', 20, 'Devuelto'),
+(10, 1002173562, 3, '2020-12-10', '00:30:00', '2020-12-24', '00:31:00', 20, 'Devuelto'),
+(11, 1002173571, 2, '2021-01-01', '03:40:00', '2021-01-06', '04:38:00', 1, 'Devuelto'),
+(12, 1002173561, 1, '2020-12-08', '01:04:00', '2020-12-23', '03:04:00', 20, 'Devuelto'),
+(13, 1002173562, 5, '2021-01-01', '22:31:00', '2021-01-06', '22:32:00', 4, 'Devuelto'),
+(14, 7654, 2, '2020-12-04', '22:40:00', '2020-12-21', '22:41:00', 0, 'Devuelto');
 
 -- --------------------------------------------------------
 
