@@ -73,7 +73,7 @@ include ('./logica/validacion.php');
                         <ul class="list-unstyled">
                             <li><a href="loan.php"><i class="zmdi zmdi-calendar zmdi-hc-fw"></i>&nbsp;&nbsp; Todos los préstamos</a></li>
                             <li>
-                                <a href="loanpending.php"><i class="zmdi zmdi-time-restore zmdi-hc-fw"></i>&nbsp;&nbsp; Devoluciones pendientes <span class="label label-danger pull-right label-mhover">7</span></a>
+                                <a href="loanpending.php"><i class="zmdi zmdi-time-restore zmdi-hc-fw"></i>&nbsp;&nbsp; Devoluciones pendientes </a>
                             </li>
 
                         </ul>
@@ -157,7 +157,7 @@ include ('./logica/validacion.php');
                         <div class="col-xs-12 col-sm-6">
                             <div class="group-material">
                                  <p style="padding-top: 15px">Dirección del proveedor</p>
-                                <input type="text"  class="form-control"  name="direc" placeholder="Dirección de proveedor" required="" maxlength="70" data-toggle="tooltip" data-placement="top" title="Escribe la dirección del proveedor">
+                                <input type="text"  class="form-control"  name="direc" placeholder="Dirección de proveedor" required="" maxlength="90" data-toggle="tooltip" data-placement="top" title="Escribe la dirección del proveedor">
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
                                 
@@ -166,7 +166,7 @@ include ('./logica/validacion.php');
                         <div class="col-xs-12 col-sm-6">
                             <div class="group-material">
                                  <p style="padding-top: 15px">Telefono del proveedor</p>
-                                <input type="text"  class="form-control" name="telpro" placeholder="Teléfono de proveedor" required="" pattern="[0-9]{10,10}" maxlength="10" data-toggle="tooltip" data-placement="top" title="Solo números, mínimo 8 dígitos">
+                                <input type="text"  class="form-control" name="telpro" placeholder="Teléfono de proveedor" required="" pattern="[0-9]{7,10}" maxlength="10" data-toggle="tooltip" data-placement="top" title="Solo números, mínimo 8 dígitos">
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
                                

@@ -78,7 +78,7 @@ include ('./logica/validacion.php');
                         </ul>
                     </li>
                     <li><a href="report.php"><i class="zmdi zmdi-trending-up zmdi-hc-fw"></i>&nbsp;&nbsp; Reportes y estadísticas</a></li>
-                     <li><a href="advancesettings.php"><i class="zmdi zmdi-wrench zmdi-hc-fw"></i>&nbsp;&nbsp; Acerca De...</a></li>
+                     <li><a href="advancesettings.php"><i class="zmdi zmdi-help-outline zmdi-hc-fw"></i>&nbsp;&nbsp; Acerca De...</a></li>
                 </ul>
             </div>
         </div>
@@ -119,7 +119,7 @@ include ('./logica/validacion.php');
             <ul class="nav nav-tabs nav-justified"  style="font-size: 17px;">
                 <li role="presentation"><a href="admin.php">Administradores</a></li>
                 
-                <li role="presentation" class="active"><a href="student.html">Estudiantes</a></li>
+                <li role="presentation" class="active"><a href="student.php">Estudiantes</a></li>
                 
             </ul>
         </div>
@@ -138,7 +138,7 @@ include ('./logica/validacion.php');
             <div class="row">
                 <div class="col-xs-12 lead">
                     <ol class="breadcrumb">
-                        <li><a href="student.html">Nuevo estudiante</a></li>
+                        <li><a href="student.php">Nuevo estudiante</a></li>
                         <li class="active">Listado de estudiantes</li>
                     </ol>
                 </div>

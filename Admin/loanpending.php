@@ -79,7 +79,7 @@ include ('./logica/validacion.php');
                         </ul>
                     </li>
                     <li><a href="report.php"><i class="zmdi zmdi-trending-up zmdi-hc-fw"></i>&nbsp;&nbsp; Reportes</a></li>
-                    <li><a href="advancesettings.php"><i class="zmdi zmdi-help-outline zmdi-hc-fw"></i>&nbsp;&nbsp; Configuraciones avanzadas</a></li>
+                    <li><a href="advancesettings.php"><i class="zmdi zmdi-help-outline zmdi-hc-fw"></i>&nbsp;&nbsp; Acerca De...</a></li>
                 </ul>
             </div>
         </div>
@@ -105,7 +105,7 @@ include ('./logica/validacion.php');
         <div class="container">
             <div class="jumbotron">
             <div class="page-header">
-              <center><h1 class="all-tittles">Pestamos de libros y herramientas</small></h1></center>
+              <center><h1 class="all-tittles">Préstamos de libros y herramientas</small></h1></center>
         </div>
         <div class="conteiner-fluid">
             <ul class="nav nav-tabs nav-justified"  style="font-size: 17px;">

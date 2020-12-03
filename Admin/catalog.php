@@ -74,7 +74,7 @@ include ('./logica/validacion.php');
                         <ul class="list-unstyled">
                             <li><a href="loan.php"><i class="zmdi zmdi-calendar zmdi-hc-fw"></i>&nbsp;&nbsp; Todos los préstamos</a></li>
                             <li>
-                                <a href="loanpending.php"><i class="zmdi zmdi-time-restore zmdi-hc-fw"></i>&nbsp;&nbsp; Devoluciones pendientes <span class="label label-danger pull-right label-mhover">7</span></a>
+                                <a href="loanpending.php"><i class="zmdi zmdi-time-restore zmdi-hc-fw"></i>&nbsp;&nbsp; Devoluciones pendientes </a>
                             </li>
                             
                         </ul>
@@ -106,7 +106,7 @@ include ('./logica/validacion.php');
         <div class="container">
         <div class="jumbotron">
             <div class="page-header">
-            <center> <h1 class="all-tittles">Catálogo de libros</h1></center> 
+            <center> <h1 class="all-tittles">Catálogo de libros y Herramientas</h1></center> 
             
         </div>
          <div class="container-fluid"  style="margin: 40px 0;">
@@ -135,10 +135,10 @@ include ('./logica/validacion.php');
                   <td><b><center>Codigo Herramienta</center></b></t>  
                   <td><b><center>Nombre Herramienta</center></b></td>
                   <td><b><center>Codigo Categoria</center></b></td>
-                  <td><b><center>Editorial</center></b></td>
                   <td><b><center>Cantidad</center></b></td>
                   <td><b><center>Cantidad Disponible</center></b></td>
                   <td><b><center>Codigo proveedor</center></b></td>
+                  <td><b><center>Editorial</center></b></td>
                   <td><b><center>Autor</center></b></td>
                   
 
@@ -159,10 +159,10 @@ include ('./logica/validacion.php');
                   <td><b><center>".$consulta['COD_LH']."</center></b></td>
                   <td><b><center>".$consulta['NOMBRE_LH']."</center></b></td>
                   <td><b><center>".$consulta['CATEGORIA']."</center></b></td>
-                  <td><b><center>".$consulta['EDITORIAL']."</center></b></td>
                   <td><b><center>".$consulta['CANTIDAD']."</center></b></td>
                   <td><b><center>".$consulta['CANTIDAD_DISPONIBLE']."</center></b></td>
                   <td><b><center>".$consulta['COD_PROVEEDOR']."</center></b></td>
+                  <td><b><center>".$consulta['EDITORIAL']."</center></b></td>
                   <td><b><center>".$consulta['AUTOR']."</center></b></td>
                   
                   <td><center><a href='actualizarlibro.php?id=".$consulta['COD_LH']."'><button class='btn btn-primary'><i class='zmdi zmdi-refresh'> Editar</button></center></td>

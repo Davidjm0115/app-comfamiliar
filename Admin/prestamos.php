@@ -180,14 +180,14 @@ include ('./logica/validacion.php');
                                     <?php
                                     include ("./logica/db.php");
 
-                                    $consulta = "SELECT * FROM herramienta ";
+                                    $consulta = "SELECT COD_LH, CONCAT (COD_LH,' - ',NOMBRE_LH,' - ' ,categorias.NOMB_CATEG )nombre FROM herramienta, categorias WHERE categorias.COD_CATEGORIA = herramienta.CATEGORIA";
                                     $resultado = mysqli_query($conexion, $consulta);
 
                                     while ($row = mysqli_fetch_array($resultado))
                                     {
                                         
                                       $codigo = $row["COD_LH"];
-                                      $nompro = $row["NOMBRE_LH"];
+                                      $nompro = $row["nombre"];
 
 
 

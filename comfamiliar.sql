@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 03-12-2020 a las 04:39:00
+-- Tiempo de generación: 03-12-2020 a las 21:10:57
 -- Versión del servidor: 10.4.10-MariaDB
 -- Versión de PHP: 7.3.12
 
@@ -31,8 +31,8 @@ SET time_zone = "+00:00";
 DROP TABLE IF EXISTS `categorias`;
 CREATE TABLE IF NOT EXISTS `categorias` (
   `COD_CATEGORIA` int(2) NOT NULL,
-  `NOMB_CATEG` varchar(25) NOT NULL,
-  `ESTADO` varchar(20) NOT NULL,
+  `NOMB_CATEG` varchar(30) NOT NULL,
+  `ESTADO` varchar(25) NOT NULL,
   PRIMARY KEY (`COD_CATEGORIA`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -41,11 +41,20 @@ CREATE TABLE IF NOT EXISTS `categorias` (
 --
 
 INSERT INTO `categorias` (`COD_CATEGORIA`, `NOMB_CATEG`, `ESTADO`) VALUES
+(1, 'Naturales', 'Activa'),
 (2, 'Castellano', 'Activa'),
 (3, 'Sociales', 'Activa'),
-(4, 'Literatura', 'Activa'),
-(5, 'Matematicas', 'Activa'),
-(10, 'Ingles', 'Activa');
+(4, 'Matematicas', 'Activa'),
+(5, 'Literatura', 'Activa'),
+(6, 'Ingles', 'Activa'),
+(7, 'Video Beam', 'Activa'),
+(8, 'Dispositivos de audio', 'Activa'),
+(9, 'Diccionario o enciclopedia', 'Activa'),
+(10, 'Quimica', 'Activa'),
+(11, 'Fisica', 'Activa'),
+(12, 'Filosofia', 'Activa'),
+(13, ' Informatica', 'Activa'),
+(14, 'Etica y Religión', 'Activa');
 
 -- --------------------------------------------------------
 
@@ -56,13 +65,13 @@ INSERT INTO `categorias` (`COD_CATEGORIA`, `NOMB_CATEG`, `ESTADO`) VALUES
 DROP TABLE IF EXISTS `configuracion`;
 CREATE TABLE IF NOT EXISTS `configuracion` (
   `nit_empresa` varchar(20) NOT NULL,
-  `nombre_empresa` varchar(50) NOT NULL,
-  `direccion` varchar(50) NOT NULL,
-  `telefono` bigint(10) NOT NULL,
+  `nombre_empresa` varchar(20) NOT NULL,
+  `direccion` varchar(20) NOT NULL,
+  `telefono` bigint(50) NOT NULL,
   `correo` varchar(50) NOT NULL,
-  `pais` varchar(25) NOT NULL,
+  `pais` varchar(50) NOT NULL,
   `ciudad` varchar(25) NOT NULL,
-  `paginaweb` varchar(25) NOT NULL
+  `paginaweb` varchar(50) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
@@ -70,7 +79,7 @@ CREATE TABLE IF NOT EXISTS `configuracion` (
 --
 
 INSERT INTO `configuracion` (`nit_empresa`, `nombre_empresa`, `direccion`, `telefono`, `correo`, `pais`, `ciudad`, `paginaweb`) VALUES
-('1234', 'Comfamiliar', 'calle5', 3001244545, 'majuva0318@hotmail.es', 'Colombia', 'cartagena', 'kjhdkjsadcom');
+('1234', 'Comfamiliar', 'calle5', 3001244545, 'Example14@gmail.com', 'Colombia', 'cartagena', 'kjhdkjsadcom');
 
 -- --------------------------------------------------------
 
@@ -105,13 +114,13 @@ INSERT INTO `curso` (`COD_CURSO`, `DEPARTAMENTO`, `CURSO`) VALUES
 DROP TABLE IF EXISTS `herramienta`;
 CREATE TABLE IF NOT EXISTS `herramienta` (
   `COD_LH` int(5) NOT NULL,
-  `NOMBRE_LH` varchar(50) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `NOMBRE_LH` varchar(20) NOT NULL,
   `CATEGORIA` int(2) NOT NULL,
-  `EDITORIAL` varchar(20) DEFAULT NULL,
   `CANTIDAD` int(3) NOT NULL,
   `CANTIDAD_DISPONIBLE` int(3) NOT NULL,
   `COD_PROVEEDOR` int(5) NOT NULL,
-  `AUTOR` varchar(50) CHARACTER SET utf8 COLLATE utf8_spanish_ci DEFAULT NULL,
+  `AUTOR` varchar(50) DEFAULT NULL,
+  `EDITORIAL` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`COD_LH`),
   KEY `COD_PROVEEDOR` (`COD_PROVEEDOR`,`CATEGORIA`),
   KEY `CATEGORIA` (`CATEGORIA`)
@@ -121,12 +130,9 @@ CREATE TABLE IF NOT EXISTS `herramienta` (
 -- Volcado de datos para la tabla `herramienta`
 --
 
-INSERT INTO `herramienta` (`COD_LH`, `NOMBRE_LH`, `CATEGORIA`, `EDITORIAL`, `CANTIDAD`, `CANTIDAD_DISPONIBLE`, `COD_PROVEEDOR`, `AUTOR`) VALUES
-(1, 'Hipertexto 8', 2, 'santillana', 32, 32, 1, 'Santillana'),
-(2, 'Cien años de soledad', 4, 'panamericana', 1, 1, 1, 'Gabriel Garcia marquez'),
-(3, 'Hipertexto 5', 3, 'Santillana', 21, 21, 19, 'Santillana'),
-(4, 'Glifos', 5, 'santillana', 25, 25, 19, 'Santillana'),
-(5, 'Relato de un naufrago', 4, 'Panamericana', 3, 3, 1, 'Gabriel García Márquez');
+INSERT INTO `herramienta` (`COD_LH`, `NOMBRE_LH`, `CATEGORIA`, `CANTIDAD`, `CANTIDAD_DISPONIBLE`, `COD_PROVEEDOR`, `AUTOR`, `EDITORIAL`) VALUES
+(1, 'Hipertexto 8', 1, 32, 32, 1, 'Carlos Alberto Maldonado ', 'santillana'),
+(12, 'Video Beam', 7, 3, 3, 2, '', '');
 
 -- --------------------------------------------------------
 
@@ -146,8 +152,8 @@ CREATE TABLE IF NOT EXISTS `niveles` (
 --
 
 INSERT INTO `niveles` (`COD_NIVEL`, `ACESSO`) VALUES
-(1, 'todo'),
-(2, 'bibliotecario');
+(1, 'Admin'),
+(2, 'Bibliotecaria');
 
 -- --------------------------------------------------------
 
@@ -165,7 +171,7 @@ CREATE TABLE IF NOT EXISTS `personal` (
   `CATEGORIA` varchar(1) DEFAULT NULL,
   `CURSO` int(5) NOT NULL,
   `CORREO` varchar(50) DEFAULT NULL,
-  `TELEFONO` int(15) DEFAULT NULL,
+  `TELEFONO` bigint(15) DEFAULT NULL,
   PRIMARY KEY (`ID`),
   KEY `CURSO` (`CURSO`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -175,19 +181,35 @@ CREATE TABLE IF NOT EXISTS `personal` (
 --
 
 INSERT INTO `personal` (`ID`, `PRIMER_NOMBRE`, `SEGUNDO_NOMBRE`, `PRIMER_APE`, `SEGUNDO_APE`, `CATEGORIA`, `CURSO`, `CORREO`, `TELEFONO`) VALUES
-(7654, 'Gabriel', 'qqwe', 'Fortich', 'Gomez', 'a', 1, ' fortich', 34434232),
-(1002058291, 'David', NULL, 'Jurado', 'Maldonado', 'a', 1, 'dajuma15@hotmail.es', 301286251),
-(1002173561, 'Alejandro ', NULL, 'Navarro', 'Rodrigues', 'A', 2, 'Example15@gmail.com', 302294724),
-(1002173562, 'Cherise', 'Paola', 'Pajaro', 'Cuentas', 'A', 2, 'Example16@gmail.com', 302294724),
-(1002173563, 'Emanuel', 'Alberto', 'Perez', 'M<ngones', 'D', 2, 'Example17@gmail.com', 302294725),
-(1002173564, 'Santiago', 'Rafael', 'Quintana', 'Insignare', 'A', 2, 'Example18@gmail.com', 302294726),
-(1002173565, 'Luz', 'Adriana', 'Ramirez', 'Camargo', 'A', 2, 'Example19@gmail.com', 302294727),
-(1002173566, 'Kevin', 'David', 'Ramirez', 'Gonzales', 'C', 2, 'Example20@gmail.com', 302294728),
-(1002173567, 'Maria', 'Fernanda', 'Ramos', 'Utria', 'A', 2, 'Example21@gmail.com', 302294729),
-(1002173569, 'Tomas', 'Angel', 'Sarmiento', 'Castillo', 'D', 2, 'Example23@gmail.com', 302294731),
-(1002173570, 'Yeferson', 'Dario', 'Sarmiento', 'Gomez', 'A', 2, 'Example24@gmail.com', 302294732),
-(1002173571, 'Eilyn', 'Sofia', 'Suarez', 'Mena', 'A', 2, 'Example25@gmail.com', 302294733),
-(1002173572, 'Luz', 'Daniela', 'Torres', 'Moreno', 'A', 2, 'Example26@gmail.com', 302294734);
+(1002058291, 'David', '', 'Jurado', 'Maldonado', '', 1, ' dajuma15@hotmail.es', 30021547),
+(1002173560, 'Elian', 'De Jesus', 'Naranjo', 'Gonzales', 'D', 3, 'example14@gmai.com', 3022947230),
+(1002173561, 'Alejandro ', NULL, 'navarro', 'Rodrigues', 'C', 3, 'example15@gmai.com', 3022947231),
+(1002173562, 'Cherise', 'Paola', 'Pajaro', 'Cuentas', 'A', 3, 'example16@gmail.com', 3022947232),
+(1002173563, 'Emanuel', 'Alberto', 'Perez', 'Mangones', 'D', 3, 'example17@gmai.com', 3022947233),
+(1002173564, 'Santiago', 'Rafael', 'Quintana', 'Insigares', 'A', 3, 'example18@gmai.com', 3022947234),
+(1002173565, 'Luz', 'Adriana', 'Ramirez', 'Camargo', 'A', 3, 'example19@gmai.com', 3022947235),
+(1002173566, 'Kevin', 'David', 'Ramirez', 'Gonzales', 'C', 3, 'example20@gmai.com', 3022947236),
+(1002173567, 'Maria', 'Fernanda', 'Ramos', 'Utria', 'A', 3, 'example21@gmai.com', 3022947237),
+(1002173568, 'Mateo ', 'Alejandro ', 'Ramos', 'Zuñiga', 'A', 3, 'example22@gmai.com', 3022947238),
+(1002173569, 'Tomas', 'Angel', 'Sarmiento', 'Castillo', 'D', 3, 'example23@gmai.com', 3022947239),
+(1002173570, 'Yeferson', 'Dario', 'Sarmiento', 'Gomez', 'A', 3, 'example24@gmai.com', 3022947240),
+(1002173571, 'Eilyn', 'Sofia', 'Suarez', 'Mena', 'A', 3, 'example25@gmai.com', 3022947241),
+(1002173572, 'Luz', 'Daniela', 'Torrez', 'Moreno', 'A', 3, 'example26@gmai.com', 3022947242),
+(1002193885, 'Dilan', 'Dario', 'Dejanon ', 'Uribe', '', 1, 'dilandasan@hotmail.com', 3022947232),
+(1002193886, 'Instuctor', '', 'Gabriel', 'Fortich', 'a', 1, ' gfortich@gmail.com', 30229472),
+(1002198740, 'Marlon', 'Andres', 'Angulo', 'Posada', 'A', 2, 'example1@gmail.com', 3022947330),
+(1002198741, 'Laura', 'Andrea', 'Arrieta', 'Montalvo', 'A', 2, 'example2@gmail.com', 3022947331),
+(1002198742, 'Melanie', NULL, 'Baracasnegras', 'Hurtado', 'A', 2, 'example3@gmail.com', 3022947332),
+(1002198743, 'Jeferson', NULL, 'Cañate', 'Ayola', 'D', 2, 'example4@gmail.com', 3022947333),
+(1002198744, 'Sharyk', NULL, 'Cruz', 'Estrada', 'C', 2, 'example5@gmail.com', 3022947334),
+(1002198745, 'Duvan', 'Felipe', 'Franco', 'Barrios', 'A', 2, 'example6@gmail.com', 3022947335),
+(1002198746, 'Juan ', 'Jose', 'Garcia', 'Barrios', 'B', 2, 'example7@gmail.com', 3022947336),
+(1002198747, 'Sebastian', 'Andres', 'Garcia', 'Ortega', 'B', 2, 'example8@gmail.com', 3022947337),
+(1002198748, 'Adrian', 'Felipe', 'Gomez', 'Consuegra', 'A', 4, 'example9@gmail.com', 3022947338),
+(1002198749, 'Sebastian', 'Jose', 'Gonzales', 'Bossa', 'A', 4, 'example10@gmail.com', 3022947339),
+(1002198750, 'Luz', 'Kathy', 'Grimaldo', 'Medina', 'D', 4, 'example11@gmail.com', 3022947340),
+(1002198751, 'Sebastian', 'Eduardo', 'Hernandez', 'Lopez', 'D', 4, 'example12@gmail.com', 3022947341),
+(1002198752, 'Mavis', 'Alejandra', 'Marrugo', 'Gamara', 'A', 4, 'example13@gmail.com', 3022947342);
 
 -- --------------------------------------------------------
 
@@ -209,24 +231,14 @@ CREATE TABLE IF NOT EXISTS `prestamos` (
   PRIMARY KEY (`PRESTAMO_ID`),
   KEY `USUARIO_ID` (`USUARIO_ID`,`COD_LH`),
   KEY `COD_LH` (`COD_LH`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `prestamos`
 --
 
 INSERT INTO `prestamos` (`PRESTAMO_ID`, `USUARIO_ID`, `COD_LH`, `FECHA_SALIDA`, `HORA_SALIDA`, `FECHA_ENTREGA`, `HORA_ENTREGA`, `CANTIDA_SA`, `ESTADO`) VALUES
-(4, 1002173562, 1, '2020-12-02', '00:18:00', '2020-12-02', '01:18:00', 10, 'Devuelto'),
-(5, 1002058291, 2, '2020-12-10', '00:30:00', '2020-12-24', '00:31:00', 1, 'Devuelto'),
-(6, 1002058291, 2, '2020-12-10', '00:30:00', '2020-12-24', '00:31:00', 1, 'Devuelto'),
-(7, 1002173562, 2, '2020-12-10', '00:30:00', '2020-12-24', '00:31:00', 1, 'Devuelto'),
-(8, 1002173562, 2, '2020-12-10', '00:30:00', '2020-12-24', '00:31:00', 1, 'Devuelto'),
-(9, 1002173562, 3, '2020-12-10', '00:30:00', '2020-12-24', '00:31:00', 20, 'Devuelto'),
-(10, 1002173562, 3, '2020-12-10', '00:30:00', '2020-12-24', '00:31:00', 20, 'Devuelto'),
-(11, 1002173571, 2, '2021-01-01', '03:40:00', '2021-01-06', '04:38:00', 1, 'Devuelto'),
-(12, 1002173561, 1, '2020-12-08', '01:04:00', '2020-12-23', '03:04:00', 20, 'Devuelto'),
-(13, 1002173562, 5, '2021-01-01', '22:31:00', '2021-01-06', '22:32:00', 4, 'Devuelto'),
-(14, 7654, 2, '2020-12-04', '22:40:00', '2020-12-21', '22:41:00', 0, 'Devuelto');
+(1, 1002173560, 1, '2020-12-18', '15:21:00', '2020-12-09', '16:20:00', 3, 'Devuelto');
 
 -- --------------------------------------------------------
 
@@ -239,7 +251,7 @@ CREATE TABLE IF NOT EXISTS `proveedores` (
   `COD_PROVEEDOR` int(5) NOT NULL,
   `NOMBRE_PROVEEDOR` varchar(18) NOT NULL,
   `PRODUCTO` varchar(18) NOT NULL,
-  `DIREC_PRO` varchar(100) NOT NULL,
+  `DIREC_PRO` varchar(90) NOT NULL,
   `TELEFONO_PROVEEDOR` bigint(14) NOT NULL,
   `PAIS` varchar(25) NOT NULL,
   `CIUDAD` varchar(25) NOT NULL,
@@ -251,9 +263,8 @@ CREATE TABLE IF NOT EXISTS `proveedores` (
 --
 
 INSERT INTO `proveedores` (`COD_PROVEEDOR`, `NOMBRE_PROVEEDOR`, `PRODUCTO`, `DIREC_PRO`, `TELEFONO_PROVEEDOR`, `PAIS`, `CIUDAD`) VALUES
-(1, 'Panamericana', 'Libro', 'Calle 29 d # 22 - 108 Centro Comercial Caribe Plaza, Local 226, Cartagena, Bolivar', 3005474596, 'Colombia', 'Cartagena'),
-(3, 'Benq', 'Video Bean', 'calle2', 3001547896, 'Colombia', 'cartagena'),
-(19, 'norma', 'Cuaderno', 'clle4545', 3001247851, 'Colombia', 'Cartagena');
+(1, 'Panamericana', 'Libro', 'Calle 29 d # 22 - 108 Centro Comercial Caribe Plaza, Local 226, Cartagena, Bolívar', 6720706, 'Colombia', 'Cartagena'),
+(2, 'Benq', 'Video Beam', 'Carrera 65 A No. 98-15', 3001458789, 'Colombia', 'Bogota');
 
 -- --------------------------------------------------------
 
@@ -266,7 +277,7 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `USUARIO_ID` int(14) NOT NULL,
   `PASS` varchar(25) NOT NULL,
   `NIVEL` int(1) NOT NULL,
-  `NOMBRE_USU` varchar(20) DEFAULT NULL,
+  `NOMBRE_USU` varchar(20) NOT NULL,
   KEY `USUARIO_ID` (`USUARIO_ID`,`NIVEL`),
   KEY `NIVEL` (`NIVEL`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -276,8 +287,9 @@ CREATE TABLE IF NOT EXISTS `usuario` (
 --
 
 INSERT INTO `usuario` (`USUARIO_ID`, `PASS`, `NIVEL`, `NOMBRE_USU`) VALUES
-(1002058291, '1234', 1, 'Heisenber0115'),
-(7654, '54321', 2, 'Fortich');
+(1002058291, '1234', 1, 'DAVID'),
+(1002193885, '1234', 1, 'DILAN'),
+(1002193886, '1234', 2, 'INT GABRIEL FORTICH');
 
 --
 -- Restricciones para tablas volcadas
@@ -287,28 +299,28 @@ INSERT INTO `usuario` (`USUARIO_ID`, `PASS`, `NIVEL`, `NOMBRE_USU`) VALUES
 -- Filtros para la tabla `herramienta`
 --
 ALTER TABLE `herramienta`
-  ADD CONSTRAINT `herramienta_ibfk_1` FOREIGN KEY (`COD_PROVEEDOR`) REFERENCES `proveedores` (`COD_PROVEEDOR`),
-  ADD CONSTRAINT `herramienta_ibfk_2` FOREIGN KEY (`CATEGORIA`) REFERENCES `categorias` (`COD_CATEGORIA`);
+  ADD CONSTRAINT `herramienta_ibfk_1` FOREIGN KEY (`COD_PROVEEDOR`) REFERENCES `proveedores` (`COD_PROVEEDOR`) ON DELETE CASCADE,
+  ADD CONSTRAINT `herramienta_ibfk_2` FOREIGN KEY (`CATEGORIA`) REFERENCES `categorias` (`COD_CATEGORIA`) ON DELETE CASCADE;
 
 --
 -- Filtros para la tabla `personal`
 --
 ALTER TABLE `personal`
-  ADD CONSTRAINT `personal_ibfk_1` FOREIGN KEY (`CURSO`) REFERENCES `curso` (`COD_CURSO`);
+  ADD CONSTRAINT `personal_ibfk_1` FOREIGN KEY (`CURSO`) REFERENCES `curso` (`COD_CURSO`) ON DELETE CASCADE;
 
 --
 -- Filtros para la tabla `prestamos`
 --
 ALTER TABLE `prestamos`
-  ADD CONSTRAINT `prestamos_ibfk_1` FOREIGN KEY (`USUARIO_ID`) REFERENCES `personal` (`ID`),
-  ADD CONSTRAINT `prestamos_ibfk_2` FOREIGN KEY (`COD_LH`) REFERENCES `herramienta` (`COD_LH`);
+  ADD CONSTRAINT `prestamos_ibfk_1` FOREIGN KEY (`USUARIO_ID`) REFERENCES `personal` (`ID`) ON DELETE CASCADE,
+  ADD CONSTRAINT `prestamos_ibfk_2` FOREIGN KEY (`COD_LH`) REFERENCES `herramienta` (`COD_LH`) ON DELETE CASCADE;
 
 --
 -- Filtros para la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  ADD CONSTRAINT `usuario_ibfk_1` FOREIGN KEY (`USUARIO_ID`) REFERENCES `personal` (`ID`),
-  ADD CONSTRAINT `usuario_ibfk_2` FOREIGN KEY (`NIVEL`) REFERENCES `niveles` (`COD_NIVEL`);
+  ADD CONSTRAINT `usuario_ibfk_1` FOREIGN KEY (`USUARIO_ID`) REFERENCES `personal` (`ID`) ON DELETE CASCADE,
+  ADD CONSTRAINT `usuario_ibfk_2` FOREIGN KEY (`NIVEL`) REFERENCES `niveles` (`COD_NIVEL`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

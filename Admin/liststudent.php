@@ -81,7 +81,7 @@ include ('./logica/validacion.php');
                         </ul>
                     </li>
                     <li><a href="report.php"><i class="zmdi zmdi-trending-up zmdi-hc-fw"></i>&nbsp;&nbsp; Reportes</a></li>
-                     <li><a href="advancesettings.php"><i class="zmdi zmdi-wrench zmdi-hc-fw"></i>&nbsp;&nbsp; Acerca De...</a></li>
+                     <li><a href="advancesettings.php"><i class="zmdi zmdi-help-outline zmdi-hc-fw"></i>&nbsp;&nbsp; Acerca De...</a></li>
                 </ul>
             </div>
         </div>
@@ -140,7 +140,7 @@ include ('./logica/validacion.php');
      
       include("conexion.php");
  
-          $resultados = mysqli_query($conexion,"SELECT ID,CATEGORIA,CURSO,CORREO,TELEFONO, CONCAT(PRIMER_NOMBRE, ' ', PRIMER_APE,' ', SEGUNDO_APE) nombre_completo FROM personal where CURSO <> 1");?>
+          $resultados = mysqli_query($conexion,"SELECT ID,CATEGORIA,curso.CURSO cursoo,CORREO,TELEFONO, CONCAT(PRIMER_NOMBRE, ' ', PRIMER_APE,' ', SEGUNDO_APE) nombre_completo FROM personal,curso WHERE curso.COD_CURSO = personal.CURSO AND personal.CURSO <> 1");?>
 
           <table width='100%' border="2" id="estudiantes_tabla" >
               <thead style="color: #fff;background-color: #188010;">
@@ -166,7 +166,7 @@ include ('./logica/validacion.php');
                 <tr style='color: #000;'>
                   <td><b><center>".$consulta['ID']."</center></b></td>
                   <td><b><center>".$consulta['nombre_completo']."</center></b></td>
-                  <td><b><center>".$consulta['CURSO']."</center></b></td>
+                  <td><b><center>".$consulta['cursoo']."</center></b></td>
                   <td><b><center>".$consulta['CATEGORIA']."</center></b></td>
                   <td><b><center>".$consulta['CORREO']."</center></b></td>
                   <td><b><center>".$consulta['TELEFONO']."</center></b></td>

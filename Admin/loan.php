@@ -141,7 +141,7 @@ include ('./logica/validacion.php');
       include("conexion.php");
 
             $contador = 0 ;
-          $resultados = mysqli_query($conexion,"SELECT * from prestamos");?>
+          $resultados = mysqli_query($conexion,"SELECT PRESTAMO_ID, CONCAT (prestamos.USUARIO_ID,' - ',personal.PRIMER_NOMBRE,' ',personal.PRIMER_APE,' ',personal.SEGUNDO_APE)nombre2,herramienta.NOMBRE_LH nombre,FECHA_SALIDA,HORA_SALIDA,FECHA_ENTREGA,HORA_ENTREGA,CANTIDA_SA,ESTADO from prestamos,herramienta,personal WHERE herramienta.COD_LH = prestamos.COD_LH AND personal.ID = prestamos.USUARIO_ID");?>
 
           <table width='100%' border="2" id="estudiantes_tabla" >
               <thead style="color: #fff;background-color: #188010;">
@@ -168,8 +168,8 @@ include ('./logica/validacion.php');
         echo"
                 <tr style='color: #000;'>
                 <td><b><center>".$contador."</center></b></td>
-                  <td><b><center>".$consulta['USUARIO_ID']."</center></b></td>
-                  <td><b><center>".$consulta['COD_LH']."</center></b></td>
+                  <td><b><center>".$consulta['nombre2']."</center></b></td>
+                  <td><b><center>".$consulta['nombre']."</center></b></td>
                   <td><b><center>".$consulta['FECHA_SALIDA']."</center></b></td>
                   <td><b><center>".$consulta['HORA_SALIDA']."</center></b></td>
                   <td><b><center>".$consulta['FECHA_ENTREGA']."</center></b></td>
