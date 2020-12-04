@@ -23,7 +23,9 @@ include ('./logica/validacion.php');
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
     <script src="js/main.js"></script>
-    <script type="text/javascript" src="js/maain.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
+    <script type="text/javascript" src="//cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
 </head>
 <body>
      <div class="navbar-lateral full-reset">
@@ -56,6 +58,7 @@ include ('./logica/validacion.php');
                     <li>
                         <div class="dropdown-menu-button"><i class="zmdi zmdi-account-add zmdi-hc-fw"></i>&nbsp;&nbsp; Registro de usuarios <i class="zmdi zmdi-chevron-down pull-right zmdi-hc-fw icon-sub-menu"></i></div>
                         <ul class="list-unstyled">
+
                             <li><a href="student.php"><i class="zmdi zmdi-accounts zmdi-hc-fw"></i>&nbsp;&nbsp; Nuevo Personal</a></li>
                    
                         </ul>
@@ -72,15 +75,12 @@ include ('./logica/validacion.php');
                         <ul class="list-unstyled">
                             <li><a href="loan.html"><i class="zmdi zmdi-calendar zmdi-hc-fw"></i>&nbsp;&nbsp; Todos los préstamos</a></li>
                             <li>
-                                <a href="loanpending.php"><i class="zmdi zmdi-time-restore zmdi-hc-fw"></i>&nbsp;&nbsp; Devoluciones pendientes <span class="label label-danger pull-right label-mhover">7</span></a>
-                            </li>
-                            <li>
-                                <a href="loanreservation.php"><i class="zmdi zmdi-timer zmdi-hc-fw"></i>&nbsp;&nbsp; Reservaciones <span class="label label-danger pull-right label-mhover">7</span></a>
+                                <a href="loanpending.php"><i class="zmdi zmdi-time-restore zmdi-hc-fw"></i>&nbsp;&nbsp; Devoluciones pendientes</a>
                             </li>
                         </ul>
                     </li>
-                    <li><a href="report.php"><i class="zmdi zmdi-trending-up zmdi-hc-fw"></i>&nbsp;&nbsp; Reportes y estadísticas</a></li>
-                    <li><a href="advancesettings.php"><i class="zmdi zmdi-wrench zmdi-hc-fw"></i>&nbsp;&nbsp; Configuraciones avanzadas</a></li>
+                    <li><a href="report.php"><i class="zmdi zmdi-trending-up zmdi-hc-fw"></i>&nbsp;&nbsp; Reportes</a></li>
+                     <li><a href="advancesettings.php"><i class="zmdi zmdi-help-outline zmdi-hc-fw"></i>&nbsp;&nbsp; Acerca De...</a></li>
                 </ul>
             </div>
         </div>
@@ -131,23 +131,57 @@ include ('./logica/validacion.php');
                 </div>
             </div>
         </div>
-        <div class="container-fluid" style="margin: 0 0 50px 0;">
-            <form class="pull-right" style="width: 30% !important;" autocomplete="off" action="liststudent.php" method="POST">
-                <div class="group-material">
-                    <input type="text" name="caja_busqueda" id="caja_busqueda" style="display: inline-block !important; width: 70%;" class="form-control" placeholder="Buscar estudiante"  maxlength="50" data-toggle="tooltip" data-placement="top" title="Escribe los nombres, sin los apellidos">
 
-                </div>
-            </form>
-
-        </div>
-         <h2 class="text-center all-tittles">listado de estudiantes</h2>
-                    <div class="container-fluid" id="datos">
+         <h2 class="text-center all-tittles">listado de estudiantes</h2><br><br>
+                    <div class="container-fluid" >
            
+       <?php
+     
+      include("conexion.php");
+ 
+          $resultados = mysqli_query($conexion,"SELECT ID,CATEGORIA,curso.CURSO cursoo,CORREO,TELEFONO, CONCAT(PRIMER_NOMBRE, ' ', PRIMER_APE,' ', SEGUNDO_APE) nombre_completo FROM personal,curso WHERE curso.COD_CURSO = personal.CURSO AND personal.CURSO <> 1");?>
+
+          <table width='100%' border="2" id="estudiantes_tabla" >
+              <thead style="color: #fff;background-color: #188010;">
+              <tr>
+                  <td><b><center>ID</center></b></td>
+                  <td><b><center>Nombre completo</center></b></td>
+                  <td><b><center>Curso</center></b></td>
+                  <td><b><center>Categoria</center></b></td>
+                  <td><b><center>Apellido</center></b></td>
+                  <td><b><center>Curso</center></b></td>
+                  <td><b><center>Editar</center></b></td>
+                  <td><b><center>Eliminar</center></b></td>
 
 
 
-       
 
+            </tr></thead> <tbody>
+
+          <?php while($consulta = mysqli_fetch_array($resultados))
+          {
+
+        echo"
+                <tr style='color: #000;'>
+                  <td><b><center>".$consulta['ID']."</center></b></td>
+                  <td><b><center>".$consulta['nombre_completo']."</center></b></td>
+                  <td><b><center>".$consulta['cursoo']."</center></b></td>
+                  <td><b><center>".$consulta['CATEGORIA']."</center></b></td>
+                  <td><b><center>".$consulta['CORREO']."</center></b></td>
+                  <td><b><center>".$consulta['TELEFONO']."</center></b></td>
+
+                  
+                  <td><center><a href='actualizaar.php?id=".$consulta['ID']."'><button class='btn btn-primary'><i class='zmdi zmdi-refresh'> Editar</button></center></td>
+                  
+                  <td><center><a href='./logica/eliminar.php?id=".$consulta['ID']."' class='eliminar'><button class='btn btn-danger'>Eliminar  <i class='zmdi zmdi-delete'></i></button><a></center></td>
+                </tr>
+            ";
+          }?>
+  
+        </tbody></table>
+
+                
+<br><br>
                     </div>
                 </div>
             </div>
@@ -166,5 +200,7 @@ include ('./logica/validacion.php');
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="zmdi zmdi-thumb-up"></i> &nbsp; De acuerdo</button>
 
+<script type="text/javascript" src="./js/confirmacion.js"></script>
+<script type="text/javascript" src="./js/init_datatable.js"></script>
 </body>
 </html>

@@ -23,6 +23,8 @@ include ('./logica/validacion.php');
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
     <script src="js/main.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/select2.css">
+    <script src="js/select2.js"></script>
 </head>
 <body>
     <div class="navbar-lateral full-reset">
@@ -70,15 +72,12 @@ include ('./logica/validacion.php');
                         <ul class="list-unstyled">
                             <li><a href="loan.php"><i class="zmdi zmdi-calendar zmdi-hc-fw"></i>&nbsp;&nbsp; Todos los préstamos</a></li>
                             <li>
-                                <a href="loanpending.php"><i class="zmdi zmdi-time-restore zmdi-hc-fw"></i>&nbsp;&nbsp; Devoluciones pendientes <span class="label label-danger pull-right label-mhover">7</span></a>
-                            </li>
-                            <li>
-                                <a href="loanreservation.php"><i class="zmdi zmdi-timer zmdi-hc-fw"></i>&nbsp;&nbsp; Reservaciones <span class="label label-danger pull-right label-mhover">7</span></a>
+                                <a href="loanpending.php"><i class="zmdi zmdi-time-restore zmdi-hc-fw"></i>&nbsp;&nbsp; Devoluciones pendientes </a>
                             </li>
                         </ul>
                     </li>
-                    <li><a href="report.php"><i class="zmdi zmdi-trending-up zmdi-hc-fw"></i>&nbsp;&nbsp; Reportes y estadísticas</a></li>
-                    <li><a href="advancesettings.php"><i class="zmdi zmdi-wrench zmdi-hc-fw"></i>&nbsp;&nbsp; Configuraciones avanzadas</a></li>
+                    <li><a href="report.php"><i class="zmdi zmdi-trending-up zmdi-hc-fw"></i>&nbsp;&nbsp; Reportes</a></li>
+                    <li><a href="advancesettings.php"><i class="zmdi zmdi-help-outline zmdi-hc-fw"></i>&nbsp;&nbsp; Acerca De...</a></li>
                 </ul>
             </div>
         </div>
@@ -92,15 +91,7 @@ include ('./logica/validacion.php');
                 <li style="color:#fff; cursor:default;">
                     <span class="all-tittles"><?php $usuario = $_SESSION['usuario']; $nombre=$usuario['NOMBRE_USU']; echo $nombre;?></span>
                 </li>
-                <li  class="tooltips-general exit-system-button" data-href="index.html" data-placement="bottom" title="Salir del sistema">
-                    <i class="zmdi zmdi-power"></i>
-                </li>
-                <li  class="tooltips-general search-book-button" data-href="searchbook.html" data-placement="bottom" title="Buscar libro">
-                    <i class="zmdi zmdi-search"></i>
-                </li>
-                <li  class="tooltips-general btn-help" data-placement="bottom" title="Ayuda">
-                    <i class="zmdi zmdi-help-outline zmdi-hc-fw"></i>
-                </li>
+
                 <li class="mobile-menu-button visible-xs" style="float: left !important;">
                     <i class="zmdi zmdi-menu"></i>
                 </li>
@@ -127,7 +118,7 @@ include ('./logica/validacion.php');
         </div>
         <div class="container-fluid">
             <div class="container-flat-form">
-                <div class="title-flat-form title-flat-blue">Nuevo libro</div>
+                <div class="title-flat-form title-flat-blue">Nuevo libro o Herramienta</div>
                 <form class="form-padding" action="./logica/insertaherra.php" method="POST">
                     <div class="row">
                         <div class="col-xs-12">
@@ -135,7 +126,7 @@ include ('./logica/validacion.php');
                         </div>
                         <div class="col-xs-12 col-sm-6">
                             <div class="group-material">
-                               <center> <p  style="padding-top: 15px">Codigo libro</p></center>
+                               <center> <p  style="padding-top: 15px">Codigo libro o herramienta</p></center>
                                 <input type="text" class="form-control" name="codlib" placeholder="Escribe aquí el código correlativo del libro" pattern="[0-9]{1,20}" required="" maxlength="5" data-toggle="tooltip" data-placement="top" title="Escribe el código correlativo del libro, solamente números">
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
@@ -144,7 +135,7 @@ include ('./logica/validacion.php');
                         </div>
                         <div class="col-xs-12 col-sm-6">
                             <div class="group-material">
-                               <center> <p  style="padding-top: 15px">Nombre del libro</p> </center>
+                               <center> <p  style="padding-top: 15px">Nombre del libro o herramienta</p> </center>
                                 <input type="text" class="form-control" name="nomblib" placeholder="Escribe aquí el título o nombre del libro" required="" maxlength="70" data-toggle="tooltip" data-placement="top" title="Escribe el título o nombre del libro">
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
@@ -154,7 +145,7 @@ include ('./logica/validacion.php');
                         <div class="col-xs-12 col-sm-6">
                             <div class="group-material">
                                <center>  <p  style="padding-top: 15px">Autor</p> </center>
-                                <input type="text"class="form-control" name="autor" placeholder="Escribe aquí el autor del libro" required="" maxlength="70" data-toggle="tooltip" data-placement="top" title="Escribe el nombre del autor del libro">
+                                <input type="text"class="form-control" name="autor" placeholder="Escribe aquí el autor del libro" maxlength="70" data-toggle="tooltip" data-placement="top" title="Escribe el nombre del autor del libro">
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
                                 
@@ -174,12 +165,12 @@ include ('./logica/validacion.php');
                         <div class="col-xs-12">
                             <div class="group-material">
                                <center> <p  style="padding-top: 15px">Categoría</p> </center>
-                                <select class="form-control" name="categoria"  data-toggle="tooltip" data-placement="top" title="Elige la categoría del libro">
+                                <select class="form-control" name="categoria"  id="cate" data-toggle="tooltip" data-placement="top" title="Elige la categoría del libro">
                                     <option value="" disabled="" selected="">Selecciona una categoría</option>
                                     <?php
-                                    include ("conexion.php");
+                                    include ("./logica/db.php");
 
-                                    $consulta = "SELECT * FROM categorias ";
+                                    $consulta = "SELECT * FROM categorias WHERE ESTADO = 'Activa'";
                                     $resultado = mysqli_query($conexion, $consulta);
 
                                     while ($row = mysqli_fetch_array($resultado))
@@ -208,10 +199,10 @@ include ('./logica/validacion.php');
                         <div class="col-xs-12">
                             <div class="group-material">
                                 <center>  <p  style="padding-top: 15px">Proveedor</p> </center>
-                                <select class="form-control" name="proveedor" data-toggle="tooltip" data-placement="top" title="Elige el proveedor del libro">
+                                <select class="form-control" name="proveedor" id="prove" data-toggle="tooltip" data-placement="top" title="Elige el proveedor del libro">
                                     <option value="" disabled="" selected="">Selecciona un proveedor</option>
                                     <?php
-                                    include ("conexion.php");
+                                    include ("./logica/db.php");
 
                                     $consulta = "SELECT * FROM proveedores ";
                                     $resultado = mysqli_query($conexion, $consulta);
@@ -232,24 +223,14 @@ include ('./logica/validacion.php');
 
                                     <?php } ?>
 
-                                </select>
+                                  </select>
                             </div>
                         </div>
-                        <div class="col-xs-12 col-sm-6">
-                           <div class="group-material">
-                                <p class="text-center" style="padding-top: 15px">Estado</p>
-                                <select class="form-control" name="estado"  data-toggle="tooltip" data-placement="top" title="Elige la sección a la que pertenece el alumno">
-                                    <option value="" disabled="" selected="">Selecciona un Curso</option>
-                                    <option value="Malo">Malo</option>
-                                    <option value="Regular">Regular</option>
-                                    <option value="Excelente">Excelente</option>   
-                                </select>
-                           </div>
-                        </div>
-                        <div class="col-xs-12 col-sm-6">
+                      
+                        <div class="col-xs-12 col-sm-6" style="margin-left: 25%">
                             <div class="group-material">
                                <center>  <p  style="padding-top: 15px">Editorial</p> </center>
-                                <input type="text" class="form-control" name="editlibro" placeholder="Escribe aquí la editorial del libro" required="" maxlength="70" data-toggle="tooltip" data-placement="top" title="Editorial del libro">
+                                <input type="text" class="form-control" name="editlibro" placeholder="Escribe aquí la editorial del libro" maxlength="70" data-toggle="tooltip" data-placement="top" title="Editorial del libro">
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
                                 
@@ -302,3 +283,9 @@ include ('./logica/validacion.php');
     </div>
 </body>
 </html>
+<script type="text/javascript">
+    $(document).ready(function(){
+            $('#prove').select2();
+            $('#cate').select2();
+    });
+</script>

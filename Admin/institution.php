@@ -298,7 +298,7 @@ include ('./logica/validacion.php');
                         <div class="col-xs-12 col-sm-6">
                             <div class="group-material">
                                 <p style="padding-top: 15px">Pagina Web</p>
-                                <input type="text" class="form-control" readonly="" value="<?php echo $consulta['paginaweb']?>" placeholder="Pagina web" required="" pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ]{1,50}" maxlength="50" data-toggle="tooltip" data-placement="top" title="Escribe la pagina web de la institución">
+                                <input type="text" class="form-control" readonly="" value="<?php echo $consulta['paginaweb']?>" placeholder="Pagina web" required="" pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ. ]{1,50}" maxlength="50" data-toggle="tooltip" data-placement="top" title="Escribe la pagina web de la institución">
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
                                 
@@ -306,8 +306,7 @@ include ('./logica/validacion.php');
                         </div>
                        <div class="col-xs-12">
                             <p class="text-center">
-                                <button type="reset" class="btn btn-info" style="margin-right: 20px;"><i class="zmdi zmdi-roller"></i> &nbsp;&nbsp; Editar</button>
-                                <button type="submit" class="btn btn-primary"><i class="zmdi zmdi-floppy"></i> &nbsp;&nbsp; Guardar</button>
+                               <button  class="btn btn-primary"><a href="actualizarinsti.php" style="color: #fff"><i class="zmdi zmdi-roller"></i>  &nbsp;&nbsp; Editar</a></button> 
                             </p> 
                        </div>
                    </div>

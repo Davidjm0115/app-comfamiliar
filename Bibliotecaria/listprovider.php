@@ -23,7 +23,9 @@ include ('./logica/validacion.php');
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
     <script src="js/main.js"></script>
-    <script type="text/javascript" src="js/maainprovedor.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
+    <script type="text/javascript" src="//cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
 </head>
 <body>
     <div class="navbar-lateral full-reset">
@@ -56,8 +58,8 @@ include ('./logica/validacion.php');
                     <li>
                         <div class="dropdown-menu-button"><i class="zmdi zmdi-account-add zmdi-hc-fw"></i>&nbsp;&nbsp; Registro de usuarios <i class="zmdi zmdi-chevron-down pull-right zmdi-hc-fw icon-sub-menu"></i></div>
                         <ul class="list-unstyled">
-
-                            <li><a href="student.php"><i class="zmdi zmdi-accounts zmdi-hc-fw"></i>&nbsp;&nbsp; Nuevo Personal</a></li>
+                           
+                            <li><a href="student.php"><i class="zmdi zmdi-accounts zmdi-hc-fw"></i>&nbsp;&nbsp; Nuevo estudiante</a></li>
                    
                         </ul>
                     </li>
@@ -73,15 +75,12 @@ include ('./logica/validacion.php');
                         <ul class="list-unstyled">
                             <li><a href="loan.html"><i class="zmdi zmdi-calendar zmdi-hc-fw"></i>&nbsp;&nbsp; Todos los préstamos</a></li>
                             <li>
-                                <a href="loanpending.php"><i class="zmdi zmdi-time-restore zmdi-hc-fw"></i>&nbsp;&nbsp; Devoluciones pendientes <span class="label label-danger pull-right label-mhover">7</span></a>
-                            </li>
-                            <li>
-                                <a href="loanreservation.php"><i class="zmdi zmdi-timer zmdi-hc-fw"></i>&nbsp;&nbsp; Reservaciones <span class="label label-danger pull-right label-mhover">7</span></a>
+                                <a href="loanpending.php"><i class="zmdi zmdi-time-restore zmdi-hc-fw"></i>&nbsp;&nbsp; Devoluciones pendientes</a>
                             </li>
                         </ul>
                     </li>
-                    <li><a href="report.php"><i class="zmdi zmdi-trending-up zmdi-hc-fw"></i>&nbsp;&nbsp; Reportes y estadísticas</a></li>
-                    <li><a href="advancesettings.php"><i class="zmdi zmdi-wrench zmdi-hc-fw"></i>&nbsp;&nbsp; Configuraciones avanzadas</a></li>
+                    <li><a href="report.php"><i class="zmdi zmdi-trending-up zmdi-hc-fw"></i>&nbsp;&nbsp; Reportes</a></li>
+                     <li><a href="advancesettings.php"><i class="zmdi zmdi-help-outline zmdi-hc-fw"></i>&nbsp;&nbsp; Acerca De...</a></li>
                 </ul>
             </div>
         </div>
@@ -95,15 +94,7 @@ include ('./logica/validacion.php');
                 <li style="color:#fff; cursor:default;">
                     <span class="all-tittles"><?php $usuario = $_SESSION['usuario']; $nombre=$usuario['NOMBRE_USU']; echo $nombre;?></span>
                 </li>
-                <li  class="tooltips-general exit-system-button" data-href="index.html" data-placement="bottom" title="Salir del sistema">
-                    <i class="zmdi zmdi-power"></i>
-                </li>
-                <li  class="tooltips-general search-book-button" data-href="searchbook.html" data-placement="bottom" title="Buscar libro">
-                    <i class="zmdi zmdi-search"></i>
-                </li>
-                <li  class="tooltips-general btn-help" data-placement="bottom" title="Ayuda">
-                    <i class="zmdi zmdi-help-outline zmdi-hc-fw"></i>
-                </li>
+
                 <li class="mobile-menu-button visible-xs" style="float: left !important;">
                     <i class="zmdi zmdi-menu"></i>
                 </li>
@@ -147,24 +138,69 @@ include ('./logica/validacion.php');
             </div>
         </div>
                 <div class="container-fluid" style="margin: 0 0 50px 0;">
-            <form class="pull-right" style="width: 30% !important;" autocomplete="off" action="listprovider.php" method="POST">
-                <div class="group-material">
-                <div class="group-material">
-                    <input type="text" name="caja_busqueda" id="caja_busqueda" style="display: inline-block !important; width: 70%;" class="form-control" placeholder="Buscar proveedores"  maxlength="50" data-toggle="tooltip" data-placement="top" title="Escriba el codigo, nombre o producto del proveedor">
 
-                </div>
-                </div>
-            </form>
 
         </div>
             <h2 class="text-center all-tittles">listado de proveedores</h2>
-             <div class="container-fluid" id="datos">
+             <div class="container-fluid" >
             
+ <?php
+     
+      include("./logica/db.php");
+ 
+          $resultados = mysqli_query($conexion,"SELECT * FROM proveedores");?>
 
+          <table width='100%' border="1" id="prove_tabla" >
+              <thead style="color: #fff;background-color: #188010;">
+              <tr>
+                <td><b><center>ID Proveedor</center></b></td>
+                <td><b><center>Nombre Proveedor</center></b></td>
+                <td><b><center>Producto</center></b></td>
+                <td><b><center>Dirección proveedor</center></b></td>
+                <td><b><center>Telefono</center></b></td>
+                <td><b><center>Pais</center></b></td>
+                <td><b><center>Ciudad</center></b></td>
+
+                  <td><b><center>Editar</center></b></td>
+                  <td><b><center>Eliminar</center></b></td>
+
+
+
+
+            </tr></thead> <tbody>
+
+          <?php while($consulta = mysqli_fetch_array($resultados))
+          {
+
+        echo"
+                <tr style='color: #000;'>
+                <td><b><center>".$consulta['COD_PROVEEDOR']."</center></b></td>
+                <td><b><center>".$consulta['NOMBRE_PROVEEDOR']."</center></b></td>
+                <td><b><center>".$consulta['PRODUCTO']."</center></b></td>
+                <td><b><center>".$consulta['DIREC_PRO']."</center></b></td>
+                <td><b><center>".$consulta['TELEFONO_PROVEEDOR']."</center></b></td>
+                <td><b><center>".$consulta['PAIS']."</center></b></td>
+                <td><b><center>".$consulta['CIUDAD']."</center></b></td>
+
+
+                  
+                  <td><center><a href='actualizarprove.php?id=".$consulta['COD_PROVEEDOR']."'><button class='btn btn-primary'><i class='zmdi zmdi-refresh'> Editar</button></center></td>
+                  
+                  <td><center><a href='./logica/eliminarpro.php?id=".$consulta['COD_PROVEEDOR']."' class='eliminar'><button class='btn btn-danger'>Eliminar  <i class='zmdi zmdi-delete'></i></button><a></center></td>
+                </tr>
+            ";
+          }?>
+  
+        </tbody></table>
+
+                
+<br><br>
         
              </div>
         </div>
     </div>
 </div>
+<script type="text/javascript" src="./js/confirmacion.js"></script>
+<script type="text/javascript" src="./js/init_datatable.js"></script>
 </body>
 </html>

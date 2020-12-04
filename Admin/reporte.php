@@ -38,7 +38,7 @@ function Footer()
 }
 }
 
-require ('conexion.php');
+require ('.././logica/db.php');
 $consulta = "SELECT * FROM personal WHERE CURSO !=1 order by PRIMER_NOMBRE";
 
 $resultado= mysqli_query($conexion, $consulta);

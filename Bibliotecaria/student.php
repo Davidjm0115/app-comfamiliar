@@ -23,6 +23,8 @@ include ('./logica/validacion.php');
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
     <script src="js/main.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/select2.css">
+    <script src="js/select2.js"></script>
 </head>
 <body>
     <div class="navbar-lateral full-reset">
@@ -55,7 +57,7 @@ include ('./logica/validacion.php');
                     <li>
                         <div class="dropdown-menu-button"><i class="zmdi zmdi-account-add zmdi-hc-fw"></i>&nbsp;&nbsp; Registro de usuarios <i class="zmdi zmdi-chevron-down pull-right zmdi-hc-fw icon-sub-menu"></i></div>
                         <ul class="list-unstyled">
-   
+                                
                             <li><a href="student.php"><i class="zmdi zmdi-accounts zmdi-hc-fw"></i>&nbsp;&nbsp; Nuevo Personal</a></li>
                         </ul>
                     </li>
@@ -71,15 +73,12 @@ include ('./logica/validacion.php');
                         <ul class="list-unstyled">
                             <li><a href="loan.php"><i class="zmdi zmdi-calendar zmdi-hc-fw"></i>&nbsp;&nbsp; Todos los préstamos</a></li>
                             <li>
-                                <a href="loanpending.php"><i class="zmdi zmdi-time-restore zmdi-hc-fw"></i>&nbsp;&nbsp; Devoluciones pendientes <span class="label label-danger pull-right label-mhover">7</span></a>
-                            </li>
-                            <li>
-                                <a href="loanreservation.php"><i class="zmdi zmdi-timer zmdi-hc-fw"></i>&nbsp;&nbsp; Reservaciones <span class="label label-danger pull-right label-mhover">7</span></a>
+                                <a href="loanpending.php"><i class="zmdi zmdi-time-restore zmdi-hc-fw"></i>&nbsp;&nbsp; Devoluciones pendientes </a>
                             </li>
                         </ul>
                     </li>
-                    <li><a href="report.php"><i class="zmdi zmdi-trending-up zmdi-hc-fw"></i>&nbsp;&nbsp; Reportes y estadísticas</a></li>
-                    <li><a href="advancesettings.php"><i class="zmdi zmdi-wrench zmdi-hc-fw"></i>&nbsp;&nbsp; Configuraciones avanzadas</a></li>
+                    <li><a href="report.php"><i class="zmdi zmdi-trending-up zmdi-hc-fw"></i>&nbsp;&nbsp; Reportes</a></li>
+                    <li><a href="advancesettings.php"><i class="zmdi zmdi-help-outline zmdi-hc-fw"></i>&nbsp;&nbsp; Acerca De...</a></li>
                 </ul>
             </div>
         </div>
@@ -91,17 +90,9 @@ include ('./logica/validacion.php');
                    <img src="assets/img/user01.png" alt="user-picture" class="img-responsive img-circle center-box">
                 </figure>
                 <li style="color:#fff; cursor:default;">
-                    <span class="all-tittles">Admin Name</span>
+                    <span class="all-tittles"><?php $usuario = $_SESSION['usuario']; $nombre=$usuario['NOMBRE_USU']; echo $nombre;?></span>
                 </li>
-                <li  class="tooltips-general exit-system-button" data-href="index.html" data-placement="bottom" title="Salir del sistema">
-                    <i class="zmdi zmdi-power"></i>
-                </li>
-                <li  class="tooltips-general search-book-button" data-href="searchbook.html" data-placement="bottom" title="Buscar libro">
-                    <i class="zmdi zmdi-search"></i>
-                </li>
-                <li  class="tooltips-general btn-help" data-placement="bottom" title="Ayuda">
-                    <i class="zmdi zmdi-help-outline zmdi-hc-fw"></i>
-                </li>
+
                 <li class="mobile-menu-button visible-xs" style="float: left !important;">
                     <i class="zmdi zmdi-menu"></i>
                 </li>
@@ -118,7 +109,7 @@ include ('./logica/validacion.php');
         </div>
         <div class="conteiner-fluid">
             <ul class="nav nav-tabs nav-justified"  style="font-size: 17px;">
-                <li role="presentation" ><a href="admin.php">Administradores</a></li>
+
                 <li role="presentation" class="active"><a href="student.html">Estudiantes</a></li>
             </ul>
         </div>
@@ -206,16 +197,16 @@ include ('./logica/validacion.php');
                                     <option value="d">D</option>
                                 </select>
                             </div>
-</div>
+                            </div>
                         </div>
                         <div class="col-xs-12">
                              <div class="col-xs-12">
                            <div class="group-material">
                                 <p class="text-center" style="padding-top: 15px">Curso</p>
-                                <select class="form-control" name="curso"  data-toggle="tooltip" data-placement="top" title="Elige la sección a la que pertenece el alumno">
+                                <select class="form-control" name="curso" id="cursoo"  data-toggle="tooltip" data-placement="top" title="Elige la sección a la que pertenece el alumno">
                                     <option value="" disabled="" selected="">Selecciona un Curso</option>
                                 <?php
-                                    include ("conexion.php");
+                                    include ("./logica/db.php");
 
                                     $consulta = "SELECT * FROM curso where curso != 'admin' ";
                                     $resultado = mysqli_query($conexion, $consulta);
@@ -306,3 +297,8 @@ include ('./logica/validacion.php');
     </div>
 </body>
 </html>
+<script type="text/javascript">
+    $(document).ready(function(){
+            $('#cursoo').select2();
+    });
+</script>

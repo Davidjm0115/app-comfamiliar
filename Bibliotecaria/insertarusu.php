@@ -1,6 +1,6 @@
 <?php
 
-include("conexion.php");
+include("./logica/db.php"); 
 
         $numid = $_POST['numid'];
         $pnombre = $_POST['pnombre'];

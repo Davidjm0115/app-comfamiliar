@@ -71,15 +71,13 @@ include ('./logica/validacion.php');
                         <ul class="list-unstyled">
                             <li><a href="loan.php"><i class="zmdi zmdi-calendar zmdi-hc-fw"></i>&nbsp;&nbsp; Todos los préstamos</a></li>
                             <li>
-                                <a href="loanpending.php"><i class="zmdi zmdi-time-restore zmdi-hc-fw"></i>&nbsp;&nbsp; Devoluciones pendientes <span class="label label-danger pull-right label-mhover">7</span></a>
+                                <a href="loanpending.php"><i class="zmdi zmdi-time-restore zmdi-hc-fw"></i>&nbsp;&nbsp; Devoluciones pendientes </a>
                             </li>
-                            <li>
-                                <a href="loanreservation.php"><i class="zmdi zmdi-timer zmdi-hc-fw"></i>&nbsp;&nbsp; Reservaciones <span class="label label-danger pull-right label-mhover">7</span></a>
-                            </li>
+
                         </ul>
                     </li>
-                    <li><a href="report.php"><i class="zmdi zmdi-trending-up zmdi-hc-fw"></i>&nbsp;&nbsp; Reportes y estadísticas</a></li>
-                    <li><a href="advancesettings.php"><i class="zmdi zmdi-wrench zmdi-hc-fw"></i>&nbsp;&nbsp; Configuraciones avanzadas</a></li>
+                    <li><a href="report.php"><i class="zmdi zmdi-trending-up zmdi-hc-fw"></i>&nbsp;&nbsp; Reportes</a></li>
+                     <li><a href="advancesettings.php"><i class="zmdi zmdi-help-outline zmdi-hc-fw"></i>&nbsp;&nbsp; Acerca De...</a></li>
                 </ul>
             </div>
         </div>
@@ -93,15 +91,7 @@ include ('./logica/validacion.php');
                 <li style="color:#fff; cursor:default;">
                     <span class="all-tittles"><?php $usuario = $_SESSION['usuario']; $nombre=$usuario['NOMBRE_USU']; echo $nombre;?></span>
                 </li>
-                <li  class="tooltips-general exit-system-button" data-href="index.html" data-placement="bottom" title="Salir del sistema">
-                    <i class="zmdi zmdi-power"></i>
-                </li>
-                <li  class="tooltips-general search-book-button" data-href="searchbook.html" data-placement="bottom" title="Buscar libro">
-                    <i class="zmdi zmdi-search"></i>
-                </li>
-                <li  class="tooltips-general btn-help" data-placement="bottom" title="Ayuda">
-                    <i class="zmdi zmdi-help-outline zmdi-hc-fw"></i>
-                </li>
+
                 <li class="mobile-menu-button visible-xs" style="float: left !important;">
                     <i class="zmdi zmdi-menu"></i>
                 </li>
@@ -113,96 +103,25 @@ include ('./logica/validacion.php');
         <div class="container">
             <div class="jumbotron">
             <div class="page-header">
-              <h1 class="all-tittles">Sistema bibliotecario <small>configuraciones avanzadas</small></h1>
+             <center> <h1 class="all-tittles">Acerca De...</h1></center>
         </div>
-        <ul class="nav nav-tabs nav-justified" role="tablist">
-            <li role="presentation" class="active"><a href="#security" aria-controls="security" role="tab" data-toggle="tab">Seguridad</a></li>
-            <li role="presentation"><a href="#others" aria-controls="others" role="tab" data-toggle="tab">Otras opciones</a></li>
-        </ul>
+
         <div class="tab-content">
             <div role="tabpanel" class="tab-pane fade in active" id="security">
                 <div class="container-fluid"  style="margin: 50px 0;">
                     <div class="row">
-                        <div class="col-xs-12 col-sm-4 col-md-3">
-                            <p class="text-center text-danger"><i class="zmdi zmdi-shield-security zmdi-hc-5x"></i></p>
-                        </div>
-                        <div class="col-xs-12 col-sm-8 col-md-8 text-justify lead">
-                            Puedes realizar copias de seguridad de la base de datos en cualquier momento, también puedes restaurar el sistema a un punto de restauración que hayas creado previamente.
-                        </div>
-                    </div>
-                </div>  
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-xs-12 col-md-6">
-                            <div class="report-content">
-                                <p class="text-center"><i class="zmdi zmdi-cloud-download zmdi-hc-4x"></i></p>
-                                <h3 class="text-center all-tittles">realizar copia de seguridad</h3>
-                            </div>
-                        </div>
-                        <div class="col-xs-12 col-md-6">
-                            <div class="report-content">
-                                <p class="text-center"><i class="zmdi zmdi-cloud-upload zmdi-hc-4x"></i></p>
-                                <h3 class="text-center all-tittles">restaurar el sistema</h3>
-                            </div>
-                        </div>
-                        <div class="col-xs-12 col-md-6">
-                            <div class="report-content">
-                                <p class="text-center"><i class="zmdi zmdi-cloud-off zmdi-hc-4x"></i></p>
-                                <h3 class="text-center all-tittles">borrar copias de seguridad</h3>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div role="tabpanel" class="tab-pane fade" id="others">
-                <div class="container-fluid"  style="margin: 50px 0;">
-                    <div class="row">
-                        <div class="col-xs-12 col-sm-4 col-md-3">
-                            <p class="text-center text-danger"><i class="zmdi zmdi-fire zmdi-hc-5x"></i></p>
-                        </div>
-                        <div class="col-xs-12 col-sm-8 col-md-8 text-justify lead">
-                            En esta sección se muestran opciones avanzadas para eliminar grandes cantidades de datos. Eliminarás todos los datos registrados en el sistema de la opción que elijas. .
-                        </div>
-                    </div>
-                </div>
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-xs-12 col-sm-6 col-md-4">
-                            <div class="report-content">
-                                <p class="text-center"><i class="zmdi zmdi-calendar-close zmdi-hc-4x"></i></p>
-                                <h3 class="text-center all-tittles">eliminar préstamos</h3>
-                            </div>
-                        </div>
-                        <div class="col-xs-12 col-sm-6 col-md-4">
-                            <div class="report-content">
-                                <p class="text-center"><i class="zmdi zmdi-male-alt zmdi-hc-4x"></i></p>
-                                <h3 class="text-center all-tittles">eliminar docentes</h3>
-                            </div>
-                        </div>
-                        <div class="col-xs-12 col-sm-6 col-md-4">
-                            <div class="report-content">
-                                <p class="text-center"><i class="zmdi zmdi-accounts-alt zmdi-hc-4x"></i></p>
-                                <h3 class="text-center all-tittles">eliminar estudiantes</h3>
-                            </div>
-                        </div>
-                        <div class="col-xs-12 col-sm-6 col-md-4">
-                            <div class="report-content">
-                                <p class="text-center"><i class="zmdi zmdi-male-female zmdi-hc-4x"></i></p>
-                                <h3 class="text-center all-tittles">eliminar personal ad.</h3>
-                            </div>
-                        </div>
-                        <div class="col-xs-12 col-sm-6 col-md-4">
-                            <div class="report-content">
-                                <p class="text-center"><i class="zmdi zmdi-book zmdi-hc-4x"></i></p>
-                                <h3 class="text-center all-tittles">eliminar libros</h3>
-                            </div>
-                        </div>
-                        <div class="col-xs-12 col-sm-6 col-md-4">
-                            <div class="report-content">
-                                <p class="text-center"><i class="zmdi zmdi-time-restore-setting zmdi-hc-4x"></i></p>
-                                <h3 class="text-center all-tittles">eliminar bitacora</h3>
-                            </div>
-                        </div>
+                        <div class="panel-body">
+                      <h2>Proyecto: </h2> 
+                      <p>Sistema Biblioteca 1.0</p>
+                      <h2>Desarrollado por: </h2>
+                      <p>NOVA SYSTEM S.A.S</p>
+                      <h2>Email:</h2>
+                      <p> Novasytemsas@gmail.com</p>
+                      <h2>Celular:</h2>
+                      <p> +57 3012862515</p>
+                    <h2>Git Hub:  </h2>  <a href="https://github.com/Davidjm0115" target="_blank"><p>https://github.com/NovaSystem</p></a>
+                    </div> 
+                       
                     </div>
                 </div>
             </div>

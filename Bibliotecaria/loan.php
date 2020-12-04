@@ -23,6 +23,9 @@ include ('./logica/validacion.php');
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
     <script src="js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
+    <script type="text/javascript" src="//cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
 </head>
 <body>
     <div class="navbar-lateral full-reset">
@@ -54,7 +57,8 @@ include ('./logica/validacion.php');
                     </li>
                     <li>
                         <div class="dropdown-menu-button"><i class="zmdi zmdi-account-add zmdi-hc-fw"></i>&nbsp;&nbsp; Registro de usuarios <i class="zmdi zmdi-chevron-down pull-right zmdi-hc-fw icon-sub-menu"></i></div>
-                        <ul class="list-unstyled">  
+                        <ul class="list-unstyled">
+           
                             <li><a href="student.php"><i class="zmdi zmdi-accounts zmdi-hc-fw"></i>&nbsp;&nbsp; Nuevo Personal</a></li>
                         </ul>
                     </li>
@@ -70,15 +74,12 @@ include ('./logica/validacion.php');
                         <ul class="list-unstyled">
                             <li><a href="loan.php"><i class="zmdi zmdi-calendar zmdi-hc-fw"></i>&nbsp;&nbsp; Todos los préstamos</a></li>
                             <li>
-                                <a href="loanpending.php"><i class="zmdi zmdi-time-restore zmdi-hc-fw"></i>&nbsp;&nbsp; Devoluciones pendientes <span class="label label-danger pull-right label-mhover">7</span></a>
-                            </li>
-                            <li>
-                                <a href="loanreservation.php"><i class="zmdi zmdi-timer zmdi-hc-fw"></i>&nbsp;&nbsp; Reservaciones <span class="label label-danger pull-right label-mhover">7</span></a>
+                                <a href="loanpending.php"><i class="zmdi zmdi-time-restore zmdi-hc-fw"></i>&nbsp;&nbsp; Devoluciones pendientes </a>
                             </li>
                         </ul>
                     </li>
-                    <li><a href="report.php"><i class="zmdi zmdi-trending-up zmdi-hc-fw"></i>&nbsp;&nbsp; Reportes y estadísticas</a></li>
-                    <li><a href="advancesettings.php"><i class="zmdi zmdi-wrench zmdi-hc-fw"></i>&nbsp;&nbsp; Configuraciones avanzadas</a></li>
+                    <li><a href="report.php"><i class="zmdi zmdi-trending-up zmdi-hc-fw"></i>&nbsp;&nbsp; Reportes</a></li>
+                    <li><a href="advancesettings.php"><i class="zmdi zmdi-help-outline zmdi-hc-fw"></i></i>&nbsp;&nbsp; Acerca De...</a></li>
                 </ul>
             </div>
         </div>
@@ -91,16 +92,7 @@ include ('./logica/validacion.php');
                 </figure>
                 <li style="color:#fff; cursor:default;">
                     <span class="all-tittles"><?php $usuario = $_SESSION['usuario']; $nombre=$usuario['NOMBRE_USU']; echo $nombre;?></span>
-                </li>
-                <li  class="tooltips-general exit-system-button" data-href="index.html" data-placement="bottom" title="Salir del sistema">
-                    <i class="zmdi zmdi-power"></i>
-                </li>
-                <li  class="tooltips-general search-book-button" data-href="searchbook.html" data-placement="bottom" title="Buscar libro">
-                    <i class="zmdi zmdi-search"></i>
-                </li>
-                <li  class="tooltips-general btn-help" data-placement="bottom" title="Ayuda">
-                    <i class="zmdi zmdi-help-outline zmdi-hc-fw"></i>
-                </li>
+        
                 <li class="mobile-menu-button visible-xs" style="float: left !important;">
                     <i class="zmdi zmdi-menu"></i>
                 </li>
@@ -112,13 +104,12 @@ include ('./logica/validacion.php');
         <div class="container">
             <div class="jumbotron">
             <div class="page-header">
-              <h1 class="all-tittles">Sistema bibliotecario <small>préstamos y reservaciones</small></h1>
+              <center><h1 class="all-tittles">Préstamos de libros y herramientas</small></h1></center>
         </div>
         <div class="conteiner-fluid">
             <ul class="nav nav-tabs nav-justified"  style="font-size: 17px;">
                 <li class="active"><a href="loan.php">Todos los préstamos</a></li>
                 <li><a href="loanpending.php">Devoluciones pendientes</a></li>
-                <li><a href="loanreservation.php">Reservaciones</a></li>
             </ul>
         </div>
         <div class="container-fluid"  style="margin: 50px 0;">
@@ -132,129 +123,79 @@ include ('./logica/validacion.php');
             </div>
         </div>
         <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-12 lead">
+                    <ol class="breadcrumb">
+                          <li class="active">Prestamos</li>
+                        <li><a href="prestamos.php">Crear nuevo prestamo</a></li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid">
             <h2 class="text-center all-tittles">Listado de préstamos</h2>
             <div class="table-responsive">
-                <div class="div-table" style="margin:0 !important;">
-                    <div class="div-table-row div-table-row-list" style="background-color:#DFF0D8; font-weight:bold;">
-                        <div class="div-table-cell" style="width: 6%;">#</div>
-                        <div class="div-table-cell" style="width: 22%;">Nombre de libro</div>
-                        <div class="div-table-cell" style="width: 22%;">Nombre de usuario</div>
-                        <div class="div-table-cell" style="width: 10%;">Tipo</div>
-                        <div class="div-table-cell" style="width: 10%;">F. Solicitud</div>
-                        <div class="div-table-cell" style="width: 10%;">F. Entrega</div>
-                        <div class="div-table-cell" style="width: 8%;">Eliminar</div>
-                        <div class="div-table-cell" style="width: 8%;">Ver Ficha</div>
-                    </div>
-                </div>
-            </div>
-            <div class="table-responsive">
-                <div class="div-table" style="margin:0 !important;">
-                    <div class="div-table-row div-table-row-list">
-                        <div class="div-table-cell" style="width: 6%;">#</div>
-                        <div class="div-table-cell" style="width: 22%;">Nombre de Libro</div>
-                        <div class="div-table-cell" style="width: 22%;">Nombre de Usuario</div>
-                        <div class="div-table-cell" style="width: 10%;">Tipo</div>
-                        <div class="div-table-cell" style="width: 10%;">F. Solicitud</div>
-                        <div class="div-table-cell" style="width: 10%;">F. Entrega</div>
-                        <div class="div-table-cell" style="width: 8%;">
-                            <button class="btn btn-danger"><i class="zmdi zmdi-delete"></i></button>
-                        </div>
-                        <div class="div-table-cell" style="width: 8%;">
-                            <button class="btn btn-info"><i class="zmdi zmdi-file-text"></i></button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="table-responsive">
-                <div class="div-table" style="margin:0 !important;">
-                    <div class="div-table-row div-table-row-list">
-                        <div class="div-table-cell" style="width: 6%;">#</div>
-                        <div class="div-table-cell" style="width: 22%;">Nombre de Libro</div>
-                        <div class="div-table-cell" style="width: 22%;">Nombre de Usuario</div>
-                        <div class="div-table-cell" style="width: 10%;">Tipo</div>
-                        <div class="div-table-cell" style="width: 10%;">F. Solicitud</div>
-                        <div class="div-table-cell" style="width: 10%;">F. Entrega</div>
-                        <div class="div-table-cell" style="width: 8%;">
-                            <button class="btn btn-danger"><i class="zmdi zmdi-delete"></i></button>
-                        </div>
-                        <div class="div-table-cell" style="width: 8%;">
-                            <button class="btn btn-info"><i class="zmdi zmdi-file-text"></i></button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="table-responsive">
-                <div class="div-table" style="margin:0 !important;">
-                    <div class="div-table-row div-table-row-list">
-                        <div class="div-table-cell" style="width: 6%;">#</div>
-                        <div class="div-table-cell" style="width: 22%;">Nombre de Libro</div>
-                        <div class="div-table-cell" style="width: 22%;">Nombre de Usuario</div>
-                        <div class="div-table-cell" style="width: 10%;">Tipo</div>
-                        <div class="div-table-cell" style="width: 10%;">F. Solicitud</div>
-                        <div class="div-table-cell" style="width: 10%;">F. Entrega</div>
-                        <div class="div-table-cell" style="width: 8%;">
-                            <button class="btn btn-danger"><i class="zmdi zmdi-delete"></i></button>
-                        </div>
-                        <div class="div-table-cell" style="width: 8%;">
-                            <button class="btn btn-info"><i class="zmdi zmdi-file-text"></i></button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="table-responsive">
-                <div class="div-table" style="margin:0 !important;">
-                    <div class="div-table-row div-table-row-list">
-                        <div class="div-table-cell" style="width: 6%;">#</div>
-                        <div class="div-table-cell" style="width: 22%;">Nombre de Libro</div>
-                        <div class="div-table-cell" style="width: 22%;">Nombre de Usuario</div>
-                        <div class="div-table-cell" style="width: 10%;">Tipo</div>
-                        <div class="div-table-cell" style="width: 10%;">F. Solicitud</div>
-                        <div class="div-table-cell" style="width: 10%;">F. Entrega</div>
-                        <div class="div-table-cell" style="width: 8%;">
-                            <button class="btn btn-danger"><i class="zmdi zmdi-delete"></i></button>
-                        </div>
-                        <div class="div-table-cell" style="width: 8%;">
-                            <button class="btn btn-info"><i class="zmdi zmdi-file-text"></i></button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="table-responsive">
-                <div class="div-table" style="margin:0 !important;">
-                    <div class="div-table-row div-table-row-list">
-                        <div class="div-table-cell" style="width: 6%;">#</div>
-                        <div class="div-table-cell" style="width: 22%;">Nombre de Libro</div>
-                        <div class="div-table-cell" style="width: 22%;">Nombre de Usuario</div>
-                        <div class="div-table-cell" style="width: 10%;">Tipo</div>
-                        <div class="div-table-cell" style="width: 10%;">F. Solicitud</div>
-                        <div class="div-table-cell" style="width: 10%;">F. Entrega</div>
-                        <div class="div-table-cell" style="width: 8%;">
-                            <button class="btn btn-danger"><i class="zmdi zmdi-delete"></i></button>
-                        </div>
-                        <div class="div-table-cell" style="width: 8%;">
-                            <button class="btn btn-info"><i class="zmdi zmdi-file-text"></i></button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="modal fade" tabindex="-1" role="dialog" id="ModalHelp">
-          <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title text-center all-tittles">ayuda del sistema</h4>
-                </div>
-                <div class="modal-body">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore dignissimos qui molestias ipsum officiis unde aliquid consequatur, accusamus delectus asperiores sunt. Quibusdam veniam ipsa accusamus error. Animi mollitia corporis iusto.
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="zmdi zmdi-thumb-up"></i> &nbsp; De acuerdo</button>
-                </div>
-            </div>
-          </div>
-        </div>
-    </div>
+                 <?php
+     
+      include("conexion.php");
+
+            $contador = 0 ;
+          $resultados = mysqli_query($conexion,"SELECT PRESTAMO_ID, CONCAT (prestamos.USUARIO_ID,' - ',personal.PRIMER_NOMBRE,' ',personal.PRIMER_APE,' ',personal.SEGUNDO_APE)nombre2,herramienta.NOMBRE_LH nombre,FECHA_SALIDA,HORA_SALIDA,FECHA_ENTREGA,HORA_ENTREGA,CANTIDA_SA,ESTADO from prestamos,herramienta,personal WHERE herramienta.COD_LH = prestamos.COD_LH AND personal.ID = prestamos.USUARIO_ID");?>
+
+          <table width='100%' border="2" id="estudiantes_tabla" >
+              <thead style="color: #fff;background-color: #188010;">
+              <tr>
+                  <td><b><center>#</center></b></td>
+                  <td><b><center>Estudiante</center></b></td>
+                  <td><b><center>Herramienta</center></b></td>
+                  <td><b><center>Fecha salida</center></b></td>
+                  <td><b><center>Hora salida</center></b></td>
+                  <td><b><center>Fecha entrega</center></b></td>
+                  <td><b><center>Hora entrega</center></b></td>
+                  <td><b><center>Cantidad prestada</center></b></td>
+                  <td><b><center>Estado</center></b></td>
+                  <td><b><center>Prestamo</center></b></td>
+
+
+
+
+            </tr></thead> <tbody>
+
+          <?php while($consulta = mysqli_fetch_array($resultados))
+          {
+                $contador++;
+        echo"
+                <tr style='color: #000;'>
+                <td><b><center>".$contador."</center></b></td>
+                  <td><b><center>".$consulta['nombre2']."</center></b></td>
+                  <td><b><center>".$consulta['nombre']."</center></b></td>
+                  <td><b><center>".$consulta['FECHA_SALIDA']."</center></b></td>
+                  <td><b><center>".$consulta['HORA_SALIDA']."</center></b></td>
+                  <td><b><center>".$consulta['FECHA_ENTREGA']."</center></b></td>
+                  <td><b><center>".$consulta['HORA_ENTREGA']."</center></b></td>
+                  <td><b><center>".$consulta['CANTIDA_SA']."</center></b></td>
+                  <td><b><center>".$consulta['ESTADO']."</center></b></td>";
+
+                  switch ($consulta['ESTADO']) {
+                             case 'Prestado':
+                                echo "<td><center><a href='./logica/devolucion.php?id=".$consulta['PRESTAMO_ID']."' class='eliminar'><button class='btn btn-danger'> <i class='zmdi zmdi-close'></i></button><a></center></td>";
+                                break;
+                             case 'Devuelto':
+                                echo "<td><center></center></td>";
+                                break;
+
+}
+
+
+           
+          }?>
+  
+        </tbody></table>
+
+                
+<br><br>
+</div></div></div>
         <footer class="footer full-reset">
             <div class="container-fluid">
                 <div class="row">
@@ -272,5 +213,8 @@ include ('./logica/validacion.php');
             <div class="footer-copyright full-reset all-tittles">©NOVA SYSTEM 2020</div>
         </footer>   
     </div>
+
+    <script type="text/javascript" src="./js/confirmacionprestamos.js"></script>
+<script type="text/javascript" src="./js/init_datatable.js"></script>
 </body>
 </html>

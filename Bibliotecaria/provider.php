@@ -55,7 +55,7 @@ include ('./logica/validacion.php');
                     <li>
                         <div class="dropdown-menu-button"><i class="zmdi zmdi-account-add zmdi-hc-fw"></i>&nbsp;&nbsp; Registro de usuarios <i class="zmdi zmdi-chevron-down pull-right zmdi-hc-fw icon-sub-menu"></i></div>
                         <ul class="list-unstyled">
-
+                            
                             <li><a href="student.php"><i class="zmdi zmdi-accounts zmdi-hc-fw"></i>&nbsp;&nbsp; Nuevo personal</a></li>
                             
                         </ul>
@@ -72,15 +72,13 @@ include ('./logica/validacion.php');
                         <ul class="list-unstyled">
                             <li><a href="loan.php"><i class="zmdi zmdi-calendar zmdi-hc-fw"></i>&nbsp;&nbsp; Todos los préstamos</a></li>
                             <li>
-                                <a href="loanpending.php"><i class="zmdi zmdi-time-restore zmdi-hc-fw"></i>&nbsp;&nbsp; Devoluciones pendientes <span class="label label-danger pull-right label-mhover">7</span></a>
+                                <a href="loanpending.php"><i class="zmdi zmdi-time-restore zmdi-hc-fw"></i>&nbsp;&nbsp; Devoluciones pendientes </a>
                             </li>
-                            <li>
-                                <a href="loanreservation.php"><i class="zmdi zmdi-timer zmdi-hc-fw"></i>&nbsp;&nbsp; Reservaciones <span class="label label-danger pull-right label-mhover">7</span></a>
-                            </li>
+
                         </ul>
                     </li>
-                    <li><a href="report.php"><i class="zmdi zmdi-trending-up zmdi-hc-fw"></i>&nbsp;&nbsp; Reportes y estadísticas</a></li>
-                    <li><a href="advancesettings.php"><i class="zmdi zmdi-wrench zmdi-hc-fw"></i>&nbsp;&nbsp; Configuraciones avanzadas</a></li>
+                    <li><a href="report.php"><i class="zmdi zmdi-trending-up zmdi-hc-fw"></i>&nbsp;&nbsp; Reportes</a></li>
+                    <li><a href="advancesettings.php"><i class="zmdi zmdi-help-outline zmdi-hc-fw"></i>&nbsp;&nbsp; Acerca De...</a></li>
                 </ul>
             </div>
         </div>
@@ -94,15 +92,7 @@ include ('./logica/validacion.php');
                 <li style="color:#fff; cursor:default;">
                     <span class="all-tittles"><?php $usuario = $_SESSION['usuario']; $nombre=$usuario['NOMBRE_USU']; echo $nombre;?></span>
                 </li>
-                <li  class="tooltips-general exit-system-button" data-href="index.html" data-placement="bottom" title="Salir del sistema">
-                    <i class="zmdi zmdi-power"></i>
-                </li>
-                <li  class="tooltips-general search-book-button" data-href="searchbook.html" data-placement="bottom" title="Buscar libro">
-                    <i class="zmdi zmdi-search"></i>
-                </li>
-                <li  class="tooltips-general btn-help" data-placement="bottom" title="Ayuda">
-                    <i class="zmdi zmdi-help-outline zmdi-hc-fw"></i>
-                </li>
+
                 <li class="mobile-menu-button visible-xs" style="float: left !important;">
                     <i class="zmdi zmdi-menu"></i>
                 </li>
@@ -162,19 +152,11 @@ include ('./logica/validacion.php');
                                 
                             </div>
                         </div>
-                        <div class="col-xs-12 col-sm-6">
-                            <div class="group-material">
-                                 <p style="padding-top: 15px">Nombre Editorial</p>
-                                <input type="text"  class="form-control"  name="nomedit" placeholder="Nombre de Editorial" maxlength="50" data-toggle="tooltip" data-placement="top" title="Escribe el Email del proveedor">
-                                <span class="highlight"></span>
-                                <span class="bar"></span>
-                                
-                            </div>
-                        </div>
+
                         <div class="col-xs-12 col-sm-6">
                             <div class="group-material">
                                  <p style="padding-top: 15px">Dirección del proveedor</p>
-                                <input type="text"  class="form-control"  name="direc" placeholder="Dirección de proveedor" required="" maxlength="70" data-toggle="tooltip" data-placement="top" title="Escribe la dirección del proveedor">
+                                <input type="text"  class="form-control"  name="direc" placeholder="Dirección de proveedor" required="" maxlength="90" data-toggle="tooltip" data-placement="top" title="Escribe la dirección del proveedor">
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
                                 
@@ -183,7 +165,7 @@ include ('./logica/validacion.php');
                         <div class="col-xs-12 col-sm-6">
                             <div class="group-material">
                                  <p style="padding-top: 15px">Telefono del proveedor</p>
-                                <input type="text"  class="form-control" name="telpro" placeholder="Teléfono de proveedor" required="" pattern="[0-9]{10,10}" maxlength="10" data-toggle="tooltip" data-placement="top" title="Solo números, mínimo 8 dígitos">
+                                <input type="text"  class="form-control" name="telpro" placeholder="Teléfono de proveedor" required="" pattern="[0-9]{7,10}" maxlength="10" data-toggle="tooltip" data-placement="top" title="Solo números, mínimo 8 dígitos">
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
                                

@@ -72,7 +72,7 @@ include ('./logica/validacion.php');
                         <ul class="list-unstyled">
                             <li><a href="loan.php"><i class="zmdi zmdi-calendar zmdi-hc-fw"></i>&nbsp;&nbsp; Todos los préstamos</a></li>
                             <li>
-                                <a href="loanpending.php"><i class="zmdi zmdi-time-restore zmdi-hc-fw"></i>&nbsp;&nbsp; Devoluciones pendientes <span class="label label-danger pull-right label-mhover">7</span></a>
+                                <a href="loanpending.php"><i class="zmdi zmdi-time-restore zmdi-hc-fw"></i>&nbsp;&nbsp; Devoluciones pendientes </a>
                             </li>
                         </ul>
                     </li>
@@ -126,13 +126,13 @@ include ('./logica/validacion.php');
                                 
                                 <div class="table-responsive">
                                                 <br><br>
-                                                <center><button id="prestamos" class=" btn btn-primary  btn-block"onclick="location.href='reporte.php'">INFORME DE CATEGORIA <i class="fa fa-address-book-o"></i> </button></center>
+                                                <center><button id="prestamos" class=" btn btn-primary  btn-block" onclick="location.href='./reportes/reporte.php'">REPORTE DE ESTUDIANTES <i class="fa fa-address-book-o"></i> </button></center>
                                                  <br><br>
-                                                <center><button id="usu" class=" btn btn-primary btn-block">INFORME DE LIBROS - HERRAMIENTAS <i class="fa fa-book"></i></button></center>
+                                                <center><button id="usu" class=" btn btn-primary btn-block" onclick="location.href='./reportes/reporteprestamos.php'">REPORTE DE PRESTAMOS<i class="fa fa-book"></i></button></center>
                                                 <br><br>
-                                                <center><button id="herra" class=" btn btn-primary  btn-block" onclick="location.href='herramienta.php'">GESTIÓN DE HERRAMIENTAS <i    class="fa fa-book"></i></button></center>
+                                                <center><button id="herra" class=" btn btn-primary  btn-block" onclick="location.href='./reportes/reporteherra.php'">REPORTE DE HERRAMIENTAS <i    class="fa fa-book"></i></button></center>
                                                 <br><br>
-                                                 <center><button id="info" class=" btn btn-primary  btn-block"> LIBROS Y HERRAMIENTAS MAS PRESTADOS<i class="fa fa-line-chart"></i></button></center>
+                                                 <center><button id="info" class=" btn btn-primary  btn-block"onclick="location.href='./reportes/reportemaspres.php'"> LIBROS Y HERRAMIENTAS MAS PRESTADOS<i class="fa fa-line-chart"></i></button></center>
                                                 <br><br><br><br>                          
            
                         </div>

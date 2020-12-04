@@ -81,6 +81,7 @@ $(document).ready(function(){
             backdrop: "static"
         });
     });
+
 });
 (function($){
     $(window).load(function(){
@@ -100,30 +101,3 @@ $(document).ready(function(){
 })(jQuery);
 
 
-$(buscar_datos());
-
-function buscar_datos(consulta){
-
-$.ajax ({
-
-    url: '.././logica/buscaperso.php',
-    type: 'POST',
-    dataType: 'html',
-    data: {consulta: consulta},
-})
-
-.done (function(){
-
-        $("#datos").html(respuesta);
-})
-
-.fail(function() {
-
-        console.log ("error");
-
-
-})
-
-
-
-}

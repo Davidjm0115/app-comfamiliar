@@ -104,7 +104,7 @@ include ('./logica/validacion.php');
         <div class="container">
             <div class="jumbotron">
             <div class="page-header">
-              <center><h1 class="all-tittles">Pestamos de libros y herramientas</small></h1></center>
+              <center><h1 class="all-tittles">Préstamos de libros y herramientas</small></h1></center>
         </div>
         <div class="conteiner-fluid">
             <ul class="nav nav-tabs nav-justified"  style="font-size: 17px;">

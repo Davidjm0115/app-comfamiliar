@@ -1,15 +1,30 @@
-function confirmacion(e){
-	if(confirm("¿Seguro desea eliminar este registro?")){
-	return true;
-	} else{
-
-		e.preventDefault();
-	}
+function confirmacion(el, e){
+	e.preventDefault();
+	Swal.fire({
+		title: 'Seguro desea eliminar este registro?',
+		showCancelButton: true,
+		confirmButtonText: `Eliminar`,
+		cancelButtonText: 'Cancelar',
+		icon: 'error'
+	}).then((result) => {
+		if (result.isConfirmed) {
+			Swal.fire({
+				title: 'Eliminado',
+				confirmButtonText: `Ok`,
+				icon: 'success'
+			}).then((resultConfirmation) => {
+				if (resultConfirmation.isConfirmed) {
+					window.location = el.attr('href');
+				}
+			})
+		}
+	});
 }
-
-let linkDelete = document.querySelectorAll(".eliminar");
-
-for (var i=0; i< linkDelete.length; i++){
-	
-	linkDelete[i].addEventListener('click', confirmacion);
-}
+$(document).ready(function() {
+	$(".eliminar").each(function (){
+		let el = $(this);
+		$(this).on('click', function (e){
+			confirmacion(el, e)
+		})
+	});
+});

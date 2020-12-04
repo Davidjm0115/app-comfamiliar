@@ -55,7 +55,8 @@ include ('./logica/validacion.php');
                     </li>
                     <li>
                         <div class="dropdown-menu-button"><i class="zmdi zmdi-account-add zmdi-hc-fw"></i>&nbsp;&nbsp; Registro de usuarios <i class="zmdi zmdi-chevron-down pull-right zmdi-hc-fw icon-sub-menu"></i></div>
-                        <ul class="list-unstyled">   
+                        <ul class="list-unstyled">
+                                
                             <li><a href="student.php"><i class="zmdi zmdi-accounts zmdi-hc-fw"></i>&nbsp;&nbsp; Nuevo Personal</a></li>
                         </ul>
                     </li>
@@ -71,15 +72,12 @@ include ('./logica/validacion.php');
                         <ul class="list-unstyled">
                             <li><a href="loan.php"><i class="zmdi zmdi-calendar zmdi-hc-fw"></i>&nbsp;&nbsp; Todos los préstamos</a></li>
                             <li>
-                                <a href="loanpending.php"><i class="zmdi zmdi-time-restore zmdi-hc-fw"></i>&nbsp;&nbsp; Devoluciones pendientes <span class="label label-danger pull-right label-mhover">7</span></a>
-                            </li>
-                            <li>
-                                <a href="loanreservation.php"><i class="zmdi zmdi-timer zmdi-hc-fw"></i>&nbsp;&nbsp; Reservaciones <span class="label label-danger pull-right label-mhover">7</span></a>
+                                <a href="loanpending.php"><i class="zmdi zmdi-time-restore zmdi-hc-fw"></i>&nbsp;&nbsp; Devoluciones pendientes </a>
                             </li>
                         </ul>
                     </li>
-                    <li><a href="report.php"><i class="zmdi zmdi-trending-up zmdi-hc-fw"></i>&nbsp;&nbsp; Reportes y estadísticas</a></li>
-                    <li><a href="advancesettings.php"><i class="zmdi zmdi-wrench zmdi-hc-fw"></i>&nbsp;&nbsp; Configuraciones avanzadas</a></li>
+                    <li><a href="report.php"><i class="zmdi zmdi-trending-up zmdi-hc-fw"></i>&nbsp;&nbsp; Reportes</a></li>
+                    <li><a href="advancesettings.php"><i class="zmdi zmdi-help-outline zmdi-hc-fw"></i>&nbsp;&nbsp; Acerca De...</a></li>
                 </ul>
             </div>
         </div>
@@ -93,15 +91,7 @@ include ('./logica/validacion.php');
                 <li style="color:#fff; cursor:default;">
                     <span class="all-tittles"><?php $usuario = $_SESSION['usuario']; $nombre=$usuario['NOMBRE_USU']; echo $nombre;?></span>
                 </li>
-                <li  class="tooltips-general exit-system-button" data-href="index.html" data-placement="bottom" title="Salir del sistema">
-                    <i class="zmdi zmdi-power"></i>
-                </li>
-                <li  class="tooltips-general search-book-button" data-href="searchbook.html" data-placement="bottom" title="Buscar libro">
-                    <i class="zmdi zmdi-search"></i>
-                </li>
-                <li  class="tooltips-general btn-help" data-placement="bottom" title="Ayuda">
-                    <i class="zmdi zmdi-help-outline zmdi-hc-fw"></i>
-                </li>
+
                 <li class="mobile-menu-button visible-xs" style="float: left !important;">
                     <i class="zmdi zmdi-menu"></i>
                 </li>
@@ -113,7 +103,7 @@ include ('./logica/validacion.php');
         <div class="container">
             <div class="jumbotron">
             <div class="page-header">
-              <center><h1 class="all-tittles">Reportes y estadísticas</h1></center>
+              <center><h1 class="all-tittles">Reportes</h1></center>
             
         </div>
         <div class="container-fluid">
@@ -126,7 +116,7 @@ include ('./logica/validacion.php');
                                 <img src="assets/img/chart.png" alt="chart" class="img-responsive center-box" style="max-width: 120px;">
                             </div>
                             <div class="col-xs-12 col-sm-8 col-md-8 text-justify lead">
-                                Bienvenido al área de estadísticas, aquí puedes ver las diferentes estadísticas de los préstamos y libros.
+                                Bienvenido al área de Reportes, aquí puedes ver los diferentes reportes de los préstamos, libros y herramientas.
                             </div>
                         </div>
                     </div>
@@ -136,29 +126,35 @@ include ('./logica/validacion.php');
                                 
                                 <div class="table-responsive">
                                                 <br><br>
-                                                <center><button id="prestamos" class=" btn btn-primary  btn-block"onclick="location.href='reporte.php'">INFORME DE CATEGORIA <i class="fa fa-address-book-o"></i> </button></center>
+                                                <center><button id="prestamos" class=" btn btn-primary  btn-block" onclick="location.href='./reportes/reporte.php'">REPORTE DE ESTUDIANTES <i class="fa fa-address-book-o"></i> </button></center>
                                                  <br><br>
-                                                <center><button id="usu" class=" btn btn-primary btn-block">INFORME DE LIBROS - HERRAMIENTAS <i class="fa fa-book"></i></button></center>
+                                                <center><button id="usu" class=" btn btn-primary btn-block" onclick="location.href='./reportes/reporteprestamos.php'">REPORTE DE PRESTAMOS<i class="fa fa-book"></i></button></center>
                                                 <br><br>
-                                                <center><button id="herra" class=" btn btn-primary  btn-block" onclick="location.href='herramienta.php'">GESTIÓN DE HERRAMIENTAS <i    class="fa fa-book"></i></button></center>
+                                                <center><button id="herra" class=" btn btn-primary  btn-block" onclick="location.href='./reportes/reporteherra.php'">REPORTE DE HERRAMIENTAS <i    class="fa fa-book"></i></button></center>
                                                 <br><br>
-                                                 <center><button id="info" class=" btn btn-primary  btn-block"> LIBROS Y HERRAMIENTAS MAS PRESTADOS<i class="fa fa-line-chart"></i></button></center>
+                                                 <center><button id="info" class=" btn btn-primary  btn-block"onclick="location.href='./reportes/reportemaspres.php'"> LIBROS Y HERRAMIENTAS MAS PRESTADOS<i class="fa fa-line-chart"></i></button></center>
                                                 <br><br><br><br>                          
-                                </div>
-                            </div>
+           
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+
+
+            </div></center>
+           
+       
+        
         <footer class="footer full-reset">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-xs-12 col-sm-6">
                         <h4 class="all-tittles">Acerca de</h4>
                         <p>
-                            Software de gestion de inventario y prestamos hecho a la medida por la empresa Nova System S.A.S para la institucion educativa comfamiliar, el programa se encuentra en Fase beta hasta el 4 de diciembre donde se presenatara la version 1.0 del software.
+                            Software de gestion de inventario y prestamos hecho a la medida por la empresa Nova System S.A.S para la institucion educativa comfamiliar, el programa se encuentra en fase beta hasta el 4 de diciembre donde se presenatara la version 1.0 del software.
                         </p>
                     </div>
                          <div class="col-xs-12 col-sm-6">

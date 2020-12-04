@@ -23,6 +23,8 @@ include ('./logica/validacion.php');
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
     <script src="js/main.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/select2.css">
+    <script src="js/select2.js"></script>
 </head>
 <body>
     <div class="navbar-lateral full-reset">
@@ -55,6 +57,7 @@ include ('./logica/validacion.php');
                     <li>
                         <div class="dropdown-menu-button"><i class="zmdi zmdi-account-add zmdi-hc-fw"></i>&nbsp;&nbsp; Registro de usuarios <i class="zmdi zmdi-chevron-down pull-right zmdi-hc-fw icon-sub-menu"></i></div>
                         <ul class="list-unstyled">
+                           
                             <li><a href="student.php"><i class="zmdi zmdi-accounts zmdi-hc-fw"></i>&nbsp;&nbsp; Nuevo estudiante</a></li>
                             
                         </ul>
@@ -67,19 +70,16 @@ include ('./logica/validacion.php');
                         </ul>
                     </li>
                     <li>
-                        <div class="dropdown-menu-button"><i class="zmdi zmdi-alarm zmdi-hc-fw"></i>&nbsp;&nbsp; Préstamos y reservaciones <i class="zmdi zmdi-chevron-down pull-right zmdi-hc-fw icon-sub-menu"></i></div>
+                        <div class="dropdown-menu-button"><i class="zmdi zmdi-alarm zmdi-hc-fw"></i>&nbsp;&nbsp; Préstamos <i class="zmdi zmdi-chevron-down pull-right zmdi-hc-fw icon-sub-menu"></i></div>
                         <ul class="list-unstyled">
                             <li><a href="loan.php"><i class="zmdi zmdi-calendar zmdi-hc-fw"></i>&nbsp;&nbsp; Todos los préstamos</a></li>
                             <li>
-                                <a href="loanpending.php"><i class="zmdi zmdi-time-restore zmdi-hc-fw"></i>&nbsp;&nbsp; Devoluciones pendientes <span class="label label-danger pull-right label-mhover">7</span></a>
-                            </li>
-                            <li>
-                                <a href="loanreservation.php"><i class="zmdi zmdi-timer zmdi-hc-fw"></i>&nbsp;&nbsp; Reservaciones <span class="label label-danger pull-right label-mhover">7</span></a>
+                                <a href="loanpending.php"><i class="zmdi zmdi-time-restore zmdi-hc-fw"></i>&nbsp;&nbsp; Devoluciones pendientes </a>
                             </li>
                         </ul>
                     </li>
                     <li><a href="report.php"><i class="zmdi zmdi-trending-up zmdi-hc-fw"></i>&nbsp;&nbsp; Reportes y estadísticas</a></li>
-                    <li><a href="advancesettings.php"><i class="zmdi zmdi-wrench zmdi-hc-fw"></i>&nbsp;&nbsp; Configuraciones avanzadas</a></li>
+                     <li><a href="advancesettings.php"><i class="zmdi zmdi-help-outline zmdi-hc-fw"></i>&nbsp;&nbsp; Acerca De...</a></li>
                 </ul>
             </div>
         </div>
@@ -120,7 +120,7 @@ include ('./logica/validacion.php');
             <ul class="nav nav-tabs nav-justified"  style="font-size: 17px;">
                 <li role="presentation"><a href="admin.php">Administradores</a></li>
                 
-                <li role="presentation" class="active"><a href="student.html">Estudiantes</a></li>
+                <li role="presentation" class="active"><a href="student.php">Estudiantes</a></li>
                 
             </ul>
         </div>
@@ -139,7 +139,7 @@ include ('./logica/validacion.php');
             <div class="row">
                 <div class="col-xs-12 lead">
                     <ol class="breadcrumb">
-                        <li><a href="student.html">Nuevo estudiante</a></li>
+                        <li><a href="student.php">Nuevo estudiante</a></li>
                         <li class="active">Listado de estudiantes</li>
                     </ol>
                 </div>
@@ -149,7 +149,7 @@ include ('./logica/validacion.php');
         <div class="container-fluid">
           <?php
      
-      include("conexion.php");
+      include("./logica/db.php");
             $id= $_GET['id'];
           $resultados = mysqli_query($conexion,"SELECT * FROM personal WHERE ID='$id'");
 
@@ -166,7 +166,7 @@ include ('./logica/validacion.php');
                         <div class='col-xs-12'>
                             <div class='group-material'>
                                 <p class='text-center' style='padding-top: 15px'>Usuario ID</p>
-                                <input type='text' class='form-control' name='numid'  value="<?php echo $consulta['ID']?>"required="" maxlength='20' data-toggle='tooltip' data-placement='top' title='ID de estudiante'>
+                                <input type='text' readonly="" class='form-control' name='numid'  value="<?php echo $consulta['ID']?>"required="" maxlength='20' data-toggle='tooltip' data-placement='top' title='ID de estudiante'>
                                 <span class='highlight'></span>
                                 <span class='bar'></span>
                                 
@@ -184,7 +184,7 @@ include ('./logica/validacion.php');
                         <div class='col-xs-12 col-sm-6'>
                             <div class='group-material'>
                                 <p style='padding-top: 15px'>Segundo Nombre Estudiante</p>
-                                <input type='text' class='form-control' name='snombre' value="<?php echo $consulta['SEGUNDO_NOMBRE']?>" required="" pattern='[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{1,50}' maxlength='50' data-toggle='tooltip' data-placement='top' title='Nombre del estudiante'>
+                                <input type='text' class='form-control' name='snombre' value="<?php echo $consulta['SEGUNDO_NOMBRE']?>" pattern='[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{1,50}' maxlength='50' data-toggle='tooltip' data-placement='top' title='Nombre del estudiante'>
                                 <span class='highlight'></span>
                                 <span class='bar'></span>
                                 
@@ -218,26 +218,13 @@ include ('./logica/validacion.php');
                                     <option value="c">C</option>
                                     <option value="d">D</option>
                                 </select>
-                            </div>
-</div>
-                        </div>
-                        <div class="col-xs-12">
-      <div class="col-xs-12">
-                           <div class="group-material">
-                                <p class="text-center" style="padding-top: 15px">Curso</p>
-                                <select class="form-control" name="curso" value="<?php echo $consulta['CURSO']?>" data-toggle="tooltip" data-placement="top" title="Elige la sección a la que pertenece el alumno">
-                                    <option value="" disabled="" selected="">Selecciona un Curso</option>
-                                    <option value="1">5-01</option>
-                                    <option value="2">5-02</option>
-                                    <option value="3">5-03</option>
-                                    <option value="4">6-01</option>
-                                </select>
+                                </div>
                             </div>
                         </div>
                         <div class="col-xs-12 col-sm-6">
                             <div class="group-material">
                                 <p style="padding-top: 15px">Correo</p>
-                                <input type="text" class="form-control" name="correo" value="<?php echo $consulta['CORREO']?>"  required="" pattern="[a-zA-ZéíóúáñÑ ]{1,30}" maxlength="30" data-toggle="tooltip" data-placement="top" title="Parentesco">
+                                <input type="email" class="form-control" name="correo" value="<?php echo $consulta['CORREO']?>"  required=""  maxlength="30" data-toggle="tooltip" data-placement="top" title="Parentesco">
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
                                 
@@ -252,7 +239,37 @@ include ('./logica/validacion.php');
                                 
                             </div>
                         </div>
-                    
+                             <div class="col-xs-12">
+                             <div class="col-xs-12">
+                           <div class="group-material">
+                                <p class="text-center" style="padding-top: 15px">Curso</p>
+                                <select class="form-control" name="curso" id="cursoo" data-toggle="tooltip" data-placement="top" title="Elige la sección a la que pertenece el alumno">
+                                    <option value="" disabled="" selected="">Selecciona un Curso</option>
+                                <?php
+                                    include ("./logica/db.php");
+
+                                    $consulta = "SELECT * FROM curso where curso != 'admin' ";
+                                    $resultado = mysqli_query($conexion, $consulta);
+
+                                    while ($row = mysqli_fetch_array($resultado))
+                                    {
+                                        
+                                      $codigo = $row["COD_CURSO"];
+                                      $curso = $row["CURSO"];
+
+
+
+                                    ?>
+
+                                    <option value ="<?php echo $codigo;?>"><?php echo $curso;?> </option>
+                                     
+
+
+                                    <?php } ?>
+
+                                </select>
+                            </div>
+                        </div>
                         
                        <div class="col-xs-12">
                             <p class="text-center">
@@ -297,3 +314,8 @@ include ('./logica/validacion.php');
 <script src="./js/confirmacion.js"></script>
 </body>
 </html>
+<script type="text/javascript">
+    $(document).ready(function(){
+            $('#cursoo').select2();
+    });
+</script>
